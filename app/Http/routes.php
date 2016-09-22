@@ -21,4 +21,4 @@ Route::get("/", ["as" => "/", "uses" => "PageController@index"]);
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
-Route::get("/register", ["as" => "/register", "uses" => "PageController@register"]);
+Route::get("register", ["as" => "register", "uses" => "PageController@register"]);
