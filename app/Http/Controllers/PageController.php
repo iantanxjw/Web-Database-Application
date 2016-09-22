@@ -12,4 +12,9 @@ class PageController extends Controller
     {
         return view("default");
     }
+
+    public function register()
+    {
+        return view("auth.register");
+    }
 }
