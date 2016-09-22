@@ -8,7 +8,8 @@ use App\Http\Requests;
 
 class PageController extends Controller
 {
-    public function index() {
-        return view("index");
+    public function index()
+    {
+        return view("default");
     }
 }
