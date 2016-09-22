@@ -1,6 +1,9 @@
-@extends('layouts.master'   )
+@extends('layouts.master')
 @section('title', 'Default')
 @section('content')
+
+<!-- THIS CONTENT NEEDS TO BE REPLACED - DEFAULT FROM BOOTSTRAP TEMPLATE -->
+
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
