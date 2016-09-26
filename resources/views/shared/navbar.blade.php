@@ -12,7 +12,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="{{ route('/') }}">Home</a></li>
+                    <li class="active"><a href="{{ route('index') }}">Home</a></li>
                     <li><a href="http://www.bootply.com" target="ext">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
