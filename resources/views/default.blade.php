@@ -58,7 +58,5 @@
         <p class="lead">A big design trend for 2013 is "flat" design. Gone are the days of excessive gradients and shadows. Designers are producing cleaner flat designs, and Bootstrap 3 takes advantage of this minimalist trend.</p>
     </div>
 
-    <hr class="featurette-divider">
-
     <!-- /END THE FEATURETTES -->
 @endsection('content')
