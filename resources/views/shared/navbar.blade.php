@@ -12,7 +12,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="{!! route('index') !!}">Home</a></li>
+                    <li><a href="{!! route('index') !!}">Home</a></li>
                     <li><a href="{!! route('about') !!}">About</a></li>
                     <li><a href="{!! route('contact') !!}">Contact</a></li>
                     <li><a href="{!! route('register') !!}">Register</a></li>
@@ -25,6 +25,7 @@
                             <li class="divider"></li>
                             <li><a href="#">Separated link</a></li>
                             <li><a href="#">One more separated link</a></li>
+                            <li><a href="{!! route('test') !!}">Test</a></li>
                         </ul>
                     </li>
                 </ul>
