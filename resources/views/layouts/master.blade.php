@@ -9,6 +9,8 @@
     <meta name="description" content="This is an example layout with carousel that uses the Bootstrap 3 RC styles. " />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/remodal.css">
+    <link rel="stylesheet" href="assets/remodal-default-theme.css">
 
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
