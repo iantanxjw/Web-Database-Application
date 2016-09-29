@@ -2,13 +2,14 @@
 ================================================== -->
 <div id="myCarousel" class="carousel slide">
     <!-- Indicators -->
-    <ol class="carousel-indicators">
+    <!-- <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
+    </ol> -->
     <div class="carousel-inner">
-        <div class="item active">
+    <!-- DEFAULT BOOTSTRAP TEMPLATE IMAGES -->
+        <!-- <div class="item active">
             <img src="assets/img/mll.jpg" style="width:100%" class="img-responsive">
             <div class="container">
                 <div class="carousel-caption">
@@ -38,7 +39,7 @@
                     <p><a class="btn btn-large btn-primary" href="#">Browse gallery</a></p>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <!-- Controls -->
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
