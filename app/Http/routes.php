@@ -20,3 +20,4 @@ Route::auth();
 Route::get("register", ["as" => "register", "uses" => "PageController@register"]);
 Route::get("about", ["as" => "about", "uses" => "PageController@about"]);
 Route::get("contact", ["as" => "contact", "uses" => "PageController@contact"]);
+Route::get("test", ["as" => "test", "uses" => "PageController@test"]);
