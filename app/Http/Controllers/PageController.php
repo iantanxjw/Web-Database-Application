@@ -27,6 +27,7 @@ class PageController extends Controller
     {
         return view("about");
     }
+
     public function test()
     {
         return view("test");
