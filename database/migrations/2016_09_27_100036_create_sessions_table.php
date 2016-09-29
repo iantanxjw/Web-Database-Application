@@ -17,10 +17,13 @@ class CreateSessionsTable extends Migration
             $table->string('start_time');
             $table->string('duration');
             $table->integer('num_bookings');
-            $table->string('mv_id');
-            $table->string('t_id');
-            $table->foreign('mv_id')->references('id')->on('movies');
-            $table->foreign('t_id')->references('t_id')->on('theatre');
+            $table->integer('mv_id')->unsigned();
+            $table->integer('t_id')->unsigned();
+        });
+
+        Schema::table("sessions", function($table) {
+            $table->foreign('mv_id')->references('mv_id')->on('movies');
+            $table->foreign('t_id')->references('t_id')->on('theatres');
         });
     }
 
