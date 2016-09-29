@@ -137,6 +137,11 @@ body {
     top: 0;
     left: 0;
     min-height: 400px;
+    width: 100%;
+}
+
+.carousel-inner {
+    height: 550px;
 }
 
 
@@ -277,3 +282,4 @@ ul.tab li a:focus, .active {
     from {opacity: 0;}
     to {opacity: 1;}
 }
+    
