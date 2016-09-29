@@ -29,3 +29,4 @@ Route::get("remove_movie", ["as" => "remove_movie", "uses" => "AdminController@r
 Route::get("add_session", ["as" => "add_session", "uses" => "AdminController@add_session"]);
 Route::get("remove_session", ["as" => "remove_session", "uses" => "AdminController@remove_session"]);
 Route::get("api_refresh", ["as" => "api_refresh", "uses" => "AdminController@api_refresh"]);
+Route::post("updatedb", "AdminController@updateAPI");

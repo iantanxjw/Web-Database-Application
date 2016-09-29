@@ -37,4 +37,9 @@ class AdminController extends Controller
     {
         return view("admin.api_refresh");
     }
+
+    public function updateAPI()
+    {
+        return view("admin.panel");
+    }
 }
