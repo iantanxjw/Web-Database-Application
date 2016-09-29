@@ -15,7 +15,6 @@
                     <li><a href="{!! route('index') !!}">Home</a></li>
                     <li><a href="{!! route('about') !!}">About</a></li>
                     <li><a href="{!! route('contact') !!}">Contact</a></li>
-                    <!-- <li><a href="{!! route('register') !!}">Register</a></li> -->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -44,6 +43,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a>{{ Auth::user()->name }}</a></li>
                                 <li><a>Settings</a></li>
+                                <li><a href="{{ route('admin') }}">Admin</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
