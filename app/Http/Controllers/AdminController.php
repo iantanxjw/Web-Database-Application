@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+
 class AdminController extends Controller
 {
     public function index()
@@ -40,20 +41,23 @@ class AdminController extends Controller
 
     public function updateAPI(Request $request)
     {
-        $url = "https://api.themoviedb.org/3/movie/" . $request->input("api") . "?api_key=767dab209295a6b3b0ff89be7be1fa86&language=en-US";
+        // url to post to
+        $url = "https://api.themoviedb.org/3/movie/";
 
-        // options for the request
-        $options = [
-            "http" => [
-                "header" => "Content-type: application/x-www-form-urlencoded\r\n", 
-                "method" => "GET"]];
+        // type to update db and add ? for get request
+        $api_type = $request->input("api") . "?";
 
-        // create the stream from the options
-        $context = stream_context_create($options);
+        // get variables to send 
+        // HOW THE FUCK DO I STORE THIS BS IN .ENV
+        $data = http_build_query([
+            "api_key" => "767dab209295a6b3b0ff89be7be1fa86",
+            "language" => "en-US"
+        ]);
 
-        // open the stream and get the result of the query
-        $result = file_get_contents($url, false, $context);
+        // get the result
+        $result = file_get_contents($url . $api_type . $data);
 
+        // pass the result to the view 
         return view("admin.test", compact("result"));
     }
 }
