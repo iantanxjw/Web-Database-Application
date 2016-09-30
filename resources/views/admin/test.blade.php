@@ -2,6 +2,6 @@
 @section('title', 'API check')
 @section('content')
 
-<p>{{ $result }}</p><br>
+<pre>{{ var_dump($json) }}</pre>
 
 @endsection('content')
