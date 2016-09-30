@@ -17,7 +17,7 @@ class CreateSessionsTable extends Migration
             $table->string('start_time');
             $table->string('duration');
             $table->integer('num_bookings');
-            $table->integer('mv_id')->unsigned();
+            $table->string('mv_id');
             $table->integer('t_id')->unsigned();
         });
 

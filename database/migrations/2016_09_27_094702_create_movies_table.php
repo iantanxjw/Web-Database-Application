@@ -12,12 +12,18 @@ class CreateMoviesTable extends Migration
      */
     public function up()
     {
-        Schema::create('movies', function (Blueprint $table) {
-            $table->increments('mv_id');
-            $table->string('name');
+        Schema::create('movies', function(Blueprint $table) {
+            $table->increments('id');
+            $table->string('mv_id');
+            $table->string('title');
             $table->text('desc');
-            $table->string('year');
+            $table->string('release_date');
             $table->string('genre');
+
+            // movie might not have a poster or bg available
+            $table->string('poster')->nullable();
+            $table->string('bg')->nullable();
+            $table->timestamps();
         });
     }
 
