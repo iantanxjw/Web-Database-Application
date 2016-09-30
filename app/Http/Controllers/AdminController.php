@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
 use App\ApiRequest;
+use App\Movie;
+use App\Movies;
 
 class AdminController extends Controller
 {
@@ -42,11 +43,18 @@ class AdminController extends Controller
 
     public function updateAPI(Request $request)
     {
-        $json_obj = ApiRequest::getRequest($request->input("api"));
+        $json = ApiRequest::getRequest($request->input("api"));
 
-        return view("admin.test")->with("json", $json_obj);
+        // get an array of movie objects to dump into db
+        $movies = ApiRequest::getMovieDetails($json);
 
-        // pass the result to the view 
-        // return view("admin.test", compact("result"));
+        // now loop over the movies and fill the db
+        // foreach ($movies as $movie)
+        // {
+        //     Movies::create($movie->getVars());
+        // }
+
+        //return view("admin.test", compact("json"));
+        return view("admin.test")->with("movie", $json);
     }
 }
