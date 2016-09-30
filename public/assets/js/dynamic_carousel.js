@@ -47,6 +47,5 @@ $.post("https://api.themoviedb.org/3/movie/popular?api_key=767dab209295a6b3b0ff8
     }
 
     // randomly set an item as active to start the carousel
-    console.log(items);
     $(items[Math.floor(Math.random() * items.length)]).addClass("active");
 });
