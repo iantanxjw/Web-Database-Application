@@ -2,6 +2,6 @@
 @section('title', 'API check')
 @section('content')
 
-<p>{{ var_dump($_POST) }}</p><br>
+<p>{{ $result }}</p><br>
 
 @endsection('content')
