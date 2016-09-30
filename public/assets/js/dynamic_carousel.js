@@ -1,4 +1,4 @@
-const CAROUSEL_LIMIT = 5;
+const CAROUSEL_LIMIT = 10;
 const BACKDROP_URL = "http://image.tmdb.org/t/p/h632/";
 
 // loaded in footer so no need to use document.ready()
@@ -11,7 +11,12 @@ $.post("https://api.themoviedb.org/3/movie/popular?api_key=767dab209295a6b3b0ff8
     for (var i = 0; i < CAROUSEL_LIMIT; i++) {
 
         // randomly select a movie from the query result
-        var movie = movies.results[Math.floor(Math.random() * movieCount)];
+        var index = Math.floor(Math.random() * movieCount);
+        var movie = movies.results[index];
+
+        // remove movie being selected again
+        movies.results.splice(index, 1);
+        movieCount--;
 
         // create the elements
         var item = $("<div>", {class: "item"});
