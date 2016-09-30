@@ -38,8 +38,22 @@ class AdminController extends Controller
         return view("admin.api_refresh");
     }
 
-    public function updateAPI()
+    public function updateAPI(Request $request)
     {
-        return view("admin.panel");
+        $url = "https://api.themoviedb.org/3/movie/" . $request->input("api") . "?api_key=767dab209295a6b3b0ff89be7be1fa86&language=en-US";
+
+        // options for the request
+        $options = [
+            "http" => [
+                "header" => "Content-type: application/x-www-form-urlencoded\r\n", 
+                "method" => "GET"]];
+
+        // create the stream from the options
+        $context = stream_context_create($options);
+
+        // open the stream and get the result of the query
+        $result = file_get_contents($url, false, $context);
+
+        return view("admin.test", compact("result"));
     }
 }
