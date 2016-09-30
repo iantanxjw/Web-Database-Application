@@ -21,7 +21,7 @@ class CreateSessionsTable extends Migration
             $table->integer('t_id')->unsigned();
         });
 
-        Schema::table("sessions", function($table) {
+        Schema::table("sessions", function(Blueprint $table) {
             $table->foreign('mv_id')->references('mv_id')->on('movies');
             $table->foreign('t_id')->references('t_id')->on('theatres');
         });
