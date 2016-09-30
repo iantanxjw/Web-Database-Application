@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ApiRequest extends Model
 {
+    // returns an object
     public static function getRequest($request_type)
     {
         // add ? for get request
