@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\ApiRequest;
 
 class AdminController extends Controller
 {
@@ -41,23 +42,11 @@ class AdminController extends Controller
 
     public function updateAPI(Request $request)
     {
-        // url to post to
-        $url = "https://api.themoviedb.org/3/movie/";
+        $json_obj = ApiRequest::getRequest($request->input("api"));
 
-        // type to update db and add ? for get request
-        $api_type = $request->input("api") . "?";
-
-        // get variables to send 
-        // HOW THE FUCK DO I STORE THIS BS IN .ENV
-        $data = http_build_query([
-            "api_key" => "767dab209295a6b3b0ff89be7be1fa86",
-            "language" => "en-US"
-        ]);
-
-        // get the result
-        $result = file_get_contents($url . $api_type . $data);
+        return view("admin.test")->with("json", $json_obj);
 
         // pass the result to the view 
-        return view("admin.test", compact("result"));
+        // return view("admin.test", compact("result"));
     }
 }
