@@ -123,7 +123,7 @@ class MovieTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(["Unknown", "Unknown", "None", "Unknown", null, null, null], $this->movie->getVars());
 
         $this->movie = new Movie("0987", "welcome", "to the", "michael", "scott", "paper.png", "company.jpg");
-        $this->assertEquals(["0987", "welcome", "to the", "michael", "scott", "paper.png", "company.jpg"], $this->movie->getVars());
+        $this->assertEquals(["0987", "welcome", "to the", "michael", serialize("scott"), "paper.png", "company.jpg"], $this->movie->getVars());
     }
 
     public function testMovieObject()

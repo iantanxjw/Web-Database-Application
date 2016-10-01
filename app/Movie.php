@@ -159,6 +159,7 @@ class Movie extends Model
 
     // cos i'm lazy and don't want to type $movie->getBlahblah() every time....
     // this returns an ordered array of all vars
+    // IMPORTANT: GENRE IS SERIALISED HERE
     public function getVars()
     {
         return [
@@ -166,7 +167,7 @@ class Movie extends Model
             $this->title,
             $this->desc,
             $this->rel_date,
-            $this->getGenre(),
+            $this->genre,
             $this->poster,
             $this->bg
         ];
