@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\ApiRequest;
-use App\Movie;
 use App\Movies;
+use App\ApiRequest;
 
 class AdminController extends Controller
 {
@@ -43,27 +42,37 @@ class AdminController extends Controller
 
     public function updateAPI(Request $request)
     {
-        $json = ApiRequest::getRequest($request->input("api"));
+        $apiRequest = new ApiRequest(config("tmdb.api.url"), $request->input("api") . "?");
+        $movies = $apiRequest->request();
 
-        // get an array of movie objects to dump into db
-        $movies = ApiRequest::getMovieDetails($json);
+        $success = [];
+        $failure = [];
 
         // now loop over the movies and fill the db
         foreach ($movies as $movie)
         {
-            // FML THIS IS ASSOCIATIVE NOT ORDERED
-            Movies::create([
-                "mv_id" => $movie->getID(),
-                "title" => $movie->getTitle(),
-                "desc" => $movie->getDescription(),
-                "release_date" => $movie->getReleaseDate(),
-                "genre" => serialize($movie->getGenre()),
-                "poster" => $movie->getPoster(),
-                "bg" => $movie->getBackground()
-            ]);
+            // prevent movies from being added that already exist
+            if (Movies::where("mv_id", $movie->getId())->exists())
+            {
+                $failure[] = $movie->getTitle();
+            }
+            else
+            {
+                // FML THIS IS ASSOCIATIVE NOT ORDERED
+                Movies::create([
+                    "mv_id" => $movie->getID(),
+                    "title" => $movie->getTitle(),
+                    "desc" => $movie->getDescription(),
+                    "release_date" => $movie->getReleaseDate(),
+                    "genre" => serialize($movie->getGenre()),
+                    "poster" => $movie->getPoster(),
+                    "bg" => $movie->getBackground()
+                ]);
+
+                $success[] = $movie->getTitle();
+            }
         }
 
-        return view("admin.test")->with("movie", $movies[0]->getVars());
-        //return view("admin.panel");
-    }
+        return view("admin.panel", compact("success", "failure"));
+    }   
 }
