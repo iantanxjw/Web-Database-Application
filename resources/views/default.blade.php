@@ -11,16 +11,16 @@
 
     <!-- Three columns of text below the carousel -->
         <ul class="tab">
-            <li><a href="#modal" class="tablinks" onclick="opentabs(event, 'NS')">Now Showing</a></li>
-            <li><a href="#modal" class="tablinks" onclick="opentabs(event, 'CS')">Coming Soon</a></li>
+            <li><a href="#" class="tablinks" onclick="opentabs(event, 'NS')">Now Showing</a></li>
+            <li><a href="#" class="tablinks" onclick="opentabs(event, 'CS')">Coming Soon</a></li>
         </ul>
+
         <div class="remodal-bg">
-            <a href="#modal">Call the modal with data-remodal-id="modal"</a>
             <div class="remodal" data-remodal-id="modal">
                 <button data-remodal-action="close" class="remodal-close"></button>
-                <h1>movie</h1>
+                <h1></h1>
                 <p>
-                    Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
+                    Waiting to be populated...
                 </p>
                 <br>
                 <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
@@ -51,11 +51,15 @@
     <hr class="featurette-divider">
 
     <div class="featurette">
-        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Flatness.</span></h2>
-        <p class="lead">A big design trend for 2013 is "flat" design. Gone are the days of excessive gradients and shadows. Designers are producing cleaner flat designs, and Bootstrap 3 takes advantage of this minimalist trend.</p>
+        <h2 class="featurette-heading"><span class="text-muted">Top 10</span> Movies</h2>
+        <table>
+            <tr><td>1</td><td>6</td></tr>
+            <tr><td>2</td><td>7</td></tr>
+            <tr><td>3</td><td>8</td></tr>
+            <tr><td>4</td><td>9</td></tr>
+            <tr><td>5</td><td>10</td></tr>
+        </table>
     </div>
-
-        </div>
 
     <!-- /END THE FEATURETTES -->
 @endsection('content')

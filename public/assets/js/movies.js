@@ -4,14 +4,23 @@ $(function() {
 
     $.post(url, {}, function(movies) {
 
+        var movie;
         $.each(movies.results, function(movie, details) {
-            if(i==0) { $("#upcoming").append("<div class='row'>");}
 
-            $("#upcoming").append("<div class='col-md-3 text-center'><img class='img-responsive' src='http://image.tmdb.org/t/p/w342/" + details.poster_path + "'alt='poster'><br></div>");
+            if(i==0) { $("#upcoming").append("<div class='row'>");}
+            if (details.poster_path == null)
+            {
+                $("#upcoming").append("<div class='col-sm-3 text-center'><p>Poster not available</p><h3>" + details.title +"</h3><br></div>");
+            }
+            else
+            {
+                $("#upcoming").append("<a class='col-sm-3 text-center' href='#modal'><img class='img-responsive' src='http://image.tmdb.org/t/p/w185/" + details.poster_path + "'alt='poster'><br><p>"+details.title+"</p></a></div>");
+            }
 
             i++;
             if(i==4) {
                 $("#upcoming").append("</div>");
+
                 i=0;
             }
         })
@@ -24,7 +33,7 @@ $(function() {
         $.each(movies.results, function(movie, details) {
             if(i==0) { $("#movies").append("<div class='row'>");}
 
-            $("#movies").append("<div class='col-md-3 text-center'><img class='img-responsive' src='http://image.tmdb.org/t/p/w342/" + details.poster_path + "'alt='poster'><br></div>");
+            $("#movies").append("<div class='col-md-3 text-center'><a href='#modal'><img class='img-responsive' src='http://image.tmdb.org/t/p/w185/" + details.poster_path + "'alt='poster'></a><br></div>");
             i++;
             if(i==4) {
                 $("#movies").append("</div>");
