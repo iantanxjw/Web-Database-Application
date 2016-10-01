@@ -15,24 +15,24 @@ class AdminController extends Controller
         return view("admin.panel");
     }
 
-    public function add_movie()
+    public function movies()
     {
-        return view("admin.add_movie");
+        return view("admin.movies");
     }
 
-    public function remove_movie()
+    public function sessions()
     {
-        return view("admin.remove_movie");
+        return view("admin.sessions");
     }
 
-    public function add_session()
+    public function users()
     {
-        return view("admin.add_session");
+        return view("admin.users");
     }
 
-    public function remove_session()
+    public function locations()
     {
-        return view("admin.remove_session");
+        retun view("admin.locations");
     }
 
     public function api_refresh()
