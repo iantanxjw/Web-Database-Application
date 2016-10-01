@@ -125,4 +125,18 @@ class MovieTest extends PHPUnit_Framework_TestCase
         $this->movie = new Movie("0987", "welcome", "to the", "michael", "scott", "paper.png", "company.jpg");
         $this->assertEquals(["0987", "welcome", "to the", "michael", "scott", "paper.png", "company.jpg"], $this->movie->getVars());
     }
+
+    public function testMovieObject()
+    {
+        // constructor test: create a legit movie and test all vars
+        $this->movie = new Movie("1234", "Goodfellas", "As long as I can remember I wanted to be a gangster", "1990", ["Action", "Crime", "Mafia"], "poster.png", "bg.png");
+
+        $this->assertEquals("1234", $this->movie->getID());
+        $this->assertEquals("Goodfellas", $this->movie->getTitle());
+        $this->assertEquals("As long as I can remember I wanted to be a gangster", $this->movie->getDescription());
+        $this->assertEquals("1990", $this->movie->getReleaseDate());
+        $this->assertEquals(["Action", "Crime", "Mafia"], $this->movie->getGenre());
+        $this->assertEquals("poster.png", $this->movie->getPoster());
+        $this->assertEquals("bg.png", $this->movie->getBackground());
+    }
 }
