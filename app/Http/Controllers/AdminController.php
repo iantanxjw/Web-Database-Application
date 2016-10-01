@@ -49,12 +49,12 @@ class AdminController extends Controller
         $movies = ApiRequest::getMovieDetails($json);
 
         // now loop over the movies and fill the db
-        // foreach ($movies as $movie)
-        // {
-        //     Movies::create($movie->getVars());
-        // }
+        foreach ($movies as $movie)
+        {
+            Movies::create($movie->getVars());
+        }
 
-        //return view("admin.test", compact("json"));
-        return view("admin.test")->with("movie", $json);
+        return view("admin.test")->with("movie", $movies[0]->getVars());
+        //return view("admin.panel");
     }
 }

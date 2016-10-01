@@ -2,6 +2,6 @@
 @section('title', 'API check')
 @section('content')
 
-<pre>{{ var_dump(json_decode($movie)) }}</pre>
+<pre>{{ var_dump($movie) }}</pre>
 
 @endsection('content')
