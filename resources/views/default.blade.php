@@ -52,7 +52,7 @@
 
     <div class="featurette">
         <h2 class="featurette-heading"><span class="text-muted">Top 10</span> Movies</h2>
-        <table>
+        <table id="topten">
             <tr><td>1</td><td>6</td></tr>
             <tr><td>2</td><td>7</td></tr>
             <tr><td>3</td><td>8</td></tr>
