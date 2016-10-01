@@ -139,6 +139,11 @@ body {
     top: 0;
     left: 0;
     min-height: 400px;
+    width: 100%;
+}
+
+.carousel-inner {
+    height: 550px;
 }
 
 img {
@@ -306,3 +311,4 @@ div.navbar-collapse.collapse
 {
     background-color: #081c24;
 }
+
