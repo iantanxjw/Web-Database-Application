@@ -1,4 +1,6 @@
-
+body {
+    background-color: #081c24;
+}
 @font-face {
     font-family: 'icomoon';
     src:  url('fonts/icomoon.eot?gs30pi');
@@ -144,6 +146,10 @@ body {
     height: 550px;
 }
 
+img {
+    margin:auto;
+}
+
 
 
 /* MARKETING CONTENT
@@ -265,6 +271,24 @@ ul.tab li a:focus, .active {
     background-color: #ccc;
 }
 
+/* Tables */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
 /* Style the tab content */
 .tabcontent {
     display: none;
@@ -282,4 +306,9 @@ ul.tab li a:focus, .active {
     from {opacity: 0;}
     to {opacity: 1;}
 }
-    
+
+div.navbar-collapse.collapse
+{
+    background-color: #081c24;
+}
+
