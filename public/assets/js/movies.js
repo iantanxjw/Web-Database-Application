@@ -33,7 +33,16 @@ $(function() {
         $.each(movies.results, function(movie, details) {
             if(i==0) { $("#movies").append("<div class='row'>");}
 
-            $("#movies").append("<div class='col-md-3 text-center'><a href='#modal'><img class='img-responsive' src='http://image.tmdb.org/t/p/w185/" + details.poster_path + "'alt='poster'></a><br></div>");
+            if (details.poster_path == null)
+            {
+                $("#movies").append("<div class='col-sm-3 text-center'><p>Poster not available</p><h3>" + details.title +"</h3><br></div>");
+            }
+            else
+            {
+                $("#movies").append("<a class='col-sm-3 text-center' href='#modal'><img class='img-responsive' src='http://image.tmdb.org/t/p/w185/" + details.poster_path + "'alt='poster'><br><p>"+details.title+"</p></a></div>");
+            }
+
+            $("#populate_modal").append("<h1>"+details.title+"</h1><p>"+details.overview+"</p>");
             i++;
             if(i==4) {
                 $("#movies").append("</div>");
