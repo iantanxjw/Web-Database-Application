@@ -16,13 +16,13 @@ class Movie extends Model
 
     public function __construct($id, $title, $desc, $rel_date, $genre, $poster, $bg)
     {
-        $this->id = $this->setID($id);
-        $this->title = $this->setTitle($title);
-        $this->desc = $this->setDescription($desc);
-        $this->rel_date = $this->setReleaseDate($rel_date);
-        $this->genre = $this->setGenre($genre);
-        $this->poster = $this->setPoster($poster);
-        $this->bg = $this->setBackground($bg);
+        $this->setID($id);
+        $this->setTitle($title);
+        $this->setDescription($desc);
+        $this->setReleaseDate($rel_date);
+        $this->setGenre($genre);
+        $this->setPoster($poster);
+        $this->setBackground($bg);
     }
 
     public function getID()
