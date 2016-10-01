@@ -14,7 +14,7 @@ class Movie extends Model
     private $poster;
     private $bg;
 
-    public function __construct($id, $title, $desc, $rel_date, $genre, $poster, $bg)
+    public function __construct($id = null, $title = null, $desc = null, $rel_date = null, $genre = null, $poster = null, $bg = null)
     {
         $this->setID($id);
         $this->setTitle($title);
@@ -47,7 +47,8 @@ class Movie extends Model
 
     public function getGenre()
     {
-        return $this->genre;
+        // genre should always be stored as a serialised string
+        return unserialize($this->genre);
     }
 
     public function getPoster()
@@ -116,7 +117,19 @@ class Movie extends Model
         }
         else
         {
-            $this->genre = $genre;
+            // suppress potential warnings of unserialising something that isn't serialised
+            $array = @unserialize($genre);
+
+            if ($array === false)
+            {
+                // didn't come from db so serialise it
+                $this->genre = serialize($genre);
+            }
+            else
+            {
+                // otherwise the string has been serialised so don't re-serialise
+                $this->genre = $genre;
+            }
         }
     }
 
@@ -153,7 +166,7 @@ class Movie extends Model
             $this->title,
             $this->desc,
             $this->rel_date,
-            $this->genre,
+            $this->getGenre(),
             $this->poster,
             $this->bg
         ];
