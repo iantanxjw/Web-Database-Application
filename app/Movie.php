@@ -47,7 +47,7 @@ class Movie extends Model
 
     public function getGenre()
     {
-        return $this->genre;
+        return unserialize($this->genre);
     }
 
     public function getPoster()
@@ -116,7 +116,8 @@ class Movie extends Model
         }
         else
         {
-            $this->genre = $genre;
+            // genre is an array of genres from api so serialize it to store in db
+            $this->genre = serialize($genre);
         }
     }
 
@@ -148,13 +149,12 @@ class Movie extends Model
     // this returns an ordered array of all vars
     public function getVars()
     {
-        // genre could be an array of multiple genres so serialise it
         return [
             $this->id,
             $this->title,
             $this->desc,
             $this->rel_date,
-            serialize($this->genre),
+            $this->genre,
             $this->poster,
             $this->bg
         ];
