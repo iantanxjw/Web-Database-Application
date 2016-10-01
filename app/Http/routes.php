@@ -30,4 +30,4 @@ Route::post("updatedb", "AdminController@updateAPI");
 Route::get("manage_movies", ["as" => "admin_movies", "uses" => "AdminController@movies"]);
 Route::get("manage_sessions", ["as" => "admin_sessions", "uses" => "AdminController@sessions"]);
 Route::get("manage_users", ["as" => "admin_users", "uses" => "AdminController@users"]);
-Route::get("manage_locations", ["as" => "admin_locations" "uses" => "AdminController@locations"]);
+Route::get("manage_locations", ["as" => "admin_locations", "uses" => "AdminController@locations"]);

@@ -32,7 +32,7 @@ class AdminController extends Controller
 
     public function locations()
     {
-        retun view("admin.locations");
+        return view("admin.locations");
     }
 
     public function api_refresh()
