@@ -18,7 +18,7 @@ class CreateMoviesTable extends Migration
             $table->string('title');
             $table->text('desc');
             $table->string('release_date');
-            $table->string('genre');
+            $table->string('genre')->nullable();
 
             // movie might not have a poster or bg available
             $table->string('poster')->nullable();

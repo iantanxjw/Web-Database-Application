@@ -112,7 +112,7 @@ class Movie extends Model
     {
         if (!$genre || $genre === "")
         {
-            $this->genre = "Unknown";
+            $this->genre = null;
         }
         else
         {
