@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Movies;
 use App\ApiRequest;
+use App\User;
+use App\Movies;
+use App\Movie;
+use App\Session;
+use App\Theatre;
+use App\Booking;
 
 class AdminController extends Controller
 {
@@ -17,22 +22,38 @@ class AdminController extends Controller
 
     public function movies()
     {
-        return view("admin.movies");
+        // get all movies in the db
+        $movies = Movies::all()->sortBy("title");
+        $movieObjects = [];
+
+        // need to figure out a way to unserialise genre and linkify poster and bg
+        foreach ($movies as $movie)
+        {
+            $movieObjects[] = new Movie($movie->mv_id, $movie->title, $movie->desc, $movie->release_date, $movie->genre, $movie->poster, $movie->bg);
+        }
+
+        return view("admin.movies", compact("movieObjects"));
     }
 
     public function sessions()
     {
-        return view("admin.sessions");
+        $sessions = Session::all();
+
+        return view("admin.sessions", compact("sessions"));
     }
 
     public function users()
     {
-        return view("admin.users");
+        $users = User::all();
+
+        return view("admin.users", compact("users"));
     }
 
     public function locations()
     {
-        return view("admin.locations");
+        $locations = Theatre::all();
+
+        return view("admin.locations", compact("locations"));
     }
 
     public function api_refresh()
