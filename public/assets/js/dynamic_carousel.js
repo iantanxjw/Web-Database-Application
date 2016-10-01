@@ -31,11 +31,10 @@ $.post("https://api.themoviedb.org/3/movie/popular?api_key=767dab209295a6b3b0ff8
             class: "container",
             html: $("<div>", {
                 class: "carousel-caption",
-                html: $("<h1>", {
-                    html: movie.title
-                })
+                html: "<h1>" + movie.title + "</h1>"
             })
         });
+       // var title =  "<div class = 'container'><div class='carousel-caption'><h1>'"+movie.title+"'</h1><p>'"+movie.overview+"'</p></div></div>";
 
         // dump each item div into an array to randomly select for active later
         items[i] = item;
