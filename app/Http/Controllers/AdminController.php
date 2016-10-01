@@ -51,7 +51,16 @@ class AdminController extends Controller
         // now loop over the movies and fill the db
         foreach ($movies as $movie)
         {
-            Movies::create($movie->getVars());
+            // FML THIS IS ASSOCIATIVE NOT ORDERED
+            Movies::create([
+                "mv_id" => $movie->getID(),
+                "title" => $movie->getTitle(),
+                "desc" => $movie->getDescription(),
+                "release_date" => $movie->getReleaseDate(),
+                "genre" => serialize($movie->getGenre()),
+                "poster" => $movie->getPoster(),
+                "bg" => $movie->getBackground()
+            ]);
         }
 
         return view("admin.test")->with("movie", $movies[0]->getVars());
