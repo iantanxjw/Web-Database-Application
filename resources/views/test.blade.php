@@ -1,75 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Personal Details</div>
-                        <div class="panel-body">
-                        <form class="form-horizontal" name = "" action = "" method = "">
 
-                            <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">Name:</label>
-                                <div class="col-md-4">
-                                    <input class="form-control" type="text" id="Name">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">Address:</label>
-                                <div class="col-md-4">
-                                    <input class="form-control" type="text" id="Address">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">Suburb:</label>
-                                <div class="col-md-4">
-                                    <input class="form-control" type="text" id="Suburb">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">Post Code:</label>
-                                <div class="col-md-4">
-                                    <input class="form-control" type="text" id="PCode">
-                                </div>
-                            </div>
-
-                            </br></br>
-
-                                <span> Payment Details </span>
-                            <hr>
-
-                            <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">Credit Card:</label>
-                                <div class="col-md-4">
-                                    <input class="form-control" type="text" id="CreditCard">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">Expiry Date:</label>
-                                <div class="col-md-4">
-                                    <input class="form-control" type="text" id="ExpDate">
-                                </div>
-                            </div>
-                        </form>
-                            <div class="col-md-5 col-md-offset-3">
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your details with anyone else.</small>
-                            </div>
-                            </br></br>
-                            <div class="form-group">
-                                <div class="col-md-5 col-md-offset-5">
-                                <button id="btn1" >Submit</button>
-                                </div>
-                            </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
     </div>
 
 @endsection
