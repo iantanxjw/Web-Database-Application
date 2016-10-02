@@ -31,3 +31,6 @@ Route::get("manage_movies", ["as" => "admin_movies", "uses" => "AdminController@
 Route::get("manage_sessions", ["as" => "admin_sessions", "uses" => "AdminController@sessions"]);
 Route::get("manage_users", ["as" => "admin_users", "uses" => "AdminController@users"]);
 Route::get("manage_locations", ["as" => "admin_locations", "uses" => "AdminController@locations"]);
+
+// AJAX requests
+Route::get("api_request", "ClientRequests@ajax");
