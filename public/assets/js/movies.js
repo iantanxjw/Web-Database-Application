@@ -1,20 +1,18 @@
 $(function() {
-    var url = "https://api.themoviedb.org/3/movie/upcoming?api_key=767dab209295a6b3b0ff89be7be1fa86&language=en-US";
     var i = 0;
 
-    $.post(url, {}, function(movies) {
+    $.get("api_request", {type: "upcoming"}, function(movies) {
 
-        var movie;
-        $.each(movies.results, function(movie, details) {
+        $.each(movies, function(movie, details) {
 
             if(i==0) { $("#upcoming").append("<div class='row'>");}
-            if (details.poster_path == null)
+            if (details.poster == null)
             {
                 $("#upcoming").append("<div class='col-sm-3 text-center'><p>Poster not available</p><h3>" + details.title +"</h3><br></div>");
             }
             else
             {
-                $("#upcoming").append("<a class='col-sm-3 text-center' href='#modal'><img class='img-responsive' src='http://image.tmdb.org/t/p/w185/" + details.poster_path + "'alt='poster'><br><p>"+details.title+"</p></a></div>");
+                $("#upcoming").append("<a class='col-sm-3 text-center' href='#modal'><img class='img-responsive' src='http://image.tmdb.org/t/p/w185/" + details.poster + "'alt='poster'><br><p>"+details.title+"</p></a></div>");
             }
 
             i++;
@@ -24,22 +22,21 @@ $(function() {
                 i=0;
             }
         })
-    })
+    }, "json");
 
-    var url = "https://api.themoviedb.org/3/movie/now_playing?api_key=767dab209295a6b3b0ff89be7be1fa86&language=en-US";
-    $.post(url, {}, function(movies) {
+    $.get("api_request", {type: "now_playing"}, function(movies) {
 
         i = 0;
-        $.each(movies.results, function(movie, details) {
+        $.each(movies, function(movie, details) {
             if(i==0) { $("#movies").append("<div class='row'>");}
 
-            if (details.poster_path == null)
+            if (details.poster == null)
             {
                 $("#movies").append("<div class='col-sm-3 text-center'><p>Poster not available</p><h3>" + details.title +"</h3><br></div>");
             }
             else
             {
-                $("#movies").append("<a class='col-sm-3 text-center' href='#modal'><img class='img-responsive' src='http://image.tmdb.org/t/p/w185/" + details.poster_path + "'alt='poster'><br><p>"+details.title+"</p></a></div>");
+                $("#movies").append("<a class='col-sm-3 text-center' href='#modal'><img class='img-responsive' src='http://image.tmdb.org/t/p/w185/" + details.poster + "'alt='poster'><br><p>"+details.title+"</p></a></div>");
             }
 
             $("#populate_modal").append("<h1>"+details.title+"</h1><p>"+details.overview+"</p>");
@@ -50,5 +47,5 @@ $(function() {
             }
 
         })
-    })
+    }, "json");
 });
