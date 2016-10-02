@@ -20,7 +20,7 @@ Route::auth();
 Route::get("register", ["as" => "register", "uses" => "PageController@register"]);
 Route::get("about", ["as" => "about", "uses" => "PageController@about"]);
 Route::get("contact", ["as" => "contact", "uses" => "PageController@contact"]);
-Route::get("test", ["as" => "test", "uses" => "PageController@test"]);
+Route::get("form", ["as" => "test", "uses" => "PageController@form"]);
 
 // Admin panel
 Route::get("admin", ["as" => "admin", "uses" => "AdminController@index"]);
