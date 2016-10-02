@@ -18,7 +18,7 @@ class CreateSessionsTable extends Migration
             $table->string('duration');
             $table->integer('num_bookings');
             $table->string('mv_id');
-            $table->integer('t_id')->unsigned();
+            $table->string('t_id');
         });
 
         Schema::table("sessions", function(Blueprint $table) {

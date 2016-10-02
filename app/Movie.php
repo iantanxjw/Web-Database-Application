@@ -47,8 +47,7 @@ class Movie extends Model
 
     public function getGenre()
     {
-        // genre should always be stored as a serialised string
-        return unserialize($this->genre);
+        return $this->genre;
     }
 
     public function getPoster()
@@ -117,19 +116,8 @@ class Movie extends Model
         }
         else
         {
-            // suppress potential warnings of unserialising something that isn't serialised
-            $array = @unserialize($genre);
 
-            if ($array === false)
-            {
-                // didn't come from db so serialise it
-                $this->genre = serialize($genre);
-            }
-            else
-            {
-                // otherwise the string has been serialised so don't re-serialise
-                $this->genre = $genre;
-            }
+            $this->genre = $genre;
         }
     }
 

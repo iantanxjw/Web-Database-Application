@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\ApiRequest;
-use App\Movie;
+use App\User;
 use App\Movies;
+use App\Movie;
+use App\Session;
+use App\Theatre;
+use App\Booking;
 
 class AdminController extends Controller
 {
@@ -16,24 +20,40 @@ class AdminController extends Controller
         return view("admin.panel");
     }
 
-    public function add_movie()
+    public function movies()
     {
-        return view("admin.add_movie");
+        // get all movies in the db
+        $movies = Movies::all()->sortBy("title");
+        $movieObjects = [];
+
+        // need to figure out a way to unserialise genre and linkify poster and bg
+        foreach ($movies as $movie)
+        {
+            $movieObjects[] = new Movie($movie->mv_id, $movie->title, $movie->desc, $movie->release_date, $movie->genre, $movie->poster, $movie->bg);
+        }
+
+        return view("admin.movies", compact("movieObjects"));
     }
 
-    public function remove_movie()
+    public function sessions()
     {
-        return view("admin.remove_movie");
+        $sessions = Session::all();
+
+        return view("admin.sessions", compact("sessions"));
     }
 
-    public function add_session()
+    public function users()
     {
-        return view("admin.add_session");
+        $users = User::all();
+
+        return view("admin.users", compact("users"));
     }
 
-    public function remove_session()
+    public function locations()
     {
-        return view("admin.remove_session");
+        $locations = Theatre::all();
+
+        return view("admin.locations", compact("locations"));
     }
 
     public function api_refresh()
@@ -43,18 +63,37 @@ class AdminController extends Controller
 
     public function updateAPI(Request $request)
     {
-        $json = ApiRequest::getRequest($request->input("api"));
+        $apiRequest = new ApiRequest(config("tmdb.api.url"), $request->input("api") . "?");
+        $movies = $apiRequest->request();
 
-        // get an array of movie objects to dump into db
-        $movies = ApiRequest::getMovieDetails($json);
+        $success = [];
+        $failure = [];
 
         // now loop over the movies and fill the db
         foreach ($movies as $movie)
         {
-            Movies::create($movie->getVars());
+            // prevent movies from being added that already exist
+            if (Movies::where("mv_id", $movie->getId())->exists())
+            {
+                $failure[] = $movie->getTitle();
+            }
+            else
+            {
+                // FML THIS IS ASSOCIATIVE NOT ORDERED
+                Movies::create([
+                    "mv_id" => $movie->getID(),
+                    "title" => $movie->getTitle(),
+                    "desc" => $movie->getDescription(),
+                    "release_date" => $movie->getReleaseDate(),
+                    "genre" => serialize($movie->getGenre()),
+                    "poster" => $movie->getPoster(),
+                    "bg" => $movie->getBackground()
+                ]);
+
+                $success[] = $movie->getTitle();
+            }
         }
 
-        return view("admin.test")->with("movie", $movies[0]->getVars());
-        //return view("admin.panel");
-    }
+        return view("admin.panel", compact("success", "failure"));
+    }   
 }

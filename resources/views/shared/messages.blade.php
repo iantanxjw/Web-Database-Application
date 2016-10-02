@@ -1,23 +1,17 @@
-@extends('layouts.master')
-@section('title', 'API check')
-@section('content')
-
-@if (count($success) > 0)
+@if (isset($success))
     <div class="alert alert-success">
         <strong>Success</strong>
         @foreach ($success as $s)
-            <p>{{ $m }}</p>
+            <p>{{ $s }}</p>
         @endforeach
     </div>
 @endif
 
-@if (count($failure) > 0)
+@if (isset($failure))
     <div class="alert alert-danger">
         <strong>Failure</strong>
         @foreach ($failure as $f)
-            <p>{{ $m }}</p>
+            <p>{{ $f }}</p>
         @endforeach
     </div>
 @endif
-
-@endsection

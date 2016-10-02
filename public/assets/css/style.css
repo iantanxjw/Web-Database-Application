@@ -1,4 +1,6 @@
-
+body {
+    background-color: #081c24;
+}
 @font-face {
     font-family: 'icomoon';
     src:  url('fonts/icomoon.eot?gs30pi');
@@ -123,8 +125,19 @@ body {
     margin-bottom: 60px;
 }
 /* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-    z-index: 1;
+div.carousel-caption {
+    color: white;
+    position: absolute;
+    top: 200px;
+    margin: 30px;
+    left: 0;
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid black;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+    padding: 10px;
+    max-width: 500px;
+    min-width: 260px;
 }
 
 /* Declare heights because of positioning of img element */
@@ -142,6 +155,10 @@ body {
 
 .carousel-inner {
     height: 550px;
+}
+
+img {
+    margin:auto;
 }
 
 
@@ -265,6 +282,24 @@ ul.tab li a:focus, .active {
     background-color: #ccc;
 }
 
+/* Tables */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
 /* Style the tab content */
 .tabcontent {
     display: none;
@@ -282,4 +317,9 @@ ul.tab li a:focus, .active {
     from {opacity: 0;}
     to {opacity: 1;}
 }
-    
+
+div.navbar-collapse.collapse
+{
+    background-color: #081c24;
+}
+
