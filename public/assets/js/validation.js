@@ -20,31 +20,31 @@ $("#btn1").click(function(event){
     if ($("#Address").val() == "" || $("#Address").val() == null)
     {
 
-        $( "#eAdd" ).text( "*Invalid" ).show().fadeOut( 4000 );
+        $( "#eAdd" ).text( "*Invalid!" ).show().fadeOut( 4000 );
         event.preventDefault();
     }
 
     if($("#Suburb").val() == "" || $("#Suburb").val() == null)
     {
-        $( "#eSub" ).text( "*Invalid" ).show().fadeOut( 4000 );
+        $( "#eSub" ).text( "*Invalid!" ).show().fadeOut( 4000 );
         event.preventDefault();
     }
 
     if($("#PCode").val() == "" || $("#PCode").val() == null)
     {
-        $( "#ePCode" ).text( "*Invalid" ).show().fadeOut( 4000 );
+        $( "#ePCode" ).text( "*Invalid!" ).show().fadeOut( 4000 );
         event.preventDefault();
     }
 
     if($("#CreditCard").val() == "" || $("#CreditCard").val() == null)
     {
-        $( "#eCard" ).text( "*Invalid" ).show().fadeOut( 4000 );
+        $( "#eCard" ).text( "*Invalid!" ).show().fadeOut( 4000 );
         event.preventDefault();
     }
 
     if($("#ExpDate").val() == "" || $("#ExpDate").val() == null)
     {
-        $( "#eExp" ).text( "*Invalid" ).show().fadeOut( 4000 );
+        $( "#eExp" ).text( "*Invalid!" ).show().fadeOut( 4000 );
         event.preventDefault();
    }
 
