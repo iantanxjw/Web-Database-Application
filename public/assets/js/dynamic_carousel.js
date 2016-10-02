@@ -5,8 +5,6 @@ const BACKDROP_URL = "http://image.tmdb.org/t/p/h632/";
 // no longer exposes api key
 $.get("api_request", {type: "popular"}, function(movies) {
 
-    console.log(movies);
-
     var movieCount = movies.length;
     var items = [];
 
