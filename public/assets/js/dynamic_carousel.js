@@ -2,27 +2,29 @@ const CAROUSEL_LIMIT = 10;
 const BACKDROP_URL = "http://image.tmdb.org/t/p/h632/";
 
 // loaded in footer so no need to use document.ready()
-// currently exposes api key - will change to posting to backend later
-$.post("https://api.themoviedb.org/3/movie/popular?api_key=767dab209295a6b3b0ff89be7be1fa86&language=en-US", {}, function(movies) {
+// no longer exposes api key
+$.get("api_request", {type: "popular"}, function(movies) {
 
-    var movieCount = movies.results.length;
+    console.log(movies);
+
+    var movieCount = movies.length;
     var items = [];
 
     for (var i = 0; i < CAROUSEL_LIMIT; i++) {
 
         // randomly select a movie from the query result
         var index = Math.floor(Math.random() * movieCount);
-        var movie = movies.results[index];
+        var movie = movies[index];
 
         // remove movie being selected again
-        movies.results.splice(index, 1);
+        movies.splice(index, 1);
         movieCount--;
 
         // create the elements
         var item = $("<div>", {class: "item"});
         var img = $("<img>", {
                     class: "img-responsive", 
-                    src: BACKDROP_URL + movie.backdrop_path, 
+                    src: BACKDROP_URL + movie.background, 
                     alt: "backdrop"
         });
 
@@ -47,4 +49,4 @@ $.post("https://api.themoviedb.org/3/movie/popular?api_key=767dab209295a6b3b0ff8
 
     // randomly set an item as active to start the carousel
     $(items[Math.floor(Math.random() * items.length)]).addClass("active");
-});
+}, "json");
