@@ -13,4 +13,5 @@
 <script type="text/javascript" src="assets/js/activeTab.js"></script>
 <script type="text/javascript" src="assets/js/tabs.js"></script>
 <script src="assets/js/movies.js"></script>
+<script src="assets/js/validation.js"></script>
 <script src="assets/js/dynamic_carousel.js"></script>

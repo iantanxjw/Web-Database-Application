@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
-    public $fillable = ["start_time", "duration", "num_bookings"];
+    public $fillable = ["start_time", "duration", "num_bookings", "mv_id", "t_id"];
 }

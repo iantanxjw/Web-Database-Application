@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Theatre extends Model
 {
-    public $fillable = ["location", "seats"];
+    public $fillable = ["t_id", "location", "seats"];
 }
