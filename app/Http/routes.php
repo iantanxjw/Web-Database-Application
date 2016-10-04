@@ -20,8 +20,8 @@ Route::auth();
 Route::get("register", ["as" => "register", "uses" => "PageController@register"]);
 Route::get("about", ["as" => "about", "uses" => "PageController@about"]);
 Route::get("contact", ["as" => "contact", "uses" => "PageController@contact"]);
-Route::get("form", ["as" => "test", "uses" => "PageController@form"]);
-
+Route::get("form", ["as" => "form", "uses" => "PageController@form"]);
+Route::post("test", ["as" => "test", "uses" => "PageController@test"]);
 // Admin panel
 Route::get("admin", ["as" => "admin", "uses" => "AdminController@index"]);
 Route::get("api_refresh", ["as" => "api_refresh", "uses" => "AdminController@api_refresh"]);

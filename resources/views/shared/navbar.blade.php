@@ -15,7 +15,7 @@
                     <li><a href="{!! route('index') !!}">Home</a></li>
                     <li><a href="{!! route('about') !!}">About</a></li>
                     <li><a href="{!! route('contact') !!}">Contact</a></li>
-
+                    <li><a href="{{ route('admin') }}">Admin</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right container-fluid">
                     <!-- Authentication Links -->
@@ -23,7 +23,7 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
-                        <li ><a href="{!! route('test') !!}"><span class="icon-cart" ></span></a></li>
+                        <li ><a href="{!! route('form') !!}"><span class="icon-cart" ></span></a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 My Account <span class="caret"></span>
