@@ -22,7 +22,7 @@ $.get("api_request", {type: "popular"}, function(movies) {
         var item = $("<div>", {class: "item"});
         var img = $("<img>", {
                     class: "img-responsive", 
-                    src: BACKDROP_URL + movie.background, 
+                    src: BACKDROP_URL + movie.bg, 
                     alt: "backdrop"
         });
 

@@ -17,7 +17,7 @@ class ClientRequests extends Controller
 
         foreach ($movies as $movie)
         {
-            $json[] = [
+            /*$json[] = [
                 "id" => $movie->getID(),
                 "title" => $movie->getTitle(),
                 "overview" => $movie->getDescription(),
@@ -26,8 +26,8 @@ class ClientRequests extends Controller
                 "genre" => $movie->getGenre(),
                 "poster" => $movie->getPoster(),
                 "background" => $movie->getBackground()
-            ];
-            //$json[] = [$movie->getVars()];
+            ];*/
+            $json[] = $movie->getVars();
         }
 
         echo json_encode($json);
