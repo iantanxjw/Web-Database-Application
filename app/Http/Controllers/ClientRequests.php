@@ -5,19 +5,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\ApiRequest;
+use App\Movie;
+use App\DatabaseRequest;
 
 class ClientRequests extends Controller
 {
-    public function ajax(Request $request)
+    public function ajax()
     {
-        $apiRequest = new ApiRequest(config("tmdb.api.url"), $request->type . "?", $request->options);
-        $movies = $apiRequest->request();
+        $dbr = new DatabaseRequest("movies", 10);
+        $movies = $dbr->getAllData();
+
         $json = [];
 
         foreach ($movies as $movie)
         {
-            $json[] = $movie->getVars();
+            $json[] = ["id" => $movie->mv_id,
+                        "title" => $movie->title,
+                        "desc" => $movie->desc,
+                        "release_date" => $movie->release_date,
+                        "popularity" => $movie->popularity,
+                        "genre" => $movie->genre,
+                        "poster" => $movie->poster,
+                        "bg" => $movie->bg];
         }
 
         echo json_encode($json);
