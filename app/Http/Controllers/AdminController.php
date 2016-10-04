@@ -12,6 +12,7 @@ use App\Movie;
 use App\Session;
 use App\Theatre;
 use App\Booking;
+use App\DatabaseRequest;
 
 class AdminController extends Controller
 {
@@ -22,8 +23,9 @@ class AdminController extends Controller
 
     public function movies()
     {
-        // get all movies in the db
-        $movies = Movies::all()->sortBy("title");
+        // get all movies in the db - TABLE NAME MUST BE LOWER CASE!!
+        $dbr = new DatabaseRequest("movies");
+        $movies = $dbr->getAllDataSortedBy("title");
         $movieObjects = [];
 
         // need to figure out a way to unserialise genre and linkify poster and bg
@@ -37,21 +39,24 @@ class AdminController extends Controller
 
     public function sessions()
     {
-        $sessions = Session::all();
+        $dbr = new DatabaseRequest("sessions");
+        $sessions = $dbr->getAllData();
 
         return view("admin.sessions", compact("sessions"));
     }
 
     public function users()
     {
-        $users = User::all();
+        $dbr = new DatabaseRequest("users");
+        $users = $dbr->getAllData();
 
         return view("admin.users", compact("users"));
     }
 
     public function locations()
     {
-        $locations = Theatre::all();
+        $dbr = new DatabaseRequest("locations");
+        $locations = $dbr->getAllData();
 
         return view("admin.locations", compact("locations"));
     }
@@ -80,17 +85,6 @@ class AdminController extends Controller
             else
             {
                 // FML THIS IS ASSOCIATIVE NOT ORDERED
-                /*Movies::create([
-                    "mv_id" => $movie->getID(),
-                    "title" => $movie->getTitle(),
-                    "desc" => $movie->getDescription(),
-                    "release_date" => $movie->getReleaseDate(),
-                    "popularity" => $movie->getPopularity(),
-                    "genre" => serialize($movie->getGenre()),
-                    "poster" => $movie->getPoster(),
-                    "bg" => $movie->getBackground()
-                ]);*/
-
                 Movies::create($movie->getVars());
 
                 $success[] = $movie->getTitle();
