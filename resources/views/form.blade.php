@@ -6,12 +6,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Personal Details</div>
                         <div class="panel-body">
-                        <form class="form-horizontal" name = "" action="{{ url('/test') }}" method = "GET">
-
+                        <form class="form-horizontal" action="{!! route('test') !!}" method = "POST">
+                            {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">Name:</label>
                                 <div class="col-md-4">
-                                    <input class="form-control" type="text" id="Name">
+                                    <input class="form-control" type="text" id="Name" name="name">
                                 </div>
                                 <span id="eName"></span>
                             </div>
@@ -19,7 +19,7 @@
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">Address:</label>
                                 <div class="col-md-4">
-                                    <input class="form-control" type="text" id="Address">
+                                    <input class="form-control" type="text" id="Address" name ="address">
                                 </div>
                                 <span id="eAdd"></span>
                             </div>
@@ -27,7 +27,7 @@
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">Suburb:</label>
                                 <div class="col-md-4">
-                                    <input class="form-control" type="text" id="Suburb">
+                                    <input class="form-control" type="text" id="Suburb" name="suburb">
                                 </div>
                                 <span id="eSub"></span>
                             </div>
@@ -35,7 +35,7 @@
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">Post Code:</label>
                                 <div class="col-md-4">
-                                    <input class="form-control" type="text" id="PCode">
+                                    <input class="form-control" type="text" id="PCode" name="pcode">
                                 </div>
                                 <span id="ePCode"></span>
                             </div>
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">Credit Card:</label>
                                 <div class="col-md-4">
-                                    <input class="form-control" type="text" id="CreditCard">
+                                    <input class="form-control" type="text" id="CreditCard" name ="card">
                                 </div>
                                 <span id="eCard"></span>
                             </div>
@@ -56,21 +56,21 @@
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">Expiry Date:</label>
                                 <div class="col-md-4">
-                                    <input class="form-control" type="text" id="ExpDate">
+                                    <input class="form-control" type="text" id="ExpDate" name="expdate">
                                 </div>
                                 <span id="eExp"></span>
                             </div>
-                        </form>
+
                             <div class="col-md-5 col-md-offset-4">
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your details with anyone else.</small>
                             </div>
                             </br></br>
                             <div class="form-group">
                                 <div class="col-md-5 col-md-offset-5">
-                                <button id="btn1" >Submit</button>
+                                <input id="btn1" type="submit"> <!-- <button id="btn1" >Submit</button> -->
                                 </div>
                             </div>
-
+                        </form>
                     </div>
 
                 </div>

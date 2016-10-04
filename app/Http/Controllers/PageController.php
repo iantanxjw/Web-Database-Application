@@ -32,4 +32,11 @@ class PageController extends Controller
     {
         return view("form");
     }
+
+    public function test()
+    {
+
+
+        return view("test");
+    }
 }
