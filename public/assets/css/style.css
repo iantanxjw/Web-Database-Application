@@ -1,3 +1,6 @@
+@import 'https://fonts.googleapis.com/css?family=Hammersmith+One';
+@import 'https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro';
+
 body {
     background-color: #081c24;
 }
@@ -69,7 +72,7 @@ body {
 .carbon-text {
     color: #888;
     display: inline-block;
-    font-family: Verdana;
+    font-family: 'Vollkorn', serif;
     font-size: 11px;
     font-weight: 400;
     height: 60px;
@@ -131,6 +134,8 @@ div.carousel-caption {
     top: 200px;
     margin: 30px;
     left: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    letter-spacing: 2px;
     background: rgb(0, 0, 0); /* fallback color */
     background: rgba(0, 0, 0, 0.7);
     border: 1px solid black;
@@ -232,6 +237,9 @@ img {
     /* Navbar positioning foo */
     .navbar-wrapper {
         margin-top: 20px;
+        font-family: 'Hammersmith One', serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
         margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
     }
     /* The navbar becomes detached from the top, so we round the corners */
@@ -323,3 +331,6 @@ div.navbar-collapse.collapse
     background-color: #081c24;
 }
 
+nav {
+    font-family: 'Vollkorn', serif;
+}

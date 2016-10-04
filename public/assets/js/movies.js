@@ -48,7 +48,8 @@ $(function() {
                 $("#movies").append("</div>");
                 i=0;
             }
-
         })
+
+        opentabs(null, 'NS');
     })
 });
