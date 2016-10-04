@@ -2,9 +2,9 @@ $(function() {
     var i = 0;
 
     $.get("api_request", {type: "upcoming"}, function(movies) {
+        i=0;
 
         $.each(movies, function(movie, details) {
-
             if(i==0) { $("#upcoming").append("<div class='row'>");}
             if (details.poster == null)
             {
