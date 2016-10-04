@@ -85,10 +85,13 @@ class AdminController extends Controller
                     "title" => $movie->getTitle(),
                     "desc" => $movie->getDescription(),
                     "release_date" => $movie->getReleaseDate(),
+                    "popularity" => $movie->getPopularity(),
                     "genre" => serialize($movie->getGenre()),
                     "poster" => $movie->getPoster(),
                     "bg" => $movie->getBackground()
                 ]);
+
+                //Movies::create([$movie->getVars()]);
 
                 $success[] = $movie->getTitle();
             }

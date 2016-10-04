@@ -137,7 +137,10 @@
           <root url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-highlighter" />
           <root url="file://$MODULE_DIR$/vendor/jeremeamia/SuperClosure" />
           <root url="file://$MODULE_DIR$/vendor/laravel/framework" />
+<<<<<<< HEAD
+=======
           <root url="file://$MODULE_DIR$/vendor/laravelcollective/html" />
+>>>>>>> 0b7424c039b4bf08ea4e0d14bc1b8631324e42b4
           <root url="file://$MODULE_DIR$/vendor/league/flysystem" />
           <root url="file://$MODULE_DIR$/vendor/mockery/mockery" />
           <root url="file://$MODULE_DIR$/vendor/monolog/monolog" />

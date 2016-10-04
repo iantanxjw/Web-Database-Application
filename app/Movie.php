@@ -10,16 +10,18 @@ class Movie extends Model
     private $title;
     private $desc;
     private $rel_date;
+    private $popularity;
     private $genre;
     private $poster;
     private $bg;
 
-    public function __construct($id = null, $title = null, $desc = null, $rel_date = null, $genre = null, $poster = null, $bg = null)
+    public function __construct($id = null, $title = null, $desc = null, $rel_date = null, $popularity = null, $genre = null, $poster = null, $bg = null)
     {
         $this->setID($id);
         $this->setTitle($title);
         $this->setDescription($desc);
         $this->setReleaseDate($rel_date);
+        $this->setPopularity($popularity);
         $this->setGenre($genre);
         $this->setPoster($poster);
         $this->setBackground($bg);
@@ -43,6 +45,11 @@ class Movie extends Model
     public function getReleaseDate()
     {
         return $this->rel_date;
+    }
+
+    public function getPopularity()
+    {
+        return $this->popularity;
     }
 
     public function getGenre()
@@ -121,6 +128,18 @@ class Movie extends Model
         }
     }
 
+    public function setPopularity($popularity)
+    {
+        if (!$popularity || $popularity === "")
+        {
+            $this->popularity = null;
+        }
+        else
+        {
+            $this->popularity = $popularity;
+        }
+    }
+
     public function setPoster($poster)
     {
         if (!$poster || $poster === "")
@@ -151,13 +170,14 @@ class Movie extends Model
     public function getVars()
     {
         return [
-            $this->id,
-            $this->title,
-            $this->desc,
-            $this->rel_date,
-            $this->genre,
-            $this->poster,
-            $this->bg
+            "mv_id" => $this->id,
+            "title" => $this->title,
+            "desc" => $this->desc,
+            "release_date" => $this->rel_date,
+            "popularity" => $this->popularity,
+            "genre" => $this->genre,
+            "poster" => $this->poster,
+            "bg" => $this->bg
         ];
     }
 }
