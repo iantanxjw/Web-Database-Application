@@ -17,16 +17,6 @@ class ClientRequests extends Controller
 
         foreach ($movies as $movie)
         {
-            /*$json[] = [
-                "id" => $movie->getID(),
-                "title" => $movie->getTitle(),
-                "overview" => $movie->getDescription(),
-                "release_date" => $movie->getReleaseDate(),
-                "popularity" => $movie->getPopularity(),
-                "genre" => $movie->getGenre(),
-                "poster" => $movie->getPoster(),
-                "background" => $movie->getBackground()
-            ];*/
             $json[] = $movie->getVars();
         }
 
