@@ -13,6 +13,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="{!! route('index') !!}">Home</a></li>
+                    <li><a href="{!! route('search') !!}">Search</a></li>
                     <li><a href="{!! route('about') !!}">About</a></li>
                     <li><a href="{!! route('contact') !!}">Contact</a></li>
                     <li><a href="{{ route('admin') }}">Admin</a></li>
