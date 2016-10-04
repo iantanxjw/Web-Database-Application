@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/remodal.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     {{--<link rel="stylesheet" href="assets/css/fontawesome-stars.css">--}}
-    <link rel="stylesheet" href="assets/css/jquery-bar-rating/bars-movie.css">
+    <link rel="stylesheet" href="assets/css/jquery-bar-rating/fontawesome-stars.css">
     <link rel="stylesheet" href="assets/css/remodal-default-theme.css">
 
     <!--[if lt IE 9]>

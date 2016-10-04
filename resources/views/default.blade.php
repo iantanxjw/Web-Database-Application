@@ -41,6 +41,13 @@
             <!-- START THE FEATURETTES -->
 
             <hr class="featurette-divider">
+            <select id="ratings"  data-current-rating="3">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
 
     <div>
         <h2 class="featurette-heading"><span class="text-muted">Top 10</span> Movies</h2>

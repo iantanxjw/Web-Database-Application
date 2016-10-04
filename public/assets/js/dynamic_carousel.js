@@ -7,6 +7,11 @@ $.get("api_request", {type: "popular"}, function(movies) {
 
     var movieCount = movies.length;
     var items = [];
+    var currentRating = $('.ratings').data('current-rating');
+    console.log(currentRating);
+    $(".carousel").on("custom", function() {
+        $(".ratings").barrating("show", {theme: "fontawesome-stars", readonly:true});
+    });
 
     for (var i = 0; i < CAROUSEL_LIMIT; i++) {
 
@@ -25,13 +30,12 @@ $.get("api_request", {type: "popular"}, function(movies) {
                     src: BACKDROP_URL + movie.bg, 
                     alt: "backdrop"
         });
-
         // this is kinda messy
         var title = $("<div>", {
             class: "container",
             html: $("<div>", {
                 class: "carousel-caption",
-                html: "<h1>" + movie.title + "</h1>" + "<select id='ratings'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>"
+                html: "<h1>" + movie.title + "</h1>" + "<select class='ratings'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5' selected='selected'>6</option><option value='6'>5</option><option value='7'>5</option><option value='8'>5</option><option value='9'>5</option><option value='10'>5</option></select>"
             })
         });
        // var title =  "<div class = 'container'><div class='carousel-caption'><h1>'"+movie.title+"'</h1><p>'"+movie.overview+"'</p></div></div>";
@@ -41,10 +45,11 @@ $.get("api_request", {type: "popular"}, function(movies) {
 
         // append the image and title to the div and then the div to the carousel
         $(img).appendTo(item);
-        $(title).appendTo(item);
+        $(title).appendTo(item).trigger("custom");
         $(item).appendTo(".carousel-inner");
     }
 
     // randomly set an item as active to start the carousel
     $(items[Math.floor(Math.random() * items.length)]).addClass("active");
+    $(".carousel-caption").trigger("custom");
 }, "json");
