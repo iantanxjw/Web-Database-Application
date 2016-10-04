@@ -261,6 +261,11 @@ img {
 }
 
 /* tabs for Now Showing and Coming soon */
+.tablinks {
+    font-family: "Hammersmith One", Serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
 ul.tab {
     list-style-type: none;
     margin: 0;

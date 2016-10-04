@@ -48,8 +48,8 @@ $(function() {
         })
 
 
-        opentabs(null, 'NS');
-
+        opentabs(event, 'NS');
+        $(".tablinks:contains(Now Showing)").addClass("active");
 
     }, "json");
 

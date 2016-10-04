@@ -175,7 +175,7 @@ class Movie extends Model
             "desc" => $this->desc,
             "release_date" => $this->rel_date,
             "popularity" => $this->popularity,
-            "genre" => $this->genre,
+            "genre" => serialize($this->genre),
             "poster" => $this->poster,
             "bg" => $this->bg
         ];
