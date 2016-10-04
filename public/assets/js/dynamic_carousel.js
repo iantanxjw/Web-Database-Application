@@ -31,7 +31,7 @@ $.get("api_request", {type: "popular"}, function(movies) {
             class: "container",
             html: $("<div>", {
                 class: "carousel-caption",
-                html: "<h1>" + movie.title + "</h1>"
+                html: "<h1>" + movie.title + "</h1>" + "<select id='ratings'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>"
             })
         });
        // var title =  "<div class = 'container'><div class='carousel-caption'><h1>'"+movie.title+"'</h1><p>'"+movie.overview+"'</p></div></div>";

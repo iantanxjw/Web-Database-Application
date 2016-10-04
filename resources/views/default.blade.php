@@ -24,9 +24,6 @@
                 <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
             </div>
 
-
-
-
             <div id="NS" class="tabcontent">
                 <div class="row">
                     <div id="movies"></div>
@@ -38,8 +35,6 @@
                     <div id="upcoming"></div>
                 </div>
             </div>
-
-            <!-- Three columns of text below the carousel -->
 
 
 

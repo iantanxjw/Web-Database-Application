@@ -2,7 +2,7 @@
 @import 'https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro';
 
 body {
-    background-color: #081c24;
+    background-color: #191919;
 }
 @font-face {
     font-family: 'icomoon';
@@ -337,7 +337,7 @@ th {
 
 div.navbar-collapse.collapse
 {
-    background-color: #081c24;
+    background-color: #191919;
 }
 
 .form-group span

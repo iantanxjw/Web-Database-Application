@@ -10,6 +10,9 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/remodal.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    {{--<link rel="stylesheet" href="assets/css/fontawesome-stars.css">--}}
+    <link rel="stylesheet" href="assets/css/jquery-bar-rating/bars-movie.css">
     <link rel="stylesheet" href="assets/css/remodal-default-theme.css">
 
     <!--[if lt IE 9]>
