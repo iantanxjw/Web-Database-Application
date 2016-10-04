@@ -35,7 +35,7 @@ class DatabaseRequest extends Model
 
     public function getAllData()
     {
-        return DB::table($this->tableName)->get();
+        return DB::table($this->tableName)->limit($this->limit)->get();
     }
 
     public function getAllDataSortedBy($orderCol = null)
