@@ -32,7 +32,8 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li><a>{{ Auth::user()->name }}</a></li>
-                                <li><a>Settings</a></li>
+                                <li><a>My Tickets </a></li>
+                                <li><a>My Wishlist</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>

@@ -1,6 +1,11 @@
 @import 'https://fonts.googleapis.com/css?family=Hammersmith+One';
 @import 'https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro';
 
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+
 body {
     background-color: #081c24;
 }
