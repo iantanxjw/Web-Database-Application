@@ -80,7 +80,7 @@ class AdminController extends Controller
             else
             {
                 // FML THIS IS ASSOCIATIVE NOT ORDERED
-                Movies::create([
+                /*Movies::create([
                     "mv_id" => $movie->getID(),
                     "title" => $movie->getTitle(),
                     "desc" => $movie->getDescription(),
@@ -89,9 +89,9 @@ class AdminController extends Controller
                     "genre" => serialize($movie->getGenre()),
                     "poster" => $movie->getPoster(),
                     "bg" => $movie->getBackground()
-                ]);
+                ]);*/
 
-                //Movies::create([$movie->getVars()]);
+                Movies::create($movie->getVars());
 
                 $success[] = $movie->getTitle();
             }
