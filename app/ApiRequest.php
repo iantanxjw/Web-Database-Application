@@ -69,7 +69,7 @@ class ApiRequest extends Model
         {
             // create a movie object and dump it into an array of movies
             $movie = new Movie($result->id, $result->title, $result->overview,
-                                $result->release_date, $result->genre_ids,
+                                $result->release_date, $result->popularity, $result->genre_ids,
                                 $result->poster_path, $result->backdrop_path);
             $movies[] = $movie;
         }
