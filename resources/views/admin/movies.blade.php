@@ -8,6 +8,8 @@
         <th>Title</th>
         <th>Overview</th>
         <th>Release date</th>
+        <th>Vote average</th>
+        <th>Status</th>
         <th>Genre</th>
         <th>Poster</th>
         <th>Background</th>
@@ -19,6 +21,8 @@
             <td>{{ $movie->getTitle() }}</td>
             <td>{{ $movie->getDescription() }}</td>
             <td>{{ $movie->getReleaseDate() }}</td>
+            <td>{{ $movie->getVoteAvg() }}</td>
+            <td>{{ $movie->getStatus() }}</td>
             <td>{{ $movie->getGenre() }}</td>
             <td>{{ $movie->getPoster() }}</td>
             <td>{{ $movie->getBackground() }}</td>
@@ -27,5 +31,7 @@
     @endforeach
 
 </table>
+
+{{ var_dump($movieObjects) }}
 
 @endsection
