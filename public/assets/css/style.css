@@ -1,6 +1,6 @@
 @import 'https://fonts.googleapis.com/css?family=Hammersmith+One';
 @import 'https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro';
-
+@import 'https://fonts.googleapis.com/css?family=Francois+One';
 
 /* turns placeholder transparent on click */
 input:focus::-webkit-input-placeholder { color:transparent; }
@@ -161,14 +161,18 @@ body {
     margin-bottom: 60px;
 }
 /* Since positioning the image, we need to help out the caption */
+h1.carousel-caption {
+    font-size: 100px;
+}
 div.carousel-caption {
     color: white;
     position: absolute;
     top: 200px;
     margin: 30px;
     left: 0;
-    font-family: 'Source Sans Pro', sans-serif;
-    letter-spacing: 2px;
+    font-family: 'Francois One', sans-serif;
+    text-transform: uppercase;
+    
     background: rgb(0, 0, 0); /* fallback color */
     background: rgba(0, 0, 0, 0.7);
     border: 1px solid black;
