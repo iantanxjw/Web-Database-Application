@@ -5,15 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Movie;
-use App\DatabaseRequest;
+use App\Movies;
 
 class ClientRequests extends Controller
 {
-    public function ajax()
+    public function ajax(Request $request)
     {
-        $dbr = new DatabaseRequest("movies", 10);
-        $movies = $dbr->getAllData();
+        // $movies = null;
+
+        // if ($request->type === "popular")
+        // {
+        //     $movies = Movies::where("voteAvg", ">=", 5);
+        // }
+        // else
+        // {
+        //     $movies = Movies::where("status", $request->type)->get();
+        // }
+
+        $movies = Movies::where("status", $request->type)->get();
 
         $json = [];
 
