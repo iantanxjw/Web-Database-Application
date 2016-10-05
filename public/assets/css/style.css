@@ -172,7 +172,7 @@ div.carousel-caption {
     left: 0;
     font-family: 'Francois One', sans-serif;
     text-transform: uppercase;
-    
+
     background: rgb(0, 0, 0); /* fallback color */
     background: rgba(0, 0, 0, 0.7);
     border: 1px solid black;
@@ -230,7 +230,7 @@ div.p_container {
 
 
 div.polaroid:hover div.p_container{
-    background: #bc3c3d;
+    background: #24435c;
 }
 
 div.polaroid {
@@ -242,7 +242,7 @@ div.polaroid {
 }
 
 div.polaroid:hover{
-    background: #bc3c3d;
+    background: #24435c;
     box-shadow: 25px 25px 20px 0 rgba(0, 0, 0, 0.9), 10px 10px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -381,7 +381,7 @@ div.fixed_container{
 #centeredmenu {
     float:left;
     width:100%;
-    border: 2px solid #bc3c3d;
+    border: 2px solid #24435c;
     overflow:hidden;
     position:relative;
 }
@@ -428,13 +428,13 @@ ul.tab li a {
 
 /* Change background color of links on hover */
 ul.tab li a:hover {
-    background-color: #bc3c3d;
+    background-color: #24435c;
 
 }
 
 /* Create an active/current tablink class */
 ul.tab li a:focus, .active {
-    background-color: #bc3c3d;
+    background-color: #24435c;
 }
 
 /* Tables */
