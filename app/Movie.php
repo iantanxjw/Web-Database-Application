@@ -10,18 +10,20 @@ class Movie extends Model
     private $title;
     private $desc;
     private $rel_date;
-    private $popularity;
+    private $voteAvg;
+    private $status;
     private $genre;
     private $poster;
     private $bg;
 
-    public function __construct($id = null, $title = null, $desc = null, $rel_date = null, $popularity = null, $genre = null, $poster = null, $bg = null)
+    public function __construct($id = null, $title = null, $desc = null, $rel_date = null, $voteAvg = null, $status = null, $genre = null, $poster = null, $bg = null)
     {
         $this->setID($id);
         $this->setTitle($title);
         $this->setDescription($desc);
         $this->setReleaseDate($rel_date);
-        $this->setPopularity($popularity);
+        $this->setVoteAvg($voteAvg);
+        $this->setStatus($status);
         $this->setGenre($genre);
         $this->setPoster($poster);
         $this->setBackground($bg);
@@ -47,9 +49,14 @@ class Movie extends Model
         return $this->rel_date;
     }
 
-    public function getPopularity()
+    public function getVoteAvg()
     {
-        return $this->popularity;
+        return $this->voteAvg;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     public function getGenre()
@@ -128,16 +135,21 @@ class Movie extends Model
         }
     }
 
-    public function setPopularity($popularity)
+    public function setVoteAvg($voteAvg)
     {
-        if (!$popularity || $popularity === "")
+        if (!$voteAvg || $voteAvg === "")
         {
-            $this->popularity = null;
+            $this->voteAvg = null;
         }
         else
         {
-            $this->popularity = $popularity;
+            $this->voteAvg = $voteAvg;
         }
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 
     public function setPoster($poster)
@@ -174,7 +186,8 @@ class Movie extends Model
             "title" => $this->title,
             "desc" => $this->desc,
             "release_date" => $this->rel_date,
-            "popularity" => $this->popularity,
+            "voteAvg" => $this->voteAvg,
+            "status" => $this->status,
             "genre" => serialize($this->genre),
             "poster" => $this->poster,
             "bg" => $this->bg

@@ -17,7 +17,8 @@ class CreateMoviesTable extends Migration
             $table->string('title');
             $table->text('desc');
             $table->string('release_date');
-            $table->string('popularity');
+            $table->float('voteAvg')->nullable();
+            $table->string('status');
             $table->string('genre')->nullable();
 
             // movie might not have a poster or bg available
