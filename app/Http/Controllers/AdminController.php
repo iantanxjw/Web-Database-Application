@@ -22,36 +22,42 @@ class AdminController extends Controller
 
     public function movies()
     {
-        // get all movies in the db
-        $movies = Movies::all()->sortBy("title");
-        $movieObjects = [];
+        // get all movies in the db - TABLE NAME MUST BE LOWER CASE!!
+        // $dbr = new DatabaseRequest("movies");
+        // $movies = $dbr->getAllDataSortedBy("title");
+        // $movieObjects = [];
 
-        // need to figure out a way to unserialise genre and linkify poster and bg
-        foreach ($movies as $movie)
-        {
-            $movieObjects[] = new Movie($movie->mv_id, $movie->title, $movie->desc, $movie->release_date, $movie->genre, $movie->poster, $movie->bg);
-        }
+        // // need to figure out a way to unserialise genre and linkify poster and bg
+        // foreach ($movies as $movie)
+        // {
+        //     $movieObjects[] = new Movie($movie->mv_id, $movie->title, $movie->desc, $movie->release_date, $movie->genre, $movie->poster, $movie->bg);
+        // }
+        //$ms = MoviesService::setUp();
+        //$movieObjects = MoviesService::index();
 
         return view("admin.movies", compact("movieObjects"));
     }
 
     public function sessions()
     {
-        $sessions = Session::all();
+        $dbr = new DatabaseRequest("sessions");
+        $sessions = $dbr->getAllData();
 
         return view("admin.sessions", compact("sessions"));
     }
 
     public function users()
     {
-        $users = User::all();
+        $dbr = new DatabaseRequest("users");
+        $users = $dbr->getAllData();
 
         return view("admin.users", compact("users"));
     }
 
     public function locations()
     {
-        $locations = Theatre::all();
+        $dbr = new DatabaseRequest("locations");
+        $locations = $dbr->getAllData();
 
         return view("admin.locations", compact("locations"));
     }
@@ -64,7 +70,7 @@ class AdminController extends Controller
     public function updateAPI(Request $request)
     {
         $apiRequest = new ApiRequest(config("tmdb.api.url"), $request->input("api") . "?");
-        $movies = $apiRequest->request();
+        $movies = $apiRequest->request($request->input("api"));
 
         $success = [];
         $failure = [];
@@ -80,17 +86,6 @@ class AdminController extends Controller
             else
             {
                 // FML THIS IS ASSOCIATIVE NOT ORDERED
-                /*Movies::create([
-                    "mv_id" => $movie->getID(),
-                    "title" => $movie->getTitle(),
-                    "desc" => $movie->getDescription(),
-                    "release_date" => $movie->getReleaseDate(),
-                    "popularity" => $movie->getPopularity(),
-                    "genre" => serialize($movie->getGenre()),
-                    "poster" => $movie->getPoster(),
-                    "bg" => $movie->getBackground()
-                ]);*/
-
                 Movies::create($movie->getVars());
 
                 $success[] = $movie->getTitle();
