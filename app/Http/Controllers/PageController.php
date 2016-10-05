@@ -39,6 +39,7 @@ class PageController extends Controller
 
         return view("test");
     }
+
     public function search()
     {
 

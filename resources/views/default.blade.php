@@ -10,10 +10,12 @@
     <div class="container marketing">
 
         <!-- Three columns of text below the carousel -->
+        <div id="centeredmenu">
         <ul class="tab">
             <li><a href="#" class="tablinks" onclick="opentabs(event, 'NS')">Now Showing</a></li>
             <li><a href="#" class="tablinks" onclick="opentabs(event, 'CS')">Coming Soon</a></li>
         </ul>
+        </div>
 
         <div class="remodal-bg">
             <div class="remodal" data-remodal-id="modal">
@@ -23,9 +25,6 @@
                 <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
                 <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
             </div>
-
-
-
 
             <div id="NS" class="tabcontent">
                 <div class="row">
@@ -39,15 +38,13 @@
                 </div>
             </div>
 
-            <!-- Three columns of text below the carousel -->
-
 
 
             <!-- START THE FEATURETTES -->
 
             <hr class="featurette-divider">
 
-    <div>
+    <div class = "topMovies">
         <h2 class="featurette-heading"><span class="text-muted">Top 10</span> Movies</h2>
         <table id="topten">
             <tr><td>1</td><td>6</td></tr>
