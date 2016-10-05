@@ -17,7 +17,8 @@ $(function() {
                     "'><div class='polaroid'>" +
                     "<img class='img-responsive' src='http://image.tmdb.org/t/p/w185/" +
                     details.poster +
-                    "'alt='poster'><div class='p_container'><p>"+details.title+"</p></div></div></a>");}
+                    "'alt='poster'><div class='p_container'><p class='title_movies'>"+details.title+
+                    "</p><p><span class='icon-calendar' ></span> "+details.release_date+"</p></div></div></a>");}
 
             i++;
             if(i==4) {

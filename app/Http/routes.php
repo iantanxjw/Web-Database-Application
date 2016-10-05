@@ -21,6 +21,7 @@ Route::get("register", ["as" => "register", "uses" => "PageController@register"]
 Route::get("about", ["as" => "about", "uses" => "PageController@about"]);
 Route::get("search", ["as" => "search", "uses" => "PageController@search"]);
 Route::get("contact", ["as" => "contact", "uses" => "PageController@contact"]);
+Route::get("icons", ["as" => "icons", "uses" => "PageController@icons"]);
 Route::get("form", ["as" => "form", "uses" => "PageController@form"]);
 Route::post("test", ["as" => "test", "uses" => "PageController@test"]);
 // Admin panel

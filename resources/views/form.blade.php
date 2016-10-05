@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', 'Cart Page')
 @section('content')
     <div class="container">
         <div class="row">
@@ -11,7 +12,9 @@
                             <div class="form-group">
                                 <label for="Name" class="col-md-4 control-label">Name:</label>
                                 <div class="col-md-4">
-                                    <input class="form-control" placeholder="John Doe" type="text" id="Name" name="name">
+
+                                    <input class="form-control" value="{{ Auth::user()->name }}" type="text" id="Name" name="name">
+
 
                                 </div>
                                 <span id="eName"></span>
@@ -52,11 +55,9 @@
                             <div class="form-group">
                                 <label for="Credit Card" class="col-md-4 control-label">Credit Card:</label>
                                 <div class="col-md-4">
-<<<<<<< Updated upstream
+
                                     <input class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX" type="text" id="CreditCard" name ="card">
-=======
-                                    <input class="form-control" type="text" id="CreditCard" name ="card">
->>>>>>> Stashed changes
+
                                 </div>
                                 <span id="eCard"></span>
                             </div>
@@ -64,11 +65,9 @@
                             <div class="form-group">
                                 <label for="Expiry Date" class="col-md-4 control-label">Expiry Date:</label>
                                 <div class="col-md-4">
-<<<<<<< Updated upstream
+
                                     <input class="form-control" placeholder="MM/YY" type="text" id="ExpDate" name="expdate">
-=======
-                                    <input class="form-control" type="text" id="ExpDate" name="expdate">
->>>>>>> Stashed changes
+
                                 </div>
                                 <span id="eExp"></span>
                             </div>
