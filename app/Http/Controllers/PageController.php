@@ -45,4 +45,11 @@ class PageController extends Controller
 
         return view("search");
     }
+    
+    public function icons()
+    {
+
+
+        return view("icons");
+    }
 }

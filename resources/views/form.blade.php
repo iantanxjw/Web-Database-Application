@@ -11,7 +11,7 @@
                             <div class="form-group">
                                 <label for="Name" class="col-md-4 control-label">Name:</label>
                                 <div class="col-md-4">
-                                    <input class="form-control" placeholder="John Doe" type="text" id="Name" name="name">
+                                    <input class="form-control" value="{{ Auth::user()->name }}" type="text" id="Name" name="name">
                                 </div>
                                 <span id="eName"></span>
                             </div>
