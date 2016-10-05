@@ -57,7 +57,7 @@ class ApiRequest extends Model
     }
 
     // returns an array of movie objects
-    public function request()
+    public function request($requestType)
     {
         $json = file_get_contents($this->url . $this->request_type . http_build_query($this->options));
 
@@ -69,7 +69,7 @@ class ApiRequest extends Model
         {
             // create a movie object and dump it into an array of movies
             $movie = new Movie($result->id, $result->title, $result->overview,
-                                $result->release_date, $result->vote_average, $result->genre_ids,
+                                $result->release_date, $result->vote_average, strtolower($requestType), $result->genre_ids,
                                 $result->poster_path, $result->backdrop_path);
             $movies[] = $movie;
         }
