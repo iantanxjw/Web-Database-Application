@@ -1,6 +1,8 @@
 @import 'https://fonts.googleapis.com/css?family=Hammersmith+One';
 @import 'https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro';
+@import 'https://fonts.googleapis.com/css?family=Francois+One';
 
+/* turns placeholder transparent on click */
 input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
 input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
@@ -11,11 +13,11 @@ body {
 }
 @font-face {
     font-family: 'icomoon';
-    src:  url('fonts/icomoon.eot?gs30pi');
-    src:  url('fonts/icomoon.eot?gs30pi#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?gs30pi') format('truetype'),
-    url('fonts/icomoon.woff?gs30pi') format('woff'),
-    url('fonts/icomoon.svg?gs30pi#icomoon') format('svg');
+    src:  url('fonts/icomoon.eot?s37171');
+    src:  url('fonts/icomoon.eot?s37171#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?s37171') format('truetype'),
+    url('fonts/icomoon.woff?s37171') format('woff'),
+    url('fonts/icomoon.svg?s37171#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -35,12 +37,33 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-home:before {
+    content: "\e900";
+}
+.icon-video-camera:before {
+    content: "\e914";
+}
 .icon-cart:before {
-    font-size: 3vh;
     content: "\e93a";
 }
-
-
+.icon-credit-card:before {
+    content: "\e93f";
+}
+.icon-calendar:before {
+    content: "\e953";
+}
+.icon-search:before {
+    content: "\e986";
+}
+.icon-star-empty:before {
+    content: "\e9d7";
+}
+.icon-star-half:before {
+    content: "\e9d8";
+}
+.icon-star-full:before {
+    content: "\e9d9";
+}
 .ad {
     position: absolute;
     bottom: 70px;
@@ -138,14 +161,18 @@ body {
     margin-bottom: 60px;
 }
 /* Since positioning the image, we need to help out the caption */
+h1.carousel-caption {
+    font-size: 100px;
+}
 div.carousel-caption {
     color: white;
     position: absolute;
     top: 200px;
     margin: 30px;
     left: 0;
-    font-family: 'Source Sans Pro', sans-serif;
-    letter-spacing: 2px;
+    font-family: 'Francois One', sans-serif;
+    text-transform: uppercase;
+    
     background: rgb(0, 0, 0); /* fallback color */
     background: rgba(0, 0, 0, 0.7);
     border: 1px solid black;

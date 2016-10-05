@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Default')
+@section('title', 'Home')
 @section('content')
 
     <!-- THIS CONTENT NEEDS TO BE REPLACED - DEFAULT FROM BOOTSTRAP TEMPLATE -->

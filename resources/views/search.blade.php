@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', 'Search')
 @section('content')
     <div class="container">
         <div class="row">
@@ -6,6 +7,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">search</div>
                     <div class="panel-body">
+
+
 
 
                     </div>
