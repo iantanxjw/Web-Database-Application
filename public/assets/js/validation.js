@@ -10,43 +10,79 @@ $("#btn1").click(function(event){
     */
 
     var rName = new RegExp(/^[a-z\s]{1,20}$/i);
+    var rPCode = new RegExp(/^[0-9]{4}$/i);
+    var rCard = new RegExp(/^[0-9]{4}[\s\-]?[0-9]{4}[\s\-]?[0-9]{4}[\s\-]?[0-9]{4}$/);
+    var rExp = new RegExp(/^1[012]\/16|0[1-9]\/1[7-9]|1[012]\/1[7-9]|0[1-9]\/2[0-6]|1[012]\/2[0-6]$/);
 
-    if (rName.test($.trim($("#Name").val())) == false) {
-        /*alert ($("#Name").val().length);*/
-        $( "#eName" ).text( "*Invalid!" ).show().fadeOut( 4000 );
+    // TRIM then check if its not empty
+    if ($.trim($("#Name").val()).length >= 1)
+    {
+        // if not empty. check if string has numbers/
+        if (rName.test($.trim($("#Name").val())) == false) {
+            // if string has numbers return invalid
+            $("#eName").text("*Invalid!").show().fadeOut(4000);
+            event.preventDefault();
+        }
+    }
+
+    else
+        //input is empty
+    {
+        $( "#eName" ).text( "*Required").show().fadeOut( 4000 );
         event.preventDefault();
     }
 
-    if ($("#Address").val() == "" || $("#Address").val() == null)
+    if ($.trim($("#Address").val()).length == 0)
     {
 
-        $( "#eAdd" ).text( "*Invalid!" ).show().fadeOut( 4000 );
+        $( "#eAdd" ).text( "*Required").show().fadeOut( 4000 );
         event.preventDefault();
     }
 
-    if($("#Suburb").val() == "" || $("#Suburb").val() == null)
+    if($.trim($("#Suburb").val()).length == 0)
     {
-        $( "#eSub" ).text( "*Invalid!" ).show().fadeOut( 4000 );
+        $( "#eSub" ).text( "*Required" ).show().fadeOut( 4000 );
         event.preventDefault();
     }
 
-    if($("#PCode").val() == "" || $("#PCode").val() == null)
+    if($.trim($("#PCode").val()).length >= 1)
     {
-        $( "#ePCode" ).text( "*Invalid!" ).show().fadeOut( 4000 );
+        if (rPCode.test($.trim($("#PCode").val())) == false) {
+            $("#ePCode").text("*Invalid!").show().fadeOut(4000);
+            event.preventDefault();
+        }
+    }
+    else
+    {
+        $( "#ePCode" ).text( "*Required" ).show().fadeOut( 4000 );
         event.preventDefault();
     }
 
-    if($("#CreditCard").val() == "" || $("#CreditCard").val() == null)
+    if($.trim($("#CreditCard").val()).length >= 1)
     {
-        $( "#eCard" ).text( "*Invalid!" ).show().fadeOut( 4000 );
+        if (rCard.test($.trim($("#CreditCard").val())) == false) {
+            // if string has numbers return invalid
+            $("#eCard").text("*Invalid!").show().fadeOut(4000);
+            event.preventDefault();
+        }
+    }
+    else
+    {
+        $( "#eCard" ).text( "*Required" ).show().fadeOut( 4000 );
         event.preventDefault();
     }
 
-    if($("#ExpDate").val() == "" || $("#ExpDate").val() == null)
+    if($.trim($("#ExpDate").val()).length >= 1)
     {
-        $( "#eExp" ).text( "*Invalid!" ).show().fadeOut( 4000 );
+        if (rExp.test($.trim($("#ExpDate").val())) == false) {
+
+            $("#eExp").text("*Invalid!").show().fadeOut(4000);
+            event.preventDefault();
+        }
+    }
+    else
+    {
+        $( "#eExp" ).text( "*Required" ).show().fadeOut( 4000 );
         event.preventDefault();
-   }
-
-
+    }
 });
