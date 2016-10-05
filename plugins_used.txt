@@ -1,2 +1,6 @@
 Remodal Boxes 
 Referenced for Education Purposes: http://vodkabears.github.io/remodal/
+
+Fontawesome-stars
+Referenced for Education Purposes: http://antenna.io/demo/jquery-bar-rating/examples/
+

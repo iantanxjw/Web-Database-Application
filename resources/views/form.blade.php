@@ -12,6 +12,7 @@
                                 <label for="Name" class="col-md-4 control-label">Name:</label>
                                 <div class="col-md-4">
                                     <input class="form-control" placeholder="John Doe" type="text" id="Name" name="name">
+
                                 </div>
                                 <span id="eName"></span>
                             </div>
@@ -20,6 +21,7 @@
                                 <label for="Address" class="col-md-4 control-label">Address:</label>
                                 <div class="col-md-4">
                                     <input class="form-control" placeholder ="124 La Trobe St, Melbourne" type="text" id="Address" name ="address">
+
                                 </div>
                                 <span id="eAdd"></span>
                             </div>
@@ -28,6 +30,7 @@
                                 <label for="Suburb" class="col-md-4 control-label">Suburb:</label>
                                 <div class="col-md-4">
                                     <input class="form-control" placeholder ="Carlton" type="text" id="Suburb" name="suburb">
+
                                 </div>
                                 <span id="eSub"></span>
                             </div>
@@ -36,6 +39,7 @@
                                 <label for="Post code" class="col-md-4 control-label">Post Code:</label>
                                 <div class="col-md-4">
                                     <input class="form-control" placeholder="1111" type="text" id="PCode" name="pcode">
+
                                 </div>
                                 <span id="ePCode"></span>
                             </div>
@@ -48,7 +52,11 @@
                             <div class="form-group">
                                 <label for="Credit Card" class="col-md-4 control-label">Credit Card:</label>
                                 <div class="col-md-4">
+<<<<<<< Updated upstream
                                     <input class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX" type="text" id="CreditCard" name ="card">
+=======
+                                    <input class="form-control" type="text" id="CreditCard" name ="card">
+>>>>>>> Stashed changes
                                 </div>
                                 <span id="eCard"></span>
                             </div>
@@ -56,7 +64,11 @@
                             <div class="form-group">
                                 <label for="Expiry Date" class="col-md-4 control-label">Expiry Date:</label>
                                 <div class="col-md-4">
+<<<<<<< Updated upstream
                                     <input class="form-control" placeholder="MM/YY" type="text" id="ExpDate" name="expdate">
+=======
+                                    <input class="form-control" type="text" id="ExpDate" name="expdate">
+>>>>>>> Stashed changes
                                 </div>
                                 <span id="eExp"></span>
                             </div>

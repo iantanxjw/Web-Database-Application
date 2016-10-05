@@ -25,13 +25,12 @@ $.get("api_request", {type: "popular"}, function(movies) {
                     src: BACKDROP_URL + movie.bg, 
                     alt: "backdrop"
         });
-
         // this is kinda messy
         var title = $("<div>", {
             class: "container",
             html: $("<div>", {
                 class: "carousel-caption",
-                html: "<h1>" + movie.title + "</h1>"
+                html: "<h1>" + movie.title + "</h1>" + "<p>RATING : "+movie.popularity+"☆</p>"
             })
         });
        // var title =  "<div class = 'container'><div class='carousel-caption'><h1>'"+movie.title+"'</h1><p>'"+movie.overview+"'</p></div></div>";
@@ -41,10 +40,19 @@ $.get("api_request", {type: "popular"}, function(movies) {
 
         // append the image and title to the div and then the div to the carousel
         $(img).appendTo(item);
-        $(title).appendTo(item);
+        $(title).appendTo(item).trigger("custom");
         $(item).appendTo(".carousel-inner");
     }
 
+    //var currentRating = $('.ratings').data('current-rating').toFixed(1);
+    //console.log(currentRating);
+
+    $(".carousel").on("custom", function() {
+        $(".ratings").barrating("show", {theme: "fontawesome-stars", readonly:true});
+    });
+
     // randomly set an item as active to start the carousel
     $(items[Math.floor(Math.random() * items.length)]).addClass("active");
+    $(".carousel-caption").trigger("custom");
+
 }, "json");
