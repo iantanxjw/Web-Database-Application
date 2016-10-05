@@ -12,7 +12,6 @@ use App\Movie;
 use App\Session;
 use App\Theatre;
 use App\Booking;
-use App\DatabaseRequest;
 
 class AdminController extends Controller
 {
@@ -24,15 +23,17 @@ class AdminController extends Controller
     public function movies()
     {
         // get all movies in the db - TABLE NAME MUST BE LOWER CASE!!
-        $dbr = new DatabaseRequest("movies");
-        $movies = $dbr->getAllDataSortedBy("title");
-        $movieObjects = [];
+        // $dbr = new DatabaseRequest("movies");
+        // $movies = $dbr->getAllDataSortedBy("title");
+        // $movieObjects = [];
 
-        // need to figure out a way to unserialise genre and linkify poster and bg
-        foreach ($movies as $movie)
-        {
-            $movieObjects[] = new Movie($movie->mv_id, $movie->title, $movie->desc, $movie->release_date, $movie->genre, $movie->poster, $movie->bg);
-        }
+        // // need to figure out a way to unserialise genre and linkify poster and bg
+        // foreach ($movies as $movie)
+        // {
+        //     $movieObjects[] = new Movie($movie->mv_id, $movie->title, $movie->desc, $movie->release_date, $movie->genre, $movie->poster, $movie->bg);
+        // }
+        //$ms = MoviesService::setUp();
+        //$movieObjects = MoviesService::index();
 
         return view("admin.movies", compact("movieObjects"));
     }
@@ -69,7 +70,7 @@ class AdminController extends Controller
     public function updateAPI(Request $request)
     {
         $apiRequest = new ApiRequest(config("tmdb.api.url"), $request->input("api") . "?");
-        $movies = $apiRequest->request();
+        $movies = $apiRequest->request($request->input("api"));
 
         $success = [];
         $failure = [];
