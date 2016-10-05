@@ -22,42 +22,45 @@ class AdminController extends Controller
 
     public function movies()
     {
-        // get all movies in the db - TABLE NAME MUST BE LOWER CASE!!
-        // $dbr = new DatabaseRequest("movies");
-        // $movies = $dbr->getAllDataSortedBy("title");
-        // $movieObjects = [];
+        $movies = Movies::all();
+        $movieObjects = [];
 
-        // // need to figure out a way to unserialise genre and linkify poster and bg
-        // foreach ($movies as $movie)
-        // {
-        //     $movieObjects[] = new Movie($movie->mv_id, $movie->title, $movie->desc, $movie->release_date, $movie->genre, $movie->poster, $movie->bg);
-        // }
-        //$ms = MoviesService::setUp();
-        //$movieObjects = MoviesService::index();
+        foreach($movies as $movie)
+        {
+            $movieObjects[] = new Movie(
+                $movie->mv_id,
+                $movie->title,
+                $movie->desc,
+                $movie->release_date,
+                $movie->voteAvg,
+                $movie->status,
+                $movie->status,
+                $movie->genre,
+                $movie->poster,
+                $movie->bg
+            );
+        }
 
         return view("admin.movies", compact("movieObjects"));
     }
 
     public function sessions()
     {
-        $dbr = new DatabaseRequest("sessions");
-        $sessions = $dbr->getAllData();
+        $sessions = Session::all();
 
         return view("admin.sessions", compact("sessions"));
     }
 
     public function users()
     {
-        $dbr = new DatabaseRequest("users");
-        $users = $dbr->getAllData();
+        $users = User::all();
 
         return view("admin.users", compact("users"));
     }
 
     public function locations()
     {
-        $dbr = new DatabaseRequest("locations");
-        $locations = $dbr->getAllData();
+        $locations = Theatre::all();
 
         return view("admin.locations", compact("locations"));
     }
