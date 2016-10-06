@@ -139,7 +139,7 @@ class MovieTest extends PHPUnit_Framework_TestCase
     {
         // constructor test: empty object
         $movieVars = [
-            "mv_id" => "Unknown", 
+            "id" => "Unknown", 
             "title" => "Unknown", 
             "desc" => "None",
             "release_date" => "Unknown",
@@ -163,7 +163,7 @@ class MovieTest extends PHPUnit_Framework_TestCase
             "heat.jpg"
         );
         $movieVars = [
-            "mv_id" => "1234", 
+            "id" => "1234", 
             "title" => "Heat", 
             "desc" => "The famous scene with di nero and pacino",
             "release_date" => "1995",
