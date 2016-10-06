@@ -32,6 +32,4 @@
 
 </table>
 
-{{ var_dump($movieObjects) }}
-
 @endsection
