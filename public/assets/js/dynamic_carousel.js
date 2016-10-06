@@ -7,6 +7,11 @@ $.get("api_request", {type: "popular"}, function(movies) {
 
     var movieCount = movies.length;
     var items = [];
+    var dots = [];
+
+    var ol = $("<ol>", {
+        class: "carousel-indicators"
+    });
 
     for (var i = 0; i < CAROUSEL_LIMIT; i++) {
 
@@ -42,17 +47,27 @@ $.get("api_request", {type: "popular"}, function(movies) {
         $(img).appendTo(item);
         $(title).appendTo(item).trigger("custom");
         $(item).appendTo(".carousel-inner");
+
+        var li = $("<li>");
+        $(li).data("target", "#myCarousel");
+        $(li).data("slide-to", i);
+
+        dots[i] = li;
+
+        $(ol).append(li);
+        
     }
 
     //var currentRating = $('.ratings').data('current-rating').toFixed(1);
     //console.log(currentRating);
+    $(ol).appendTo("#myCarousel");
 
     $(".carousel").on("custom", function() {
         $(".ratings").barrating("show", {theme: "fontawesome-stars", readonly:true});
     });
 
-    // randomly set an item as active to start the carousel
-    $(items[Math.floor(Math.random() * items.length)]).addClass("active");
+    $(items[0]).addClass("active");
+    $(dots[0]).addClass("active");
     $(".carousel-caption").trigger("custom");
 
 }, "json");
