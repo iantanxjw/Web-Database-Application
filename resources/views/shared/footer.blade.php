@@ -16,3 +16,4 @@
 <script src="assets/js/movies.js"></script>
 <script src="assets/js/validation.js"></script>
 <script src="assets/js/dynamic_carousel.js"></script>
+<script src="assets/js/admin.js"></script>
