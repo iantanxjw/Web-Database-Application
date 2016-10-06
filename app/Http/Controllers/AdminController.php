@@ -105,7 +105,7 @@ class AdminController extends Controller
                 if ($movie->getVars() !== $dbMovie->getVars())
                 {
                     // they differ so update with new cols
-                    $result->update($movie->getVars());
+                    $result->update($movie->getVars())->save();
                     $update[] = $movie->getTitle();
                 }
                 else
