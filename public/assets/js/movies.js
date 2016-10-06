@@ -66,7 +66,7 @@ $(function() {
         var title = $(this).attr('name');
         console.log(title);
 
-            $("#populate_modal").html("<div class='featurette'>");
+            $("#populate_modal").html("<div class='featurette'><div class='row'>");
         $.get("api_request", {type: "now_playing"}, function(movies) {
             $.each(movies, function(movie, details) {
                 if (details.title == title)
@@ -78,9 +78,8 @@ $(function() {
                 }
             })
 
+            $("#populate_modal").append("</div></div>");
         }, "json")
-
-            $("#populate_modal").append("</div>");
         });
     });
 

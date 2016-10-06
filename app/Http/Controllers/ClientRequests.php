@@ -32,7 +32,7 @@ class ClientRequests extends Controller
                         "title" => $movie->title,
                         "desc" => $movie->desc,
                         "release_date" => $movie->release_date,
-                        "popularity" => $movie->popularity,
+                        "popularity" => $movie->vote_avg,
                         "genre" => $movie->genre,
                         "poster" => $movie->poster,
                         "bg" => $movie->bg];
