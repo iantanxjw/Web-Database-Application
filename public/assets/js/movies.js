@@ -29,7 +29,7 @@ $(function() {
         })
     }, "json");
 
-    $.get("api_request", {type: "now_playing"}, function(movies) {
+    $.get("api_request", {type: "showing"}, function(movies) {
 
         i = 0;
         $.each(movies, function(movie, details) {
