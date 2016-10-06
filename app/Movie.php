@@ -61,6 +61,11 @@ class Movie extends Model
 
     public function getGenre()
     {
+        return unserialize($this->genre);
+    }
+
+    public function getGenreSerialized()
+    {
         return $this->genre;
     }
 
@@ -130,8 +135,15 @@ class Movie extends Model
         }
         else
         {
-
-            $this->genre = $genre;
+            // check if serialised, if not serialise it
+            if (@unserialize($genre) == false)
+            {
+                $this->genre = serialize($genre);
+            }
+            else
+            {
+                $this->genre = $genre;
+            }
         }
     }
 
@@ -188,7 +200,7 @@ class Movie extends Model
             "release_date" => $this->rel_date,
             "voteAvg" => $this->voteAvg,
             "status" => $this->status,
-            "genre" => serialize($this->genre),
+            "genre" => $this->genre,
             "poster" => $this->poster,
             "bg" => $this->bg
         ];

@@ -71,6 +71,24 @@ class MovieTest extends PHPUnit_Framework_TestCase
 
     }
 
+    public function testValidVoteAvg()
+    {
+        $this->assertEquals(null, $this->movie->getVoteAvg());
+
+        // constructor test: valid vote avg
+        $this->movie = new Movie("123456", "test movie", "this is a test desc", "2016-04-27", 1.01);
+        $this->assertEquals(1.01, $this->movie->getVoteAvg());
+
+    }
+
+    public function testValidStatus()
+    {
+        $this->assertEquals(null, $this->movie->getStatus());
+
+        $this->movie = new Movie("123456", "test movie", "this is a test desc", "2016-04-27", 1.01, "now_playing");
+        $this->assertEquals("now_playing", $this->movie->getStatus());
+    }
+
     public function testValidGenre()
     {
         // constrcutor test: set to null
@@ -81,11 +99,11 @@ class MovieTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(null, $this->movie->getGenre());
 
         // constructor test: set to valid genres
-        $this->movie = new Movie("123456", "test movie", "this is a test desc", "2016-04-27", ["action", "comedy"]);
+        $this->movie = new Movie("123456", "test movie", "this is a test desc", "2016-04-27", 1.01, "now_playing", ["action", "comedy"]);
         $this->assertEquals(["action", "comedy"], $this->movie->getGenre());
 
         // constructor test: set to valid genre (single)
-        $this->movie = new Movie("123456", "test movie", "this is a test desc", "2016-04-27", "action");
+        $this->movie = new Movie("123456", "test movie", "this is a test desc", "2016-04-27", 1.01, "now_playing", "action");
         $this->assertEquals("action", $this->movie->getGenre());
     }
 
@@ -99,7 +117,7 @@ class MovieTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(null, $this->movie->getPoster());
 
         // constructor test: set to valid poster
-        $this->movie = new Movie("123456", "test movie", "this is a test desc", "2016-04-27", ["action", "comedy"], "poster.png");
+        $this->movie = new Movie("123456", "test movie", "this is a test desc", "2016-04-27", 1.01, "now_playing", ["action", "comedy"], "poster.png");
         $this->assertEquals("poster.png", $this->movie->getPoster());
     }
 
@@ -113,28 +131,65 @@ class MovieTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(null, $this->movie->getBackground());
 
         // constructor test: set to valid poster
-        $this->movie = new Movie("123456", "test movie", "this is a test desc", "2016-04-27", ["action", "comedy"], "poster.png", "bg.png");
+        $this->movie = new Movie("123456", "test movie", "this is a test desc", "2016-04-27", 1.01, "now_playing", ["action", "comedy"], "poster.png", "bg.png");
         $this->assertEquals("bg.png", $this->movie->getBackground());
     }
 
     public function testValidVars()
     {
         // constructor test: empty object
-        $this->assertEquals(["Unknown", "Unknown", "None", "Unknown", null, null, null], $this->movie->getVars());
+        $movieVars = [
+            "mv_id" => "Unknown", 
+            "title" => "Unknown", 
+            "desc" => "None",
+            "release_date" => "Unknown",
+            "voteAvg" => null,
+            "status" => null,
+            "genre" => null,
+            "poster" => null,
+            "bg" => null
+        ];
 
-        $this->movie = new Movie("0987", "welcome", "to the", "michael", "scott", "paper.png", "company.jpg");
-        $this->assertEquals(["0987", "welcome", "to the", "michael", serialize("scott"), "paper.png", "company.jpg"], $this->movie->getVars());
+        $this->assertEquals($movieVars, $this->movie->getVars());
+        $this->movie = new Movie(
+            "1234",
+            "Heat",
+            "The famous scene with di nero and pacino",
+            "1995",
+            10,
+            "now_playing",
+            ["Action", "Crime"],
+            "heat.png",
+            "heat.jpg"
+        );
+        $movieVars = [
+            "mv_id" => "1234", 
+            "title" => "Heat", 
+            "desc" => "The famous scene with di nero and pacino",
+            "release_date" => "1995",
+            "voteAvg" => 10,
+            "status" => "now_playing",
+            "genre" => serialize(["Action", "Crime"]),
+            "poster" => "heat.png",
+            "bg" => "heat.jpg"
+        ];
+
+        $this->assertEquals($movieVars, $this->movie->getVars());
+
     }
 
     public function testMovieObject()
     {
         // constructor test: create a legit movie and test all vars
-        $this->movie = new Movie("1234", "Goodfellas", "As long as I can remember I wanted to be a gangster", "1990", ["Action", "Crime", "Mafia"], "poster.png", "bg.png");
+        // order: id, title, desc, release_date, vote average, status, genre, poster, bg
+        $this->movie = new Movie("1234", "Goodfellas", "As long as I can remember I wanted to be a gangster", "1990", 10, "top_rated", ["Action", "Crime", "Mafia"], "poster.png", "bg.png");
 
         $this->assertEquals("1234", $this->movie->getID());
         $this->assertEquals("Goodfellas", $this->movie->getTitle());
         $this->assertEquals("As long as I can remember I wanted to be a gangster", $this->movie->getDescription());
         $this->assertEquals("1990", $this->movie->getReleaseDate());
+        $this->assertEquals(10, $this->movie->getVoteAvg());
+        $this->assertEquals("top_rated", $this->movie->getStatus());
         $this->assertEquals(["Action", "Crime", "Mafia"], $this->movie->getGenre());
         $this->assertEquals("poster.png", $this->movie->getPoster());
         $this->assertEquals("bg.png", $this->movie->getBackground());
