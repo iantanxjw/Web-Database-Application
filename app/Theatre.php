@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Theatre extends Model
 {
     public $timestamps = false;
-    public $fillable = ["t_id", "location", "seats"];
+    public $fillable = ["location", "theatre_num", "seats"];
 }

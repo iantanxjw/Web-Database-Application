@@ -82,7 +82,7 @@ class AdminController extends Controller
         foreach ($movies as $movie)
         {
             // prevent movies from being added that already exist
-            if (Movies::where("mv_id", $movie->getId())->exists())
+            if (Movies::where("id", $movie->getId())->exists())
             {
                 $failure[] = $movie->getTitle();
             }

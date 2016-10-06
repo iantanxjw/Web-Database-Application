@@ -182,7 +182,7 @@ class Movie extends Model
     public function getVars()
     {
         return [
-            "mv_id" => $this->id,
+            "id" => $this->id,
             "title" => $this->title,
             "desc" => $this->desc,
             "release_date" => $this->rel_date,

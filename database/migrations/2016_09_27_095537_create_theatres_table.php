@@ -13,8 +13,9 @@ class CreateTheatresTable extends Migration
     public function up()
     {
         Schema::create('theatres', function (Blueprint $table) {
-            $table->string('t_id')->primary();
+            $table->increments('id');
             $table->string('location');
+            $table->string('theatre_num');
             $table->string('seats');
         });
     }
