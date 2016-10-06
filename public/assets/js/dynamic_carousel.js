@@ -23,6 +23,10 @@ $.get("api_request", {type: "now_playing"}, function(movies) {
         movies.splice(index, 1);
         movieCount--;
 
+        if (movie.bg == null)
+        {
+
+        }
         // create the elements
         var item = $("<div>", {class: "item"});
         var img = $("<img>", {

@@ -41,6 +41,17 @@ class TheatresController extends Controller
         return view('admin.locations');
     }
 
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            "theatre_num"  => 'required',
+            "location"  => 'required',
+            "seats"  => 'required',
+        ]);
+        Theatre::find($id)->update($request->all());
+        return redirect()->route('admin_locations.index') ->with('success','Product updated successfully');
+    }
+
     public function destroy($id)
     {
         Theatre::find($id)->delete();
@@ -50,6 +61,6 @@ class TheatresController extends Controller
     public function edit($id)
     {
         $theatre = Theatre::find($id);
-        return view('admin.locations',compact('product'));
+        return view('admin.forms.theatre_edit',compact('theatre'));
     }
 }
