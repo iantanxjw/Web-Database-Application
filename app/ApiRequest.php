@@ -68,10 +68,17 @@ class ApiRequest extends Model
         foreach ($data->results as $result)
         {
             // create a movie object and dump it into an array of movies
-            $movie = new Movie($result->id, $result->title, $result->overview,
-                                $result->release_date, $result->vote_average, strtolower($requestType), $result->genre_ids,
-                                $result->poster_path, $result->backdrop_path);
-            $movies[] = $movie;
+            $movies[] = new Movie(
+                $result->id, 
+                $result->title,
+                $result->overview,
+                $result->release_date,
+                $result->vote_average,
+                strtolower($requestType),
+                $result->genre_ids,
+                $result->poster_path,
+                $result->backdrop_path
+            );
         }
 
         return $movies;
