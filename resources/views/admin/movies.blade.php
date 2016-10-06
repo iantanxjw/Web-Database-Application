@@ -15,7 +15,7 @@
         <th>Background</th>
         <th>Action</th>
     </tr>
-    @foreach($movieObjects as $movie)
+    @foreach ($movieObjects as $movie)
         <tr>
             <td>{{ $movie->getID() }}</td>
             <td>{{ $movie->getTitle() }}</td>
@@ -23,14 +23,14 @@
             <td>{{ $movie->getReleaseDate() }}</td>
             <td>{{ $movie->getVoteAvg() }}</td>
             <td>{{ $movie->getStatus() }}</td>
-            <td>{{ $movie->getGenreSerialized() }}
-                {{-- @if (is_array($movie->getGenre))
-                    @foreach($movie->getGenre() as $genre)
+            <td>
+                @if (is_array($movie->getGenre()) === true)
+                    @foreach ($movie->getGenre() as $genre)
                         <p>{{ $genre }}</p>
                     @endforeach
                 @else
                     {{ $movie->getGenre() }}
-                @endif --}}
+                @endif
             </td>
             <td>{{ $movie->getPoster() }}</td>
             <td>{{ $movie->getBackground() }}</td>
