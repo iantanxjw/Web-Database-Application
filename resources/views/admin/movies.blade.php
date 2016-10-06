@@ -23,7 +23,15 @@
             <td>{{ $movie->getReleaseDate() }}</td>
             <td>{{ $movie->getVoteAvg() }}</td>
             <td>{{ $movie->getStatus() }}</td>
-            <td>{{ $movie->getGenre() }}</td>
+            <td>{{ $movie->getGenreSerialized() }}
+                {{-- @if (is_array($movie->getGenre))
+                    @foreach($movie->getGenre() as $genre)
+                        <p>{{ $genre }}</p>
+                    @endforeach
+                @else
+                    {{ $movie->getGenre() }}
+                @endif --}}
+            </td>
             <td>{{ $movie->getPoster() }}</td>
             <td>{{ $movie->getBackground() }}</td>
             <td>let's break some shit</td>

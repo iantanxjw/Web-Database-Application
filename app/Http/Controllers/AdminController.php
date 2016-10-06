@@ -22,18 +22,17 @@ class AdminController extends Controller
 
     public function movies()
     {
-        $movies = Movies::all();
+        $movies = Movies::all()->sortBy("title");
         $movieObjects = [];
 
         foreach($movies as $movie)
         {
             $movieObjects[] = new Movie(
-                $movie->mv_id,
+                $movie->id,
                 $movie->title,
                 $movie->desc,
                 $movie->release_date,
                 $movie->voteAvg,
-                $movie->status,
                 $movie->status,
                 $movie->genre,
                 $movie->poster,

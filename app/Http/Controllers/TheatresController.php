@@ -28,7 +28,6 @@ class TheatresController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "id"  => 'required',
             "theatre_num"  => 'required',
             "location"  => 'required',
             "seats"  => 'required',
