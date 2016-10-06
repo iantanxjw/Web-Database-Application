@@ -39,7 +39,7 @@ $.get("api_request", {type: "now_playing"}, function(movies) {
             class: "container",
             html: $("<div>", {
                 class: "carousel-caption",
-                html: "<h1>" + movie.title + "</h1>" + "<p>RATING : "+movie.vote_average+"☆</p>"
+                html: "<h1>" + movie.title + "</h1>" + "<p>RATING : "+ movie.voteAvg +"☆</p>"
             })
         });
        // var title =  "<div class = 'container'><div class='carousel-caption'><h1>'"+movie.title+"'</h1><p>'"+movie.overview+"'</p></div></div>";
