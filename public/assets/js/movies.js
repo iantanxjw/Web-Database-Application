@@ -8,12 +8,17 @@ $(function() {
             if(i==0) { $("#upcoming").append("<div class='row'>");}
             if (details.poster == null)
             {
-                $("#upcoming").append("<div class='col-sm-3 text-center modal_pop'><p>Poster not available</p><h3>" + details.title +"</h3><br></div>");
+                $("#upcoming").append("<a class='col-sm-3 text-center UC_modalpop' href='#modal' name = '"+details.title+
+                    "'><p>Poster not available</p><h3>" + details.title +"</h3><br></a>");
             }
             else
             {
-                $("#upcoming").append("<a class='col-sm-3 text-center modal_pop' href='#modal'><img class='img-responsive' src='http://image.tmdb.org/t/p/w185/" + details.poster + "'alt='poster'><br><p>"+details.title+"</p></a></div>");
-            }
+                $("#upcoming").append("<a class='col-sm-3 text-center UC_modalPop' href='#modal' name='"+details.title+
+                    "'><div class='polaroid'>" +
+                    "<img class='img-responsive' src='http://image.tmdb.org/t/p/w185/" +
+                    details.poster +
+                    "'alt='poster'><div class='p_container'><p class='title_movies'>"+details.title+
+                    "</p><p><span class='icon-calendar' ></span> "+details.release_date+"</p></div></div></a>");}
 
             i++;
             if(i==4) {
@@ -61,7 +66,7 @@ $(function() {
         var title = $(this).attr('name');
         console.log(title);
 
-            $("#populate_modal").html("<div class='featurette'>");
+            $("#populate_modal").html("<div class='featurette'><div class='row'>");
         $.get("api_request", {type: "now_playing"}, function(movies) {
             $.each(movies, function(movie, details) {
                 if (details.title == title)
@@ -73,7 +78,29 @@ $(function() {
                 }
             })
 
+            $("#populate_modal").append("</div></div>");
         }, "json")
+        });
+    });
+
+    $(document).ready(function() {
+        $(document).on("click", ".UC_modalPop", function() {
+            var title = $(this).attr('name');
+            console.log(title);
+
+            $("#populate_modal").html("<div class='featurette'>");
+            $.get("api_request", {type: "upcoming"}, function(movies) {
+                $.each(movies, function(movie, details) {
+                    if (details.title == title)
+                    {
+                        $("#populate_modal").append("<img class='featurette-image pull-left' src='http://image.tmdb.org/t/p/w185/"+
+                            details.poster+"'>" +
+                            "<h1 class='featurette-heading'>"+details.title+"</h1><p class='lead'>"+details.desc+"</p>" +
+                            "<i class='lead fa fa-calendar'> Release Date: "+details.release_date+"</i>");
+                    }
+                })
+
+            }, "json")
 
             $("#populate_modal").append("</div>");
         });

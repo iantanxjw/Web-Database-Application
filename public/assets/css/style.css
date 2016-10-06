@@ -8,6 +8,9 @@ input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
 input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
 input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
 
+h1.carousel-caption {
+    font-size: 55px;
+}
 body {
     background-color: #191919;
 }
@@ -172,7 +175,6 @@ div.carousel-caption {
     left: 0;
     font-family: 'Francois One', sans-serif;
     text-transform: uppercase;
-
     background: rgb(0, 0, 0); /* fallback color */
     background: rgba(0, 0, 0, 0.7);
     border: 1px solid black;
@@ -228,6 +230,11 @@ div.p_container {
     transition: background 1s;
 }
 
+p.title_movies {
+    font-weight: bold;
+    font-size: medium;
+}
+
 
 div.polaroid:hover div.p_container{
     background: #24435c;
@@ -246,13 +253,12 @@ div.polaroid:hover{
     box-shadow: 25px 25px 20px 0 rgba(0, 0, 0, 0.9), 10px 10px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-
+/*
 div#movies{
     margin-top: 40px;
     height: 500px;
     overflow-y:auto;
     overflow-x: hidden;
-   /* background:black;*/
     width: 99.7%;
 }
 div#movies::-webkit-scrollbar
@@ -280,7 +286,7 @@ div.fixed_container{
     height: 500px;
     width: 1020px;
 }
-
+*/
 
 
 /* MARKETING CONTENT
