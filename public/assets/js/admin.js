@@ -1,16 +1,19 @@
 
 $(function() {
+    /* When clicking create object fade out table */
         $(".create-form").click(function(){
-            $(".create-form").fadeOut();
+            $(".create-form").fadeOut('slow');
             console.log("Clicked on create form");
-            $('#create-session').toggle('show');
-            $('#create-theatre').toggle('show');
+            $('.admin_tables').fadeOut('slow');
+            $('#create-session').fadeIn('slow');
+            $('#create-theatre').fadeIn('show');
         });
 
         $(".create-back").click(function(){
             $(".create-form").fadeIn();
-            $('#create-session').toggle('show');
-            $('#create-theatre').toggle('show');
+            $('#create-session').fadeOut('slow');
+            $('#create-theatre').fadeOut('slow');
+            $('.admin_tables').fadeIn('slow');
         });
 
 });
