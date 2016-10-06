@@ -72,7 +72,7 @@ class AdminController extends Controller
     public function updateAPI(Request $request)
     {
         $apiRequest = new ApiRequest(config("tmdb.api.url"), $request->input("api") . "?");
-        $movies = $apiRequest->request($request->input("api"));
+        $movies = $apiRequest->request($request->input("type"));
 
         $success = [];
         $update = [];
@@ -82,7 +82,7 @@ class AdminController extends Controller
         foreach ($movies as $movie)
         {
             // prevent movies from being added that already exist
-            if (Movies::find($movie->getID())->exists())
+            if (Movies::where("id", $movie->getID())->exists())
             {
                 // get the movie in the database
                 $result = Movies::find($movie->getID());
