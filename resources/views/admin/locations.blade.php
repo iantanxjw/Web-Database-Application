@@ -36,8 +36,8 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Theatre id</strong>
-                        {!! Form::text('t_id', null, array('placeholder' => '123','class' => 'form-control')) !!}
+                        <strong>Theatre number</strong>
+                        {!! Form::text('theatre_num', null, array('placeholder' => '123','class' => 'form-control')) !!}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -70,17 +70,19 @@
 <table class="admin_tables" align="center">
     <tr>
         <th>ID</th>
+        <th>Theatre no.</th>
         <th>Location</th>
         <th>No. seats</th>
         <th>Action</th>
     </tr>
     @foreach ($locations as $location)
         <tr>
-            <td>{{ $location->t_id }}</td>
+            <td>{{ $location->id }}</td>
+            <td>{{ $location->theatre_num }}</td>
             <td>{{ $location->location }}</td>
             <td>{{ $location->seats }}</td>
-            <td><a class="btn btn-primary" href="{{ route('admin_locations.edit',$location->t_id) }}">Edit</a>
-                {!! Form::open(['method' => 'DELETE','route' => ['admin_locations.destroy', $location->t_id],'style'=>'display:inline']) !!}
+            <td><a class="btn btn-primary" href="{{ route('admin_locations.edit',$location->id) }}">Edit</a>
+                {!! Form::open(['method' => 'DELETE','route' => ['admin_locations.destroy', $location->id],'style'=>'display:inline']) !!}
                 {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                 {!! Form::close() !!}</td>
         </tr>

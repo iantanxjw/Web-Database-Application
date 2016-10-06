@@ -14,7 +14,7 @@ class TheatresController extends Controller
     {
         /*generating id  ? */
         /*validation duplicate keys */
-        $locations = Theatre::orderBy('t_id','DESC')->paginate(5);
+        $locations = Theatre::orderBy('id','DESC')->paginate(5);
         return view('admin.locations',compact('locations')) ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -28,7 +28,7 @@ class TheatresController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "t_id"  => 'required',
+            "theatre_num"  => 'required',
             "location"  => 'required',
             "seats"  => 'required',
         ]);
