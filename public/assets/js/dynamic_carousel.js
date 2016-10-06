@@ -3,7 +3,7 @@ const BACKDROP_URL = "http://image.tmdb.org/t/p/h632/";
 
 // loaded in footer so no need to use document.ready()
 // no longer exposes api key
-$.get("api_request", {type: "popular"}, function(movies) {
+$.get("api_request", {type: "now_playing"}, function(movies) {
 
     var movieCount = movies.length;
     var items = [];
@@ -35,7 +35,7 @@ $.get("api_request", {type: "popular"}, function(movies) {
             class: "container",
             html: $("<div>", {
                 class: "carousel-caption",
-                html: "<h1>" + movie.title + "</h1>" + "<p>RATING : "+movie.popularity+"☆</p>"
+                html: "<h1>" + movie.title + "</h1>" + "<p>RATING : "+movie.vote_average+"☆</p>"
             })
         });
        // var title =  "<div class = 'container'><div class='carousel-caption'><h1>'"+movie.title+"'</h1><p>'"+movie.overview+"'</p></div></div>";

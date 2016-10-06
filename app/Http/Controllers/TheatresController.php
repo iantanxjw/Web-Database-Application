@@ -29,6 +29,7 @@ class TheatresController extends Controller
     {
         $this->validate($request, [
             "id"  => 'required',
+            "theatre_num"  => 'required',
             "location"  => 'required',
             "seats"  => 'required',
         ]);

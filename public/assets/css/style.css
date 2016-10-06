@@ -245,12 +245,12 @@ div.polaroid {
     text-align: center;
     background:#060d10;
     width:220px;
-    transition:box-shadow 1s;
+    transition:box-shadow 0.5s;
 }
 
 div.polaroid:hover{
     background: #24435c;
-    box-shadow: 25px 25px 20px 0 rgba(0, 0, 0, 0.9), 10px 10px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.9), 0px 10px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /*
@@ -530,3 +530,30 @@ div.navbar-collapse.collapse
     margin: 5% 15%;
 }
 
+/**********Admin css ****************/
+
+
+/********sessions ***************/
+
+div#create-session{
+    display: none;
+}
+
+div#create-theatre{
+    display: none;
+}
+
+.create_button{
+    padding:15px;
+    text-align: center;
+}
+
+ul.manage_list{
+    text-align: center;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+ul.manage_list li{
+    margin:10px;
+}
