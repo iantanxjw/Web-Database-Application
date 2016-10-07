@@ -1,7 +1,5 @@
-@extends('layouts.master')
-@section('title', 'Manage Locations')
-@section('content')
 
+@section('title', 'Edit Locations')
 
     <div class="container">
         <div class="row">
@@ -9,6 +7,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Theatre Management</div>
                     <div class="panel-body">
+
+
                         <div id = "edit-theatre">
                             <div class="row">
                                 <div class="col-lg-12 margin-tb">
@@ -34,10 +34,10 @@
                             @include('admin.forms.theatre_form')
                             {!! Form::close() !!}
                         </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-@endsection
