@@ -38,6 +38,7 @@ Route::get("manage_locations", ["as" => "admin_locations", "uses" => "AdminContr
 Route::resource('admin_sessions','SessionsController');
 Route::resource('admin_locations','TheatresController');
 Route::resource('admin_users','UsersController');
+Route::resource('admin_movies','MoviesController');
 
 // AJAX requests
 Route::get("api_request", "ClientRequests@ajax");
