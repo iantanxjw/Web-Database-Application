@@ -29,7 +29,7 @@ $(function() {
         })
     }, "json");
 
-    $.get("api_request", {type: "now_playing"}, function(movies) {
+    $.get("api_request", {type: "showing"}, function(movies) {
 
         i = 0;
         $.each(movies, function(movie, details) {
@@ -67,7 +67,7 @@ $(function() {
         console.log(title);
 
             $("#populate_modal").html("<div class='featurette'><div class='row'>");
-        $.get("api_request", {type: "now_playing"}, function(movies) {
+        $.get("api_request", {type: "showing"}, function(movies) {
             $.each(movies, function(movie, details) {
                 if (details.title == title)
                 {

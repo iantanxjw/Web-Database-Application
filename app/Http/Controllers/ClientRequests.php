@@ -11,28 +11,48 @@ class ClientRequests extends Controller
 {
     public function ajax(Request $request)
     {
-        // $movies = null;
+        $movies = null;
+        $limit = 20; // hard coded for now need to find a better way
 
-        // if ($request->type === "popular")
-        // {
-        //     $movies = Movies::where("voteAvg", ">=", 5);
-        // }
-        // else
-        // {
-        //     $movies = Movies::where("status", $request->type)->get();
-        // }
+        if (isset($request->limit) && !empty($request->limit))
+        {
+            $limit = $request->limit;
+        }
 
-        $movies = Movies::where("status", $request->type)->get();
+        // some basic security - prevent users from injecting ajax requests
+        if ($request->type === "popular")
+        {
+            // only get movies for the carousel that have a background
+            $movies = Movies::where("voteAvg", ">=", 6)
+                            ->where("status", "showing")
+                            ->whereNotNull("bg")
+                            ->inRandomOrder()
+                            ->take($limit)
+                            ->get();
+        }
+        else if ($request->type === "showing")
+        {
+            $movies = Movies::where("status", "showing")->take($limit)->get();
+        }
+        else if ($request->type === "upcoming")
+        {
+            $movies = Movies::where("status", "upcoming")->take($limit)->get();
+        }
+        else
+        {
+            echo "nice try ya spaz";
+            return;
+        }
 
         $json = [];
 
         foreach ($movies as $movie)
         {
-            $json[] = ["id" => $movie->mv_id,
+            $json[] = ["id" => $movie->id,
                         "title" => $movie->title,
                         "desc" => $movie->desc,
                         "release_date" => $movie->release_date,
-                        "popularity" => $movie->vote_avg,
+                        "voteAvg" => $movie->voteAvg,
                         "genre" => $movie->genre,
                         "poster" => $movie->poster,
                         "bg" => $movie->bg];
