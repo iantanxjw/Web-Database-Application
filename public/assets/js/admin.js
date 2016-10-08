@@ -1,19 +1,23 @@
 
 $(function() {
     /* When clicking create object fade out table */
-        $(".create-form").click(function(){
-            $(".create-form").fadeOut('slow');
-            console.log("Clicked on create form");
+        $(".show-form").click(function(){
             $('.admin_tables').fadeOut('slow');
-            $('#create-session').fadeIn('slow');
-            $('#create-theatre').fadeIn('show');
+            $(this).parent("div").fadeOut("slow");
+
+            $(":animated").promise().done(function() {
+                $(".create-form").fadeIn("slow");
+            });
         });
 
+        // fade tables back in when click back
         $(".create-back").click(function(){
-            $(".create-form").fadeIn();
-            $('#create-session').fadeOut('slow');
-            $('#create-theatre').fadeOut('slow');
-            $('.admin_tables').fadeIn('slow');
+            $(".create-form").fadeOut("slow");
+
+            $(":animated").promise().done(function() {
+                $('.admin_tables').fadeIn('slow');
+                $(".show-form").parent("div").fadeIn("slow");
+            });
         });
 
 });

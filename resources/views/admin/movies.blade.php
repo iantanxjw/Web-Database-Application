@@ -5,10 +5,20 @@
     <div class="panel-heading">Movies Management</div>
     <div class="panel-body">
         <div>
-            <a href="#add-movie" class="btn btn-primary">Add movie</a>
+            <a href="#add-movie" class="btn btn-primary show-form">Add movie</a>
             <a href="{{route ('api_refresh') }}" class="btn btn-primary">Populate DB with API call</a>
         </div>
         <div class="create-form">
+            <div class="row">
+                <div class="col-lg-12 margin-tb">
+                    <div class="pull-left">
+                        <h2>Add New Movie</h2>
+                    </div>
+                    <div class="pull-right">
+                        <a class="btn btn-primary create-back" href="#back"> Back</a>
+                    </div>
+                </div>
+            </div>
             {{ Form::open(['route' => 'admin_movies.create', 'method' => 'POST']) }}
                 @include('admin.forms.movie_add_form')
             {{ Form::close() }}
@@ -53,10 +63,6 @@
                 </tr>
             @endforeach
         </table>
-
-        <div class = "create_button">
-            <a class="btn btn-success create-form" href="#create"> Add new movie</a>
-        </div>
     </div>
 </div>
 

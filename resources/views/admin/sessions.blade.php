@@ -7,7 +7,7 @@
                     <div class="panel-body">
 
                         <!-- create sessions div -->
-                        <div id="create-session">
+                        <div class="create-form">
                             <div class="row">
                                 <div class="col-lg-12 margin-tb">
                                     <div class="pull-left">
@@ -51,7 +51,7 @@
                             @endforeach
                         </table>
                         <div class="create_button">
-                            <a class="btn btn-success create-form" href="#create"> Create New Session</a>
+                            <a class="btn btn-success show-form" href="#create"> Create New Session</a>
                         </div>
 
                     </div>

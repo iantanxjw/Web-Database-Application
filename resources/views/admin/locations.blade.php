@@ -8,7 +8,7 @@
                     <div class="panel-body">
 
                         <!-- Creating Theatre div -->
-                        <div id="create-theatre">
+                        <div class="create-form">
                             <div class="row">
                                 <div class="col-lg-12 margin-tb">
                                     <div class="pull-left">
@@ -53,7 +53,7 @@
                             @endforeach
                         </table>
                         <div class = "create_button">
-                            <a class="btn btn-success create-form" href="#create"> Create New Theatre</a>
+                            <a class="btn btn-success show-form" href="#create"> Create New Theatre</a>
                         </div>
 
                     </div>
