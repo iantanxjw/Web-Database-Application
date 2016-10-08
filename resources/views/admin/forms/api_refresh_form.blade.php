@@ -24,7 +24,7 @@
 </select>
 
 <br><br>
-{{ Form::label('type', 'Set type for movies:') }}
+{{ Form::label('type', 'Set status for movies:') }}
 {{ Form::select('type', ['showing' => 'Showing',
                         'not_showing' => 'Not Showing',
                         'upcoming' => 'Coming soon'], 'showing')}}
