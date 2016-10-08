@@ -66,12 +66,21 @@ class AdminController extends Controller
 
     public function api_refresh()
     {
-        return view("admin.api_refresh");
+        // get all of the possible poster and bg sizes to pick from
+        $json = file_get_contents(config("tmdb.api.config_url") . "?api_key=" . config("tmdb.api.key"));
+        $data = json_decode($json);
+
+        //return var_dump($data);
+
+        return view("admin.api_refresh", [
+            "backdrop_sizes" => $data->images->backdrop_sizes,
+            "poster_sizes" => $data->images->poster_sizes
+        ]);
     }
 
     public function updateAPI(Request $request)
     {
-        $apiRequest = new ApiRequest(config("tmdb.api.url"), $request->input("api") . "?");
+        $apiRequest = new ApiRequest(config("tmdb.api.url"), $request->input("api") . "?", null, null, $request->postersize, $request->bgsize);
         $movies = $apiRequest->request($request->input("type"));
 
         $success = [];
