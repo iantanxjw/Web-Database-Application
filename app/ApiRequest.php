@@ -123,8 +123,6 @@ class ApiRequest extends Model
                 $result->genre_ids,
                 isset($result->poster_path) ? $this->imgUrl . $this->posterSize . $result->poster_path : null,
                 isset($result->backdrop_path) ? $this->imgUrl . $this->bgSize . $result->backdrop_path : null
-                // $this->imgUrl . $this->posterSize . $result->poster_path,
-                // $this->imgUrl . $this->bgSize . $result->backdrop_path
             );
         }
 
