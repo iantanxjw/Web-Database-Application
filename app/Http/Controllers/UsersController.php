@@ -38,12 +38,21 @@ class UsersController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => required,
-            'email' => required,
-            'password' =>required,
-        ]);
-        User::find($id)->update($request->all());
+
+        // $this->validate($request, [
+        //     'name' => "required",
+        //     'email' => "required",
+        //     'password' => "required",
+        // ]);
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->admin = $request->admin;
+
+        // save only runs if things have changed
+        $user->save();
+
         return redirect()->route('admin_users.index')->with('success', 'User updated successfully');
     }
 
