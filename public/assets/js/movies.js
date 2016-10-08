@@ -1,6 +1,7 @@
 $(function() {
     var i = 0;
 
+    // coming soon tab
     $.get("api_request", {type: "upcoming"}, function(movies) {
         i=0;
 
@@ -29,6 +30,7 @@ $(function() {
         })
     }, "json");
 
+    // showing tab
     $.get("api_request", {type: "showing"}, function(movies) {
 
         i = 0;
@@ -60,50 +62,15 @@ $(function() {
 
     }, "json");
 
-    $(document).ready(function() {
-        $(document).on("click", ".modalPop", function() {
-        var title = $(this).attr('name');
-        console.log(title);
+    // modal click
+    $(document).on("click", ".modalPop", function() {
+        $("#populate_modal").html("<div class='featurette'><div class='row'>");
 
-            $("#populate_modal").html("<div class='featurette'><div class='row'>");
-        $.get("api_request", {type: "showing"}, function(movies) {
-            $.each(movies, function(movie, details) {
-                if (details.title == title)
-                {
-                    $("#populate_modal").append("<img class='featurette-image pull-left' src='"+
-                details.poster+"'>" +
-                "<h1 class='featurette-heading'>"+details.title+"</h1><p class='lead'>"+details.desc+"</p>" +
-                        "<i class='lead fa fa-calendar'> Release Date: "+details.release_date+"</i>");
-                }
-            })
-
-            $("#populate_modal").append("</div></div>");
-        }, "json")
-        });
+        $.get("movietitle", {title: $(this).prop("name")}, function(movie) {
+            
+            $("#populate_modal").append("<img class='featurette-image pull-left' src='" + movie.poster + "'>");
+            $("#populate_modal").append("<h1 class='featurette-heading'>"+movie.title+"</h1><p class='lead'>"+movie.desc+"</p>");
+            $("#populate_modal").append("<i class='lead fa fa-calendar'> Release Date: "+movie.release_date+"</i></div></div>");
+        }, "json");
     });
-
-    $(document).ready(function() {
-        $(document).on("click", ".UC_modalPop", function() {
-            var title = $(this).attr('name');
-            console.log(title);
-
-            $("#populate_modal").html("<div class='featurette'>");
-            $.get("api_request", {type: "upcoming"}, function(movies) {
-                $.each(movies, function(movie, details) {
-                    if (details.title == title)
-                    {
-                        $("#populate_modal").append("<img class='featurette-image pull-left' src='"+
-                            details.poster+"'>" +
-                            "<h1 class='featurette-heading'>"+details.title+"</h1><p class='lead'>"+details.desc+"</p>" +
-                            "<i class='lead fa fa-calendar'> Release Date: "+details.release_date+"</i>");
-                    }
-                })
-
-            }, "json")
-
-            $("#populate_modal").append("</div>");
-        });
-    });
-
-
 });
