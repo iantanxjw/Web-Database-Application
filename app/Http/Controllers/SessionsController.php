@@ -45,11 +45,6 @@ class SessionsController extends Controller
         return redirect()->route('admin_sessions.index')->with('success','Session created successfully');
     }
 
-    public function create()
-    {
-        return view('admin.sessions');
-    }
-
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -60,18 +55,19 @@ class SessionsController extends Controller
             "t_id" => 'required',
         ]);
         Session::find($id)->update($request->all());
-        return redirect()->route('admin_sessions.index') ->with('success','Product updated successfully');
+        return redirect()->route('admin_sessions.index') ->with('success','Session updated successfully');
     }
 
     public function destroy($id)
     {
         Session::find($id)->delete();
-        return redirect()->route('admin_sessions.index') ->with('success','Theatre deleted successfully');
+        return redirect()->route('admin_sessions.index') ->with('success','Session deleted successfully');
     }
 
     public function edit($id)
     {
         $sessions = Session::find($id);
-        return view('admin.forms.session_edit',compact('sessions'));
+
+        return json_encode($sessions);
     }
 }
