@@ -10,7 +10,7 @@
     <!-- Text field for location name  -->
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <!-- duration could get from movie time? --->
+            <!-- duration could get from movie time? -->
             <strong>Location</strong>
             {!! Form::text('location', null, array('placeholder' => 'The moon','class' => 'form-control')) !!}
         </div>
@@ -19,7 +19,7 @@
     <!-- Text field for Number of seats  -->
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <!-- duration could get from movie time? --->
+            <!-- duration could get from movie time? -->
             <strong>Number of seats</strong>
             {!! Form::text('seats', null, array('placeholder' => '0','class' => 'form-control')) !!}
         </div>
