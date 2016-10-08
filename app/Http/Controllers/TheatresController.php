@@ -33,7 +33,7 @@ class TheatresController extends Controller
             "seats"  => 'required',
         ]);
         Theatre::create($request->all());
-        return redirect()->route('admin_locations.index') ->with('success','Session created successfully');
+        return redirect()->route('admin_locations.index') ->with('success', 'Theatre created successfully');
     }
 
     public function create()
@@ -49,7 +49,7 @@ class TheatresController extends Controller
             "seats"  => 'required',
         ]);
         Theatre::find($id)->update($request->all());
-        return redirect()->route('admin_locations.index') ->with('success','Product updated successfully');
+        return redirect()->route('admin_locations.index') ->with('success', 'Theatre updated successfully');
     }
 
     public function destroy($id)
