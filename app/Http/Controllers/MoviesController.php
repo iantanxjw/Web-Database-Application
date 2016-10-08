@@ -76,11 +76,17 @@ class MoviesController extends Controller
         return redirect()->route("admin_movies.index")->with("success", $movieID . " updated successfully");
     }
 
-    public function destroy($id)
+    public function destroy($movieID)
     {
-        Movies::find($id)->delete();
-        Session::find($id)->delete();
+        /* delete any rows with the foreign key $movieID BEFORE
+            trying to delete the row in the parent table */
+        foreach(Session::where("mv_id", $movieID)->get() as $session)
+        {
+            Session::find($session->id)->delete();
+        }
+
+        Movies::find($movieID)->delete();
         
-        return "Movie and all sessions deleted";    
+        return redirect()->route("admin_movies.index")->with("success", $movieID . " deleted sucessfully");    
     }
 }

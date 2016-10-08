@@ -1,28 +1,28 @@
-{{ Form::label('idlabel', 'ID:') }}
+{{ Form::label('id', 'ID:') }}
 {{ Form::text('id') }}
 
-{{ Form::label('titlelabel', 'Title:') }}
+{{ Form::label('title', 'Title:') }}
 {{ Form::text('title') }}
 
-{{ Form::label('desclabel', 'Overview:') }}
+{{ Form::label('desc', 'Overview:') }}
 {{ Form::text('desc') }}
 
-{{ Form::label('rellabel', 'Release date:') }}
+{{ Form::label('rel', 'Release date:') }}
 {{ Form::text('release_date') }}
 
-{{ Form::label('votelabel', 'Vote average:') }}
+{{ Form::label('vote', 'Vote average:') }}
 {{ Form::number('voteAvg') }}
 
-{{ Form::label('statuslabel', 'Status:') }}
+{{ Form::label('status', 'Status:') }}
 {{ Form::text('status') }}
 
-{{ Form::label('genrelabel', 'Genre:') }}
+{{ Form::label('genre', 'Genre:') }}
 {{ Form::text('genre') }}
 
-{{ Form::label('posterlabel', 'Poster:') }}
+{{ Form::label('poster', 'Poster:') }}
 {{ Form::text('poster') }}
 
-{{ Form::label('bglabel', 'Background:') }}
+{{ Form::label('bg', 'Background:') }}
 {{ Form::text('bg') }}
 
 {{ Form::submit('Update', ['class' => 'create-form btn btn-primary']) }}

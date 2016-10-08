@@ -38,7 +38,7 @@
                     <td>{{ $movie->getPoster() }}</td>
                     <td>{{ $movie->getBackground() }}</td>
                     <td><a class="btn btn-primary" href="{{ route('admin_movies.edit', $movie->getID()) }}">Edit</a>
-                        {!! Form::open(['method' => 'DELETE','route' => ['admin_movies.destroy', $movie->id],'style'=>'display:inline']) !!}
+                        {!! Form::open(['method' => 'DELETE','route' => ['admin_movies.destroy', $movie->getID()],'style'=>'display:inline']) !!}
                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                         {!! Form::close() !!}</td>
                 </tr>
