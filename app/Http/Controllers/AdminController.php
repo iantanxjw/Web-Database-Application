@@ -105,13 +105,15 @@ class AdminController extends Controller
                 if ($movie->getVars() !== $dbMovie->getVars())
                 {
                     // they differ so update with new cols
-                    $result->update($movie->getVars());//->save();
+                    $result->update($movie->getVars());
                     $update[] = $movie->getTitle();
+                    
                 }
                 else
                 {
                     // values don't differ so don't update
                     $failure[] = $movie->getTitle();
+                    
                 }
             }
             else
@@ -119,9 +121,16 @@ class AdminController extends Controller
                 // FML THIS IS ASSOCIATIVE NOT ORDERED
                 Movies::create($movie->getVars());
                 $success[] = $movie->getTitle();
+                
             }
         }
 
-        return view("admin.panel", compact("success", "failure", "update"));
+        /* use flash so that the data is only kept for the next 
+            http request then deleted on the next request */
+        $request->session()->flash("update", $update);
+        $request->session()->flash("errors", $failure);
+        $request->session()->flash("success", $success);
+
+        return view("admin.panel");
     }   
 }
