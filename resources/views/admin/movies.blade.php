@@ -5,12 +5,6 @@
     <div class="panel-heading">Movies Management</div>
     <div class="panel-body">
 
-        {{-- @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{ $message }}</p>
-            </div>
-        @endif --}}
-
         <table class="admin_tables" align="center">
             <tr>
                 <th>ID</th>
@@ -33,7 +27,7 @@
                     <td>{{ $movie->getVoteAvg() }}</td>
                     <td>{{ $movie->getStatus() }}</td>
                     <td>
-                        @if (is_array($movie->getGenre()) === true)
+                        @if (is_array($movie->getGenre()))
                             @foreach ($movie->getGenre() as $genre)
                                 <p>{{ $genre }}</p>
                             @endforeach
@@ -43,7 +37,7 @@
                     </td>
                     <td>{{ $movie->getPoster() }}</td>
                     <td>{{ $movie->getBackground() }}</td>
-                    <td><a class="btn btn-primary" href="{{ route('admin_movies.edit',$movie->id) }}">Edit</a>
+                    <td><a class="btn btn-primary" href="{{ route('admin_movies.edit', $movie->getID()) }}">Edit</a>
                         {!! Form::open(['method' => 'DELETE','route' => ['admin_movies.destroy', $movie->id],'style'=>'display:inline']) !!}
                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                         {!! Form::close() !!}</td>
@@ -52,7 +46,7 @@
         </table>
 
         <div class = "create_button">
-            <a class="btn btn-success create-form" href="#create"> Create New Theatre</a>
+            <a class="btn btn-success create-form" href="#create"> Add new movie</a>
         </div>
     </div>
 </div>
