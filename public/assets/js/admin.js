@@ -23,15 +23,24 @@ $(function() {
         fade([".create-form", ".edit-form"], [".admin_tables", $(".show-form").parent("div")]);
     });
 
+    /* this function should be able to serve all CRUD edits as long as 
+        everything is named correctly - see any of the admin crud for
+        an example */
     $(".show-edit").click(function() {
+        // get the current path and set it as the form action
+        var str = window.location.pathname;
+        var url = str.substr(str.lastIndexOf("/") + 1);
+
         // set the form action
-        $(".edit-form .row > form").prop("action", "admin_movies/" + $(this).data("id"));
+        $(".edit-form .row > form").prop("action", url + "/" + $(this).data("id"));
 
         // disable id editing
         $(".edit-form input[name='id']").prop("readonly", true);
+
+        $(".pull-left h2").append(" " + $(this).data("id"));
         
         // re-request the movie for editing
-        $.get("admin_movies/" + $(this).data("id") + "/edit", function(data) {
+        $.get(url + "/" + $(this).data("id") + "/edit", function(data) {
             
             $.each(data, function(k, v) {
                 $(".edit-form input[name=" + k).val(v);
