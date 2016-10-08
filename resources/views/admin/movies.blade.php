@@ -4,6 +4,15 @@
 <div class="panel panel-default">
     <div class="panel-heading">Movies Management</div>
     <div class="panel-body">
+        <div>
+            <a href="#add-movie" class="btn btn-primary">Add movie</a>
+            <a href="{{route ('api_refresh') }}" class="btn btn-primary">Populate DB with API call</a>
+        </div>
+        <div class="create-form">
+            {{ Form::open(['route' => 'admin_movies.create', 'method' => 'POST']) }}
+                @include('admin.forms.movie_add_form')
+            {{ Form::close() }}
+        </div>
 
         <table class="admin_tables" align="center">
             <tr>
