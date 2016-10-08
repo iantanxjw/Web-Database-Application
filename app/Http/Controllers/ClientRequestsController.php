@@ -153,4 +153,24 @@ class ClientRequestsController extends Controller
 
         return json_encode($sessions);
     }
+
+    // get all sessions at a specific theatre
+    public function getSessionsAtTheatre(Request $request)
+    {
+        if (!isset($request->location))
+        {
+            return null;
+        }
+
+        $theatre = Theatre::where("location", $request->location)->get();
+
+        if (!isset($theatre))
+        {
+            return "Could not find any theatres at: " . $request->location;
+        }
+
+        $sessions = Session::where("t_id", $theatre->id);
+
+        return json_encode($sessions);
+    }
 }

@@ -40,3 +40,4 @@ Route::get("movieid", "ClientRequestsController@getMovieByID");
 Route::get("movietitle", "ClientRequestsController@getMovieByTitle");
 Route::get("searchmovies", "ClientRequestsController@searchForMovies");
 Route::get("moviesessions", "ClientRequestsController@getMovieSessions");
+Route::get("theatresessions", "ClientRequestsController@getSessionsAtTheatre");
