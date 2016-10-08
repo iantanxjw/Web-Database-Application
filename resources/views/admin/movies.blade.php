@@ -20,7 +20,7 @@
                 </div>
             </div>
             {{ Form::open(['route' => 'admin_movies.create', 'method' => 'POST']) }}
-                @include('admin.forms.movie_add_form')
+                @include('admin.forms.movie_form')
             {{ Form::close() }}
         </div>
 
