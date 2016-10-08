@@ -19,8 +19,9 @@ class SessionsController extends Controller
     public function index(Request $request)
     {
         /*generating id  ? */
-        $sessions= Session::orderBy('id','DESC')->paginate(5);
-        return view('admin.sessions',compact('sessions')) ->with('i', ($request->input('page', 1) - 1) * 5);
+        $sessions = Session::orderBy('id', 'DESC')->paginate(5);
+
+        return view('admin.sessions', compact('sessions'))->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
 
@@ -40,7 +41,8 @@ class SessionsController extends Controller
             "t_id" => 'required',
         ]);
         Session::create($request->all());
-        return redirect()->route('admin_sessions.index') ->with('success','Session created successfully');
+
+        return redirect()->route('admin_sessions.index')->with('success','Session created successfully');
     }
 
     public function create()

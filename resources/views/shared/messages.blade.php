@@ -16,6 +16,15 @@
     </div>
 @endif
 
+@if (isset($errors) && count($errors) > 0)
+    <div class="alert alert-warning">
+        <strong>Errors</strong>
+        @foreach ($errors as $e)
+            <p>{{ $e }}</p>
+        @endforeach
+    </div>
+@endif
+
 @if (isset($failure) && count($failure) > 0)
     <div class="alert alert-danger">
         <strong>Failure</strong>
@@ -24,3 +33,7 @@
         @endforeach
     </div>
 @endif
+
+<pre>
+    {{ var_dump(Session::all()) }}
+</pre>

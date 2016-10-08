@@ -30,6 +30,7 @@
 <body>
 @include('shared.navbar')
 @include('shared.carousel')
+@include('shared.messages')
 @yield('content')
 @include('shared.footer')
 </body>
