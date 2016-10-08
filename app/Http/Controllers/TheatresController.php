@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Theatre;
+use App\Session;
 
 class TheatresController extends Controller
 {
@@ -36,9 +37,12 @@ class TheatresController extends Controller
         return redirect()->route('admin_locations.index') ->with('success', 'Theatre created successfully');
     }
 
-    public function create()
+    public function edit($id)
     {
-        return view('admin.locations');
+        // returning to an ajax call so encode json
+        $theatre = Theatre::find($id);
+
+        return json_encode($theatre);
     }
 
     public function update(Request $request, $id)
@@ -54,13 +58,13 @@ class TheatresController extends Controller
 
     public function destroy($id)
     {
+        // theatre id is a foreign key of session so kill the session first
+        foreach (Session::where("t_id", $id)->get() as $session)
+        {
+            $session->delete();
+        }
+
         Theatre::find($id)->delete();
         return redirect()->route('admin_locations.index') ->with('success','Theatre deleted successfully');
-    }
-
-    public function edit($id)
-    {
-        $theatre = Theatre::find($id);
-        return view('admin.forms.theatre_edit',compact('theatre'));
     }
 }
