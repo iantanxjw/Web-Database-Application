@@ -4,10 +4,12 @@
 <div class="panel panel-default">
     <div class="panel-heading">Movies Management</div>
     <div class="panel-body">
-        <div>
+        <div class="links">
             <a href="#add-movie" class="btn btn-primary show-form">Add movie</a>
             <a href="{{route ('api_refresh') }}" class="btn btn-primary">Populate DB with API call</a>
         </div>
+
+        {{-- Add a movie form --}}
         <div class="create-form">
             <div class="row">
                 <div class="col-lg-12 margin-tb">
@@ -19,9 +21,32 @@
                     </div>
                 </div>
             </div>
-            {{ Form::open(['route' => 'admin_movies.create', 'method' => 'POST']) }}
+            {{ Form::open(['route' => 'admin_movies.store', 'method' => 'POST']) }}
                 @include('admin.forms.movie_form')
             {{ Form::close() }}
+        </div>
+
+        {{-- Edit movie form --}}
+        <div class="edit-form">
+            <div class="row">
+                <div class="col-lg-12 margin-tb">
+                    <div class="pull-left">
+                        <h2>Editing</h2>
+                    </div>
+                    <div class="pull-right"><a href="#back" class="btn btn-primary create-back">Back</a>
+                    </div>
+                </div>
+                {{-- {{ Form::model($movie, ['route' => ['admin_movies.update', $movie->id], 'method' => 'PATCH']) }}
+                    @include('admin.forms.movie_form')
+                {{ Form::close() }} --}}
+                {{-- need to define form manually --}}
+                <form method="POST">
+                    <input type="hidden" name="_method" value="PATCH">
+                    <input type="hidden" name="_token"
+                    value={{ csrf_token() }}>
+                    @include('admin.forms.movie_form');
+                </form>
+            </div>
         </div>
 
         <table class="admin_tables" align="center">
@@ -56,7 +81,8 @@
                     </td>
                     <td>{{ $movie->getPoster() }}</td>
                     <td>{{ $movie->getBackground() }}</td>
-                    <td><a class="btn btn-primary" href="{{ route('admin_movies.edit', $movie->getID()) }}">Edit</a>
+                    {{-- give each edit btn the id so js can request the details --}}
+                    <td><a class="btn btn-primary show-edit" data-id="{{ $movie->getID() }}">Edit</a>
                         {!! Form::open(['method' => 'DELETE','route' => ['admin_movies.destroy', $movie->getID()],'style'=>'display:inline']) !!}
                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                         {!! Form::close() !!}</td>

@@ -58,7 +58,8 @@ class MoviesController extends Controller
     {
         $movie = Movies::find($movieID);
 
-        return view("admin.movie_edit", compact("movie"));
+        //return view("admin.movie_edit", compact("movie"));
+        return json_encode($movie);
     }
 
     public function update(Request $request, $movieID)

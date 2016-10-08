@@ -54,6 +54,6 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        {{ Form::submit('Update', ['class' => 'create-form btn btn-primary']) }}
+        {{ Form::submit('Update', ['class' => 'btn btn-primary']) }}
     </div>
 </div>
