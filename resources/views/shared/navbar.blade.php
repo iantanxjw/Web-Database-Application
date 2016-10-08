@@ -14,7 +14,7 @@
         <ul class="dropdown-menu" role="menu">
             <li><a href="{{ route('admin_movies.index') }}">Movie management</a></li>
             <li><a href="{{ route('admin_sessions.index') }}">Session management</a></li>
-            <li><a href="{{ route('admin_locations.index') }}">Location managment</a></li>
+            <li><a href="{{ route('admin_theatres.index') }}">Theatre managment</a></li>
             <li><a href="{{ route('admin_users.index') }}">User management</a></li>
         </ul>
     </li>

@@ -19,7 +19,7 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::open(array('route' => 'admin_locations.store','method'=>'POST')) !!}
+                {!! Form::open(array('route' => 'admin_theatres.store','method'=>'POST')) !!}
                 @include('admin.forms.theatre_form')
                 {!! Form::close() !!}
             </div>
@@ -64,7 +64,7 @@
                         <td>{{ $location->location }}</td>
                         <td>{{ $location->seats }}</td>
                         <td><a class="btn btn-primary show-edit" data-id="{{ $location->id }}">Edit</a>
-                            {!! Form::open(['method' => 'DELETE','route' => ['admin_locations.destroy', $location->id],'style'=>'display:inline']) !!}
+                            {!! Form::open(['method' => 'DELETE','route' => ['admin_theatres.destroy', $location->id],'style'=>'display:inline']) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                             {!! Form::close() !!}</td>
                     </tr>

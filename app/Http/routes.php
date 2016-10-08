@@ -30,7 +30,7 @@ Route::get("api_refresh", ["as" => "api_refresh", "uses" => "AdminController@api
 Route::post("updatedb", "AdminController@updateAPI");
 
 Route::resource('admin_sessions','SessionsController');
-Route::resource('admin_locations','TheatresController');
+Route::resource('admin_theatres','TheatresController');
 Route::resource('admin_users','UsersController');
 Route::resource('admin_movies','MoviesController');
 
