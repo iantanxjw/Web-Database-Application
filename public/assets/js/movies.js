@@ -9,12 +9,12 @@ $(function() {
             if(i==0) { $("#upcoming").append("<div class='row'>");}
             if (details.poster == null)
             {
-                $("#upcoming").append("<a class='col-sm-3 text-center UC_modalpop' href='#modal' name = '"+details.title+
+                $("#upcoming").append("<a class='col-sm-3 text-center modalPop' href='#modal' name = '"+details.title+
                     "'><p>Poster not available</p><h3>" + details.title +"</h3><br></a>");
             }
             else
             {
-                $("#upcoming").append("<a class='col-sm-3 text-center UC_modalPop' href='#modal' name='"+details.title+
+                $("#upcoming").append("<a class='col-sm-3 text-center modalPop' href='#modal' name='"+details.title+
                     "'><div class='polaroid'>" +
                     "<img class='img-responsive' src='" +
                     details.poster +
