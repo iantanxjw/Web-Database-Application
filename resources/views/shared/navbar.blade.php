@@ -12,10 +12,10 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="{{ route('admin_movies') }}">Movie management</a></li>
-            <li><a href="{{ route('admin_sessions') }}">Session management</a></li>
-            <li><a href="{{ route('admin_locations') }}">Location managment</a></li>
-            <li><a href="{{ route('admin_users') }}">User management</a></li>
+            <li><a href="{{ route('admin_movies.index') }}">Movie management</a></li>
+            <li><a href="{{ route('admin_sessions.index') }}">Session management</a></li>
+            <li><a href="{{ route('admin_locations.index') }}">Location managment</a></li>
+            <li><a href="{{ route('admin_users.index') }}">User management</a></li>
         </ul>
     </li>
 @endsection

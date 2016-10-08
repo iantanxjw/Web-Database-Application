@@ -6,64 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\ApiRequest;
-use App\User;
 use App\Movies;
 use App\Movie;
-use App\Session;
-use App\Theatre;
-use App\Booking;
 
 class AdminController extends Controller
 {
-    public function index()
-    {
-        return view("admin.panel");
-    }
-
-    public function movies()
-    {
-        $movies = Movies::all()->sortBy("title");
-        $movieObjects = [];
-
-        foreach($movies as $movie)
-        {
-            $movieObjects[] = new Movie(
-                $movie->id,
-                $movie->title,
-                $movie->desc,
-                $movie->release_date,
-                $movie->voteAvg,
-                $movie->status,
-                $movie->genre,
-                $movie->poster,
-                $movie->bg
-            );
-        }
-
-        return view("admin.movies", compact("movieObjects"));
-    }
-
-    public function sessions()
-    {
-        $sessions = Session::all();
-
-        return view("admin.sessions", compact("sessions"));
-    }
-
-    public function users()
-    {
-        $users = User::all();
-
-        return view("admin.users", compact("users"));
-    }
-
-    public function locations()
-    {
-        $locations = Theatre::all();
-
-        return view("admin.locations", compact("locations"));
-    }
-
     public function api_refresh()
     {
         // get all of the possible poster and bg sizes to pick from
