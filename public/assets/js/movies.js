@@ -15,7 +15,7 @@ $(function() {
             {
                 $("#upcoming").append("<a class='col-sm-3 text-center UC_modalPop' href='#modal' name='"+details.title+
                     "'><div class='polaroid'>" +
-                    "<img class='img-responsive' src='http://image.tmdb.org/t/p/w185/" +
+                    "<img class='img-responsive' src='" +
                     details.poster +
                     "'alt='poster'><div class='p_container'><p class='title_movies'>"+details.title+
                     "</p><p><span class='icon-calendar' ></span> "+details.release_date+"</p></div></div></a>");}
@@ -44,8 +44,7 @@ $(function() {
             {
                 $("#movies").append("<a class='col-sm-3 text-center modalPop' href='#modal' name='"+details.title+
                     "'><div class='polaroid'>" +
-                    "<img class='img-responsive' src='http://image.tmdb.org/t/p/w185/" +
-                    details.poster +
+                    "<img class='img-responsive' src='" +details.poster +
                     "'alt='poster'><div class='p_container'><p>"+details.title+"</p></div></div></a>");
             }
 
@@ -71,7 +70,7 @@ $(function() {
             $.each(movies, function(movie, details) {
                 if (details.title == title)
                 {
-                    $("#populate_modal").append("<img class='featurette-image pull-left' src='http://image.tmdb.org/t/p/w342/"+
+                    $("#populate_modal").append("<img class='featurette-image pull-left' src='"+
                 details.poster+"'>" +
                 "<h1 class='featurette-heading'>"+details.title+"</h1><p class='lead'>"+details.desc+"</p>" +
                         "<i class='lead fa fa-calendar'> Release Date: "+details.release_date+"</i>");
@@ -93,7 +92,7 @@ $(function() {
                 $.each(movies, function(movie, details) {
                     if (details.title == title)
                     {
-                        $("#populate_modal").append("<img class='featurette-image pull-left' src='http://image.tmdb.org/t/p/w185/"+
+                        $("#populate_modal").append("<img class='featurette-image pull-left' src='"+
                             details.poster+"'>" +
                             "<h1 class='featurette-heading'>"+details.title+"</h1><p class='lead'>"+details.desc+"</p>" +
                             "<i class='lead fa fa-calendar'> Release Date: "+details.release_date+"</i>");
