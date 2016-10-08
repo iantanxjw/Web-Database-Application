@@ -1,39 +1,52 @@
-@if (isset($success) && count($success) > 0)
+@if ($success = Session::get("success"))
     <div class="alert alert-success">
         <strong>Success</strong>
-        @foreach ($success as $s)
-            <p>{{ $s }}</p>
-        @endforeach
+        @if (is_array($success))
+            @foreach ($success as $s)
+                <p>{{ $s }}</p>
+            @endforeach
+        @elseif (is_object($success))
+            @foreach ($success->all() as $s)
+                <p>{{ $s }}</p>
+            @endforeach
+        @else
+            <p>{{ $success }}</p>
+        @endif
     </div>
 @endif
 
-@if (isset($update) && count($update) > 0)
+@if ($update = Session::get("update"))
     <div class="alert alert-info">
         <strong>Updated</strong>
-        @foreach ($update as $u)
-            <p>{{ $u }}</p>
-        @endforeach
+        @if (is_array($update))
+            @foreach ($update as $u)
+                <p>{{ $u }}</p>
+            @endforeach
+        @elseif (is_object($update))
+            @foreach ($update->all() as $u)
+                <p>{{ $u }}</p>
+            @endforeach
+        @else
+            <p>{{ $update }}</p>
+        @endif
     </div>
 @endif
 
-@if (isset($errors) && count($errors) > 0)
-    <div class="alert alert-warning">
-        <strong>Errors</strong>
-        @foreach ($errors as $e)
-            <p>{{ $e }}</p>
-        @endforeach
-    </div>
-@endif
-
-@if (isset($failure) && count($failure) > 0)
+@if ($errors = Session::get("errors"))
     <div class="alert alert-danger">
-        <strong>Failure</strong>
-        @foreach ($failure as $f)
-            <p>{{ $f }}</p>
-        @endforeach
+        <strong>Errors</strong>
+        @if (is_array($errors))
+            @foreach ($errors as $e)
+                <p>{{ $e }}</p>
+            @endforeach
+        @elseif (is_object($errors))
+            @foreach ($errors->all() as $e)
+                <p>{{ $e }}</p>
+            @endforeach
+        @else
+            <p>{{ $errors }}</p>
+        @endif
     </div>
 @endif
 
-<pre>
-    {{ var_dump(Session::all()) }}
-</pre>
+{{-- <pre>{{ var_dump(Session::all()) }}</pre> --}}

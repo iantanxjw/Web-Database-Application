@@ -18,16 +18,6 @@
                                     </div>
                                 </div>
                             </div>
-                            @if (count($errors) > 0)
-                                <div class="alert alert-danger">
-                                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
                             {!! Form::open(array('route' => 'admin_sessions.store','method'=>'POST')) !!}
                             @include('admin.forms.session_form')
                             {!! Form::close() !!}
@@ -35,11 +25,6 @@
 
                         <!-- end of create session section -->
 
-                        @if ($message = Session::get('success'))
-                            <div class="alert alert-success">
-                                <p>{{ $message }}</p>
-                            </div>
-                        @endif
                         <table class="admin_tables" align="center">
                             <tr>
                                 <th>ID</th>

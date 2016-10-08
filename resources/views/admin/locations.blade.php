@@ -19,26 +19,10 @@
                                     </div>
                                 </div>
                             </div>
-                            @if (count($errors) > 0)
-                                <div class="alert alert-danger">
-                                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
                             {!! Form::open(array('route' => 'admin_locations.store','method'=>'POST')) !!}
                             @include('admin.forms.theatre_form')
                             {!! Form::close() !!}
                         </div>
-
-                        @if ($message = Session::get('success'))
-                            <div class="alert alert-success">
-                                <p>{{ $message }}</p>
-                            </div>
-                        @endif
 
                         <!-- End of Create theatre div -->
 
