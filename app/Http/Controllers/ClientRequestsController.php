@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Movies;
+use App\Session;
 
-class ClientRequests extends Controller
+class ClientRequestsController extends Controller
 {
     public function ajax(Request $request)
     {
@@ -40,8 +41,7 @@ class ClientRequests extends Controller
         }
         else
         {
-            echo "nice try ya spaz";
-            return;
+            return "nice try ya spaz";
         }
 
         $json = [];
@@ -58,6 +58,99 @@ class ClientRequests extends Controller
                         "bg" => $movie->bg];
         }
 
-        echo json_encode($json);
+        return json_encode($json);
+    }
+
+    // get _exact_ movie by the id
+    public function getMovieByID(Request $request)
+    {
+        if (!isset($request->id))
+        {
+            return null;
+        }
+
+        $movie = Movies::find($request->id);
+
+        return json_encode($movie);
+    }
+
+    // get _exact_ movie by the title
+    public function getMovieByTitle(Request $request)
+    {
+        if (!isset($request->title))
+        {
+            return null;
+        }
+
+        $movie = Movies::where("title", $request->title)->first();
+
+        return json_encode($movie);
+    }
+
+    // get a bunch of movies similar to the title given - at least 3 chars
+    public function searchForMovies(Request $request)
+    {
+        if (!isset($request->title) || strlen($request->title) < 3)
+        {
+            return null;
+        }
+
+        $movies = Movies::where("title", "like", "%". strtolower($request->title) . "%")->get();
+        $json = [];
+
+        foreach ($movies as $movie)
+        {
+            $json[] = [
+                "id" => $movie->id,
+                "title" => $movie->title,
+                "desc" => $movie->desc,
+                "release_date" => $movie->release_date,
+                "voteAvg" => $movie->voteAvg,
+                "genre" => $movie->genre,
+                "poster" => $movie->poster,
+                "bg" => $movie->bg
+            ];
+        }
+
+        return json_encode($json);
+    }
+
+    public function getMovieIDSessions(Request $request)
+    {
+        if (!isset($request->id))
+        {
+            return null;
+        }
+
+        $movie = Movies::find($request->id);
+
+        if (!isset($movie))
+        {
+            return "Couldn't find movie with the id: " . $request->id;
+        }
+
+        $sessions = Session::where("mv_id", $movie->id)->get();
+
+        return json_encode($sessions);
+    }
+
+    // get sessions for movie by _exact_ title
+    public function getMovieTitleSessions(Request $request)
+    {
+        if (!isset($request->title))
+        {
+            return null;
+        }
+
+        $movie = Movies::where("title", $request->title)->get();
+
+        if (!isset($movie))
+        {
+            return "Couldn't find movie with the title: " . $request->title;
+        }
+
+        $sessions = Session::where("mv_id", $movie->id)->get();
+
+        return json_encode($sessions);
     }
 }

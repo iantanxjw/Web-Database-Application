@@ -35,4 +35,8 @@ Route::resource('admin_users','UsersController');
 Route::resource('admin_movies','MoviesController');
 
 // AJAX requests
-Route::get("api_request", "ClientRequests@ajax");
+Route::get("api_request", "ClientRequestsController@ajax");
+Route::get("movieid", "ClientRequestsController@getMovieByID");
+Route::get("movietitle", "ClientRequestsController@getMovieByTitle");
+Route::get("searchmovies", "ClientRequestsController@searchForMovies");
+Route::get("moviesessions", "ClientRequestsController@getMovieSessions");
