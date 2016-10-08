@@ -1,44 +1,76 @@
 @extends('layouts.master')
 @section('title', 'Manage Users')
 @section('content')
-    <div class="container">
-                <div class="panel panel-default">
-                    <div class="panel-heading">User Management</div>
-                    <div class="panel-body">
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">User Management</div>
+        <div class="panel-body">
 
-                        @if ($message = Session::get('success'))
-                            <div class="alert alert-success">
-                                <p>{{ $message }}</p>
-                            </div>
-                        @endif
-
-                        <!-- Start of edit theare div -->
-
-                        <!-- End of edit theatre div -->
-
-                        <!--Table showing content -->
-                        <table class="admin_tables" align="center">
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Password</th>
-                                <th>Action</th>
-                            </tr>
-                            @foreach($users as $user)
-                                <tr>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    {{-- HOW TO BREAK USER SECURITY LOLOLOLOL --}}
-                                    <td>{{ $user->password }}</td>
-                                    <td><a class="btn btn-primary" href="{{ route('admin_users.edit',$user->id) }}">Edit</a>
-                                        {!! Form::open(['method' => 'DELETE','route' => ['admin_users.destroy', $user->id],'style'=>'display:inline']) !!}
-                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                        {!! Form::close() !!}</td>
-                                </tr>
-                            @endforeach
-                        </table>
+            {{-- Add a user form --}}
+            <div class="create-form">
+                <div class="row">
+                    <div class="col-lg-12 margin-tb">
+                        <div class="pull-left">
+                            <h2>Add New User</h2>
+                        </div>
+                        <div class="pull-right">
+                            <a class="btn btn-primary create-back" href="#back"> Back</a>
+                        </div>
                     </div>
                 </div>
+                {{ Form::open(['route' => 'admin_users.store', 'method' => 'POST']) }}
+                    @include('admin.forms.user_form')
+                {{ Form::close() }}
+            </div>
+
+            {{-- Edit user form --}}
+            <div class="edit-form">
+                <div class="row">
+                    <div class="col-lg-12 margin-tb">
+                        <div class="pull-left">
+                            <h2>Editing</h2>
+                        </div>
+                        <div class="pull-right"><a href="#back" class="btn btn-primary create-back">Back</a>
+                        </div>
+                    </div>
+                    {{-- need to define form manually --}}
+                    <form method="POST">
+                        <input type="hidden" name="_method" value="PATCH">
+                        <input type="hidden" name="_token"
+                        value={{ csrf_token() }}>
+                        @include('admin.forms.user_form');
+                    </form>
+                </div>
+            </div>
+
+            <!--Table showing content -->
+            <table class="admin_tables" align="center">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Admin</th>
+                    <th>Action</th>
+                </tr>
+                @foreach($users as $user)
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        {{-- HOW TO BREAK USER SECURITY LOLOLOLOL --}}
+                        <td>{{ $user->password }}</td>
+                        <td>{{ $user->admin }}</td>
+                        <td><a class="btn btn-primary show-edit" data-id="{{ $user->id }}">Edit</a>
+                            {!! Form::open(['method' => 'DELETE','route' => ['admin_users.destroy', $user->id],'style'=>'display:inline']) !!}
+                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                            {!! Form::close() !!}</td>
+                    </tr>
+                @endforeach
+            </table>
+            <div class = "create_button">
+                <a class="btn btn-success show-form" href="#create"> Create New User</a>
+            </div>
+        </div>
     </div>
+</div>
 
 @endsection
