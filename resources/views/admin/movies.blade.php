@@ -36,9 +36,6 @@
                     <div class="pull-right"><a href="#back" class="btn btn-primary create-back">Back</a>
                     </div>
                 </div>
-                {{-- {{ Form::model($movie, ['route' => ['admin_movies.update', $movie->id], 'method' => 'PATCH']) }}
-                    @include('admin.forms.movie_form')
-                {{ Form::close() }} --}}
                 {{-- need to define form manually --}}
                 <form method="POST">
                     <input type="hidden" name="_method" value="PATCH">
