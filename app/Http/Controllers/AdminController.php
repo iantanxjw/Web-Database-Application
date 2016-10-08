@@ -87,6 +87,6 @@ class AdminController extends Controller
         $request->session()->flash("errors", $failure);
         $request->session()->flash("success", $success);
 
-        return view("admin.panel");
+        return redirect()->route("admin_movies.index");
     }   
 }
