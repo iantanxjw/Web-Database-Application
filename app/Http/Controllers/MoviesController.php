@@ -34,11 +34,6 @@ class MoviesController extends Controller
         return view("admin.movies", compact("movieObjects"));
     }
 
-    public function create()
-    {
-
-    }
-
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -81,9 +76,9 @@ class MoviesController extends Controller
     {
         /* delete any rows with the foreign key $movieID BEFORE
             trying to delete the row in the parent table */
-        foreach(Session::where("mv_id", $movieID)->get() as $session)
+        foreach (Session::where("mv_id", $movieID)->get() as $session)
         {
-            Session::find($session->id)->delete();
+            $session->delete();
         }
 
         Movies::find($movieID)->delete();
