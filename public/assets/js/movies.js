@@ -13,7 +13,7 @@ $(function() {
             }
             else
             {
-                $("#upcoming").append("<a class='col-sm-3 text-center UC_modalPop' href='#modal' name='"+details.title+
+                $("#upcoming").append("<a class='col-xs-3 text-center UC_modalPop' href='#modal' name='"+details.title+
                     "'><div class='polaroid'>" +
                     "<img class='img-responsive' src='http://image.tmdb.org/t/p/w185/" +
                     details.poster +
