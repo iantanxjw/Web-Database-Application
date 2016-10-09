@@ -26,6 +26,11 @@ class ApiRequest extends Model
         $this->setGenres();
     }
 
+    public function getGenres()
+    {
+        return $this->genres;
+    }
+
     public function setUrl($url)
     {
         if (!isset($url) || $url === "")
