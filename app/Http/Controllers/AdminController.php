@@ -6,72 +6,28 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\ApiRequest;
-use App\User;
 use App\Movies;
 use App\Movie;
-use App\Session;
-use App\Theatre;
-use App\Booking;
 
 class AdminController extends Controller
 {
-    public function index()
-    {
-        return view("admin.panel");
-    }
-
-    public function movies()
-    {
-        $movies = Movies::all()->sortBy("title");
-        $movieObjects = [];
-
-        foreach($movies as $movie)
-        {
-            $movieObjects[] = new Movie(
-                $movie->id,
-                $movie->title,
-                $movie->desc,
-                $movie->release_date,
-                $movie->voteAvg,
-                $movie->status,
-                $movie->genre,
-                $movie->poster,
-                $movie->bg
-            );
-        }
-
-        return view("admin.movies", compact("movieObjects"));
-    }
-
-    public function sessions()
-    {
-        $sessions = Session::all();
-
-        return view("admin.sessions", compact("sessions"));
-    }
-
-    public function users()
-    {
-        $users = User::all();
-
-        return view("admin.users", compact("users"));
-    }
-
-    public function locations()
-    {
-        $locations = Theatre::all();
-
-        return view("admin.locations", compact("locations"));
-    }
-
     public function api_refresh()
     {
-        return view("admin.api_refresh");
+        // get all of the possible poster and bg sizes to pick from
+        $json = file_get_contents(config("tmdb.api.config_url") . "?api_key=" . config("tmdb.api.key"));
+        $data = json_decode($json);
+
+        //return var_dump($data);
+
+        return view("admin.api_refresh", [
+            "backdrop_sizes" => $data->images->backdrop_sizes,
+            "poster_sizes" => $data->images->poster_sizes
+        ]);
     }
 
     public function updateAPI(Request $request)
     {
-        $apiRequest = new ApiRequest(config("tmdb.api.url"), $request->input("api") . "?");
+        $apiRequest = new ApiRequest(config("tmdb.api.url"), $request->input("api") . "?", null, null, $request->postersize, $request->bgsize);
         $movies = $apiRequest->request($request->input("type"));
 
         $success = [];
@@ -105,13 +61,15 @@ class AdminController extends Controller
                 if ($movie->getVars() !== $dbMovie->getVars())
                 {
                     // they differ so update with new cols
-                    $result->update($movie->getVars());//->save();
+                    $result->update($movie->getVars());
                     $update[] = $movie->getTitle();
+                    
                 }
                 else
                 {
                     // values don't differ so don't update
                     $failure[] = $movie->getTitle();
+                    
                 }
             }
             else
@@ -119,9 +77,16 @@ class AdminController extends Controller
                 // FML THIS IS ASSOCIATIVE NOT ORDERED
                 Movies::create($movie->getVars());
                 $success[] = $movie->getTitle();
+                
             }
         }
 
-        return view("admin.panel", compact("success", "failure", "update"));
+        /* use flash so that the data is only kept for the next 
+            http request then deleted on the next request */
+        $request->session()->flash("update", $update);
+        $request->session()->flash("errors", $failure);
+        $request->session()->flash("success", $success);
+
+        return redirect()->route("admin_movies.index");
     }   
 }

@@ -1,32 +1,59 @@
 <div class="row">
-    <!-- Text field for theatre number -->
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Theatre number</strong>
-            {!! Form::text('theatre_num', null, array('placeholder' => '123','class' => 'form-control')) !!}
+            {{ Form::label('id', 'ID:') }}
+            {{ Form::text('id') }}
         </div>
     </div>
-
-    <!-- Text field for location name  -->
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <!-- duration could get from movie time? --->
-            <strong>Location</strong>
-            {!! Form::text('location', null, array('placeholder' => 'The moon','class' => 'form-control')) !!}
+            {{ Form::label('title', 'Title:') }}
+            {{ Form::text('title') }}
         </div>
     </div>
-
-    <!-- Text field for Number of seats  -->
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <!-- duration could get from movie time? --->
-            <strong>Number of seats</strong>
-            {!! Form::text('seats', null, array('placeholder' => '0','class' => 'form-control')) !!}
+            {{ Form::label('desc', 'Overview:') }}
+            {{ Form::text('desc') }}
         </div>
     </div>
-
-    <!-- Submit button for form -->
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            {{ Form::label('rel', 'Release date:') }}
+            {{ Form::text('release_date') }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            {{ Form::label('vote', 'Vote average:') }}
+            {{ Form::number('voteAvg') }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            {{ Form::label('status', 'Status:') }}
+            {{ Form::text('status') }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            {{ Form::label('genre', 'Genre:') }}
+            {{ Form::text('genre') }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            {{ Form::label('poster', 'Poster:') }}
+            {{ Form::text('poster') }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            {{ Form::label('bg', 'Background:') }}
+            {{ Form::text('bg') }}
+        </div>
+    </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        {{ Form::submit('Update', ['class' => 'btn btn-primary']) }}
     </div>
 </div>

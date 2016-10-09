@@ -1,11 +1,5 @@
-const CAROUSEL_LIMIT = 10;
-const BACKDROP_URL = "http://image.tmdb.org/t/p/h632/";
-
-// loaded in footer so no need to use document.ready()
-// no longer exposes api key
 $.get("api_request", {type: "popular", limit: 10}, function(movies) {
-
-    var movieCount = movies.length;
+    
     var items = [];
     var dots = [];
 
@@ -20,7 +14,7 @@ $.get("api_request", {type: "popular", limit: 10}, function(movies) {
         });
         var img = $("<img>", {
             class: "img-responsive",
-            src: BACKDROP_URL + details.bg,
+            src: details.bg,
             alt: "backdrop"
         });
         var title = $("<div>", {

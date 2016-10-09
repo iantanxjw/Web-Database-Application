@@ -535,11 +535,11 @@ div.navbar-collapse.collapse
 
 /********sessions ***************/
 
-div#create-session{
+div.create-form {
     display: none;
 }
 
-div#create-theatre{
+div.edit-form {
     display: none;
 }
 
