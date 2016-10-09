@@ -43,7 +43,18 @@ $(function() {
         $.get(url + "/" + $(this).data("id") + "/edit", function(data) {
             
             $.each(data, function(k, v) {
-                $(".edit-form input[name=" + k).val(v);
+
+                if (k === "genre")
+                {
+                    // select all options matching the movie genre string
+                    $.each(v.split(", "), function(index, substr) {
+                        $(".edit-form select option[value=" + substr).prop("selected", true);
+                    });
+                }
+                else
+                {
+                    $(".edit-form input[name=" + k).val(v);
+                }
             });
         }, "json");
 

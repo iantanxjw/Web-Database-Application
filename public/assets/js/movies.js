@@ -9,13 +9,13 @@ $(function() {
             if(i==0) { $("#upcoming").append("<div class='row'>");}
             if (details.poster == null)
             {
-                $("#upcoming").append("<a class='col-sm-3 text-center modalPop' href='#modal' name = '"+details.title+
+                $("#upcoming").append("<a class='col-sm-3 text-center modalPop' href='#modal' data-id='" + details.id + "' name = '"+details.title+
                     "'><p>Poster not available</p><h3>" + details.title +"</h3><br></a>");
             }
             else
             {
 
-                $("#upcoming").append("<a class='col-sm-3 text-center modalPop' href='#modal' name='"+details.title+
+                $("#upcoming").append("<a class='col-sm-3 text-center modalPop' href='#modal' data-id='" + details.id + "' name='"+details.title+
                     "'><div class='polaroid'>" +
                     "<img class='img-responsive' src='" +
                     details.poster +
@@ -67,7 +67,6 @@ $(function() {
     // modal click
     $(document).on("click", ".modalPop", function() {
         $("#populate_modal").html("<div class='featurette'><div class='row'>");
-        console.log($(this).data("id"));
 
         mv_id = $(this).data("id");
 

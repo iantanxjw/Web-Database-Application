@@ -39,30 +39,15 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            {{ Form::label('genre', 'Genre:') }}
-            {{ Form::select('genre', array(
-            '28' => 'Action',
-             '28' => 'Adventure',
-             '12' => 'Action',
-             '16' => 'Animation',
-             '35' => 'Comedy',
-             '80' => 'Crime',
-             '99' => 'Documentary',
-             '18' => 'Drama',
-             '10751' => 'Family',
-             '14' => 'Fantasy',
-             '36' => 'History',
-             '27' => 'Horror',
-             '10402' => 'Music',
-             '9648' => 'Mystery',
-             '10749' => 'Romance',
-             '878' => 'Science Fiction',
-             '10770' => 'TV Movie',
-             '53' => 'Thriller',
-             '10752' => 'War',
-             '37' => 'Western'
-            ),null, array('class' => 'form-control', 'autocomplete' => 'on', 'onfocus'=> 'this.size=10;',
-            'onblur' => 'this.size=1;', 'onchange' => 'this.size=1; this.blur();')) }}
+            {{ Form::label('genre[]', 'Genre:') }}
+            {{-- Genre needs to be an array to send multiple selections--}}
+            {{ Form::select('genre[]', $gnrs, null, [
+                'multiple' => true,
+                'class' => 'form-control',
+                'autocomplete' => 'on',
+                'onfocus'=> 'this.size=10;',
+                'onblur' => 'this.size=1;'
+            ])}}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
