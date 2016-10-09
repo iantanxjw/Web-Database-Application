@@ -1,9 +1,15 @@
 @extends('layouts.master')
 @section('title', 'Movie management')
 @section('content')
+    <div class="container">
                 <div class="panel panel-default">
                     <div class="panel-heading">Movies Management</div>
                     <div class="panel-body">
+
+
+                        <div class = "create_button">
+                            <a class="btn btn-success create-form" href="#create"> Create New Theatre</a>
+                        </div>
 
                         @if ($message = Session::get('success'))
                             <div class="alert alert-success">
@@ -27,8 +33,8 @@
                             @foreach ($movieObjects as $movie)
                                 <tr>
                                     <td>{{ $movie->getID() }}</td>
-                                    <td>{{ $movie->getTitle() }}</td>
-                                    <td>{{ $movie->getDescription() }}</td>
+                                    <td style="width:150px">{{ $movie->getTitle() }}</td>
+                                    <td style="width:250px">{{ $movie->getDescription() }}</td>
                                     <td>{{ $movie->getReleaseDate() }}</td>
                                     <td>{{ $movie->getVoteAvg() }}</td>
                                     <td>{{ $movie->getStatus() }}</td>
@@ -41,8 +47,10 @@
                                             {{ $movie->getGenre() }}
                                         @endif
                                     </td>
-                                    <td>{{ $movie->getPoster() }}</td>
-                                    <td>{{ $movie->getBackground() }}</td>
+                                    <td style="width:150px; word-wrap: break-word;word-break: break-all;table-layout: fixed;">
+                                        {{ $movie->getPoster() }}</td>
+                                    <td style="width:150px; word-wrap: break-word;word-break: break-all;table-layout: fixed;">
+                                        {{ $movie->getBackground() }}</td>
                                     <td><a class="btn btn-primary" href="{{ route('admin_movies.edit',$movie->id) }}">Edit</a>
                                         {!! Form::open(['method' => 'DELETE','route' => ['admin_movies.destroy', $movie->id],'style'=>'display:inline']) !!}
                                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
@@ -50,11 +58,9 @@
                                 </tr>
                             @endforeach
                         </table>
-
-                        <div class = "create_button">
-                            <a class="btn btn-success create-form" href="#create"> Create New Theatre</a>
-                        </div>
                     </div>
                 </div>
+    </div>
+
 
 @endsection
