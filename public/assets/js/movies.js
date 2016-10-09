@@ -66,7 +66,6 @@ $(function() {
     // modal click
     $(document).on("click", ".modalPop", function() {
         $("#populate_modal").html("<div class='featurette'><div class='row'>");
-        console.log($(this).data("id"));
 
         $.get("movieid", {id: $(this).data("id")}, function(movie) {
             
