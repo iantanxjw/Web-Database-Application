@@ -26,7 +26,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             {{ Form::label('vote', 'Vote average:') }}
-            {{ Form::number('voteAvg', null, array('placeholder' => 'vote average / 10',
+            {{ Form::number('voteAvg', null, array('placeholder' => 'Enter vote average / 10',
             'class' => 'form-control','min' => '0', 'max'=>'10' )) }}
         </div>
     </div>

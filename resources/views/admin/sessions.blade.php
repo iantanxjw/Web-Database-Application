@@ -14,7 +14,7 @@
                             <h2>Add New Session</h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-primary create-back" href="#back"> Back</a>
+                            <a class="btn btn-primary create-back" href="{{ route('admin_sessions.index') }}"> Back</a>
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                         <div class="pull-left">
                             <h2>Editing</h2>
                         </div>
-                        <div class="pull-right"><a href="#back" class="btn btn-primary create-back">Back</a>
+                        <div class="pull-right"><a href="{{ route('admin_sessions.index') }}" class="btn btn-primary create-back">Back</a>
                         </div>
                     </div>
                     {{-- need to define form manually --}}
@@ -48,6 +48,7 @@
             <table class="admin_tables" align="center">
                 <tr>
                     <th>ID</th>
+                    <th>Weekday</th>
                     <th>Start time</th>
                     <th>Duration</th>
                     <th>No. bookings</th>
@@ -58,6 +59,7 @@
                 @foreach ($sessions as $session)
                     <tr>
                         <td>{{ $session->id }}</td>
+                        <td>{{ $session->weekday }}</td>
                         <td>{{ $session->start_time }}</td>
                         <td>{{ $session->duration }}</td>
                         <td>{{ $session->num_bookings }}</td>

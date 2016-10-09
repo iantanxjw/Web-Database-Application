@@ -37,6 +37,7 @@ class SessionsController extends Controller
             "start_time" => 'required',
             "duration" => 'required',
             "num_bookings" => 'required',
+            "weekday" => 'required',
             "mv_id" => 'required',
             "t_id" => 'required',
         ]);
@@ -51,6 +52,7 @@ class SessionsController extends Controller
             "start_time" => 'required',
             "duration" => 'required',
             "num_bookings" => 'required',
+            "weekday" => 'required',
             "mv_id" => 'required',
             "t_id" => 'required',
         ]);
@@ -70,4 +72,5 @@ class SessionsController extends Controller
 
         return json_encode($sessions);
     }
+
 }

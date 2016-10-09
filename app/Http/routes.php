@@ -39,5 +39,6 @@ Route::get("api_request", "ClientRequestsController@ajax");
 Route::get("movieid", "ClientRequestsController@getMovieByID");
 Route::get("movietitle", "ClientRequestsController@getMovieByTitle");
 Route::get("searchmovies", "ClientRequestsController@searchForMovies");
-Route::get("moviesessions", "ClientRequestsController@getMovieSessions");
+Route::get("movieidsessions", "ClientRequestsController@getMovieTitleSessions");
 Route::get("theatresessions", "ClientRequestsController@getSessionsAtTheatre");
+Route::get("theatres_available", "ClientRequestsController@getTheatres");

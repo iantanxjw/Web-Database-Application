@@ -17,6 +17,7 @@ class CreateSessionsTable extends Migration
             $table->string('start_time');
             $table->string('duration');
             $table->integer('num_bookings');
+            $table->string('weekday');
             $table->string('mv_id');
             // artisan will have a whinge about malformed
             // foreign keys if you don't use unsigned() on int

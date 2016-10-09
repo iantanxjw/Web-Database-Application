@@ -14,7 +14,7 @@
                             <h2>Add New User</h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-primary create-back" href="#back"> Back</a>
+                            <a class="btn btn-primary create-back" href="{{ route('admin_users.index') }}"> Back</a>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                         <div class="pull-left">
                             <h2>Editing</h2>
                         </div>
-                        <div class="pull-right"><a href="#back" class="btn btn-primary create-back">Back</a>
+                        <div class="pull-right"><a href="{{ route('admin_users.index') }}" class="btn btn-primary create-back">Back</a>
                         </div>
                     </div>
                     {{-- need to define form manually --}}

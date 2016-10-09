@@ -33,7 +33,6 @@ $(function() {
 
     // showing tab
     $.get("api_request", {type: "showing"}, function(movies) {
-
         i = 0;
         $.each(movies, function(movie, details) {
             if(i==0) { $("#movies").append("<div class='row'>");}
@@ -63,13 +62,17 @@ $(function() {
 
     }, "json");
 
+    var mv_id;
+
     // modal click
     $(document).on("click", ".modalPop", function() {
         $("#populate_modal").html("<div class='featurette'><div class='row'>");
         console.log($(this).data("id"));
 
-        $.get("movieid", {id: $(this).data("id")}, function(movie) {
-            
+        mv_id = $(this).data("id");
+
+        $.get("movieid", {id: mv_id}, function(movie) {
+
             $("#populate_modal").append("<img class='featurette-image pull-left' src='" + movie.poster + "'>");
             $("#populate_modal").append("<h1 class='featurette-heading'>"+movie.title+"</h1><p class='lead'>"+movie.desc+"</p>");
             $("#populate_modal").append("<i class='lead fa fa-calendar'> Release Date: "+movie.release_date+"</i></div></div>");

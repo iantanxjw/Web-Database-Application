@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Movies;
 use App\Session;
+use App\Theatre;
+
 
 class ClientRequestsController extends Controller
 {
@@ -58,6 +60,21 @@ class ClientRequestsController extends Controller
                         "bg" => $movie->bg];
         }
 
+        return json_encode($json);
+    }
+
+    public function getTheatres()
+    {
+        $theatres = null;
+        $json = [];
+
+        foreach ($theatres as $theatre)
+        {
+            $json[] = ["id" => $theatre->id,
+                "theatre_num" => $theatre->theatre_num,
+                "location" => $theatre->location,
+                "seats" => $theatre->seats];
+        }
         return json_encode($json);
     }
 
@@ -173,4 +190,6 @@ class ClientRequestsController extends Controller
 
         return json_encode($sessions);
     }
+
+    //get locations into a list and then and then
 }
