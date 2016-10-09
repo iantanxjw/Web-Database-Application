@@ -13,6 +13,7 @@ class ApiRequest extends Model
     private $bgSize;
     private $request_type;
     private $options;
+    private $genres;
 
     public function __construct($url = null, $request_type = null, $options = null, $imgUrl = null, $posterSize = null, $bgSize = null)
     {
@@ -22,6 +23,7 @@ class ApiRequest extends Model
         $this->setImgUrl($imgUrl);
         $this->setPosterSize($posterSize);
         $this->setBgSize($bgSize);
+        $this->setGenres();
     }
 
     public function setUrl($url)
@@ -100,6 +102,13 @@ class ApiRequest extends Model
         $this->options["language"] = config("tmdb.api.default_language");
     }
 
+    // calls the api for genre ids and names
+    private function setGenres()
+    {
+        $json = file_get_contents(config("tmdb.api.genre_url") . "?api_key=" . config("tmdb.api.key"));
+        $this->genres = json_decode($json)->genres;
+    }
+
     // returns an array of movie objects
     public function request($requestType)
     {
@@ -111,6 +120,9 @@ class ApiRequest extends Model
         // now populate with relevant bs
         foreach ($data->results as $result)
         {
+            // get the names from genre ids
+            $genre = $this->getGenreNames($result->genre_ids);
+
             // create a movie object and dump it into an array of movies
             // if poster or bg aren't set they're set as null
             $movies[] = new Movie(
@@ -120,12 +132,32 @@ class ApiRequest extends Model
                 $result->release_date,
                 $result->vote_average,
                 strtolower($requestType),
-                $result->genre_ids,
+                $genre,
                 isset($result->poster_path) ? $this->imgUrl . $this->posterSize . $result->poster_path : null,
                 isset($result->backdrop_path) ? $this->imgUrl . $this->bgSize . $result->backdrop_path : null
             );
         }
 
         return $movies;
+    }
+
+    // returns a comma delim string
+    private function getGenreNames($idArray)
+    {
+        $genreString = "";
+
+        foreach ($this->genres as $index)
+        {
+            foreach ($idArray as $genreID)
+            {
+                if ($index->id === $genreID)
+                {
+                    $genreString .= $index->name . ", ";
+                }
+            }
+        }
+
+        // remove trailing comma and space
+        return substr($genreString, 0, -2);
     }
 }
