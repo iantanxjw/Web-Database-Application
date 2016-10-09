@@ -39,8 +39,9 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            {{ Form::label('genre', 'Genre:') }}
-            {{ Form::select('genre', $gnrs, null, [
+            {{ Form::label('genre[]', 'Genre:') }}
+            {{-- Genre needs to be an array to send multiple selections--}}
+            {{ Form::select('genre[]', $gnrs, null, [
                 'multiple' => true,
                 'class' => 'form-control',
                 'autocomplete' => 'on',

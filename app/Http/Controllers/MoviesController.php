@@ -57,6 +57,9 @@ class MoviesController extends Controller
             "status" => "required",
         ]);
 
+        /* use offsetSet to modify requests
+            genre is an array so implode it make it a comma delim string */
+        $request->offsetSet("genre", implode(", ", $request->genre));
         Movies::create($request->all());
 
         return redirect()->route("admin_movies.index")->with("success", $request->title . " added successfully");
@@ -79,6 +82,7 @@ class MoviesController extends Controller
             "status" => "required",
         ]);
 
+        $request->offsetSet("genre", implode(", ", $request->genre));
         Movies::find($movieID)->update($request->all());
 
         return redirect()->route("admin_movies.index")->with("success", $movieID . " updated successfully");
