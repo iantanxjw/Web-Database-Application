@@ -14,11 +14,8 @@ $(function() {
             }
             else
             {
-<<<<<<< HEAD
-                $("#upcoming").append("<a class='col-xs-3 text-center UC_modalPop' href='#modal' name='"+details.title+
-=======
+
                 $("#upcoming").append("<a class='col-sm-3 text-center modalPop' href='#modal' name='"+details.title+
->>>>>>> 258f168217f6d3ed981ea71d363b99213d06d46b
                     "'><div class='polaroid'>" +
                     "<img class='img-responsive' src='" +
                     details.poster +
