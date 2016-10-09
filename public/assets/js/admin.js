@@ -65,30 +65,30 @@ $(function() {
 
     //Create drop down options for creating sessions for now showing movies
     $.get("api_request", {type: "showing"}, function(movies) {
+        if (movies==0)
+        {
+            $(".session_movie_list_NA").html('<p>No movies available in the database</p>');
+            return;
+        }
 
         $.each(movies, function(movie, details) {
-            if (movies == null)
-            {
-                $(".session_movie_list").append("<p>No theatres in the database</p>");
-                return;
-            }
             $(".session_movie_list").append('<option value="'+details.id+'">'+details.title+'</option>');
         })
 
     }, "json");
 
     //Create drop down options for creating sessions for Theatres available
-    $.get("theatres_available", {} ,function(theatres) {
-        console.log("it works");
+    $.get("theatres_available" ,function(theatres) {
+
+        if (theatres==0)
+        {
+            $(".session_theatre_list_NA").html('<p>No theatres available in the database</p>');
+            return;
+        }
         $.each(theatres, function(theatre, details) {
-            if (theatre.length === 0)
-            {
-                $(".session_theatre_list").append("No theatres in the database");
-                return;
-            }
             $(".session_theatre_list").append('<option value="'+details.id+'">Location: '+details.location+
-                ' Theatre no.:'+details.theatre_num+'</option>');
-        })
+                '  Theatre number: '+details.theatre_num+'</option>');
+        });
 
     }, "json");
 

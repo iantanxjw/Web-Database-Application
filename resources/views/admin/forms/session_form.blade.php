@@ -38,16 +38,21 @@
 <div class="form-group">
 <!-- Needs validation -->
 <strong>Movie id: </strong>
-    <select class="form-control session_movie_list" autocomplete="on" name="mv_id"
-            onfocus="this.size = 10" onblur="this.size=1" onchange="this.size=1, this.blur();"></select>
+    <div class="session_movie_list_NA">
+        <select class="form-control session_movie_list" autocomplete="on" name="mv_id"
+                onfocus="this.size = 10" onblur="this.size=1" onchange="this.size=1, this.blur();"></select>
+    </div>
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="form-group">
 <!-- Needs validation -->
 <strong>Theatre id: </strong>
-    <select class="form-control session_theatre_list" autocomplete="on" name="t_id"
-            onfocus="this.size = 5" onblur="this.size=1" onchange="this.size=1, this.blur();"></select>
+    <div class="session_theatre_list_NA">
+        <select class="form-control session_theatre_list" autocomplete="on" name="t_id"
+                onfocus="this.size = 5" onblur="this.size=1" onchange="this.size=1, this.blur();"></select>
+    </div>
+
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
