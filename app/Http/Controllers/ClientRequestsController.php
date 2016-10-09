@@ -65,7 +65,7 @@ class ClientRequestsController extends Controller
 
     public function getTheatres()
     {
-        $theatres = null;
+        $theatres = Theatre::all();
         $json = [];
 
         foreach ($theatres as $theatre)
