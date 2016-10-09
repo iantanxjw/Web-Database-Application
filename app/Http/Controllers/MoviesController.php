@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Movies;
 use App\Movie;
 use App\Session;
+use App\ApiRequest;
 
 class MoviesController extends Controller
 {
@@ -31,7 +32,19 @@ class MoviesController extends Controller
             );
         }
 
-        return view("admin.movies", compact("movieObjects"));
+        // null api request fpurely for genres;
+        $apir = new ApiRequest();
+        $genres = $apir->getGenres();
+        $gnrs = [];
+
+        /* loop through the genres as set the key as the name 
+            and value as the name (for select box) */
+        foreach ($genres as $genre)
+        {
+            $gnrs[$genre->name] = $genre->name;
+        }
+
+        return view("admin.movies", compact("movieObjects", "gnrs"));
     }
 
     public function store(Request $request)
