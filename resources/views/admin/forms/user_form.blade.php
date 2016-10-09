@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Name</strong>
-            {!! Form::text('name', null, array('placeholder' => '123','class' => 'form-control')) !!}
+            {!! Form::text('name', null, array('placeholder' => 'Enter Name','class' => 'form-control')) !!}
         </div>
     </div>
 
@@ -12,7 +12,7 @@
         <div class="form-group">
             <!-- duration could get from movie time? -->
             <strong>Email</strong>
-            {!! Form::text('email', null, array('placeholder' => 'The moon','class' => 'form-control')) !!}
+            {!! Form::email('email', null, array('placeholder' => 'Enter Email','class' => 'form-control')) !!}
         </div>
     </div>
 
