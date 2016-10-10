@@ -186,15 +186,17 @@ class ClientRequestsController extends Controller
     public function getLocationsForMovie(Request $request)
     {
         $json = [];
+
         if (!isset($request->m_id))
         {
             return null;
         }
 
         $location_id = Session::where("mv_id", $request->m_id)->get();
+
         foreach ($location_id as $id)
         {
-            $location = Theatre::where("id",  $id->t_id);
+            $location = Theatre::find($id->t_id);
             $json[] = [
                 "id" => $id->t_id,
                 "location" => $location->location
