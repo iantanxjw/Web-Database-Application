@@ -16,17 +16,23 @@ class ClientRequestsController extends Controller
     {
         $movies = null;
         $limit = 20; // hard coded for now need to find a better way
+        $voteAvg = 6;
 
         if (isset($request->limit) && !empty($request->limit))
         {
             $limit = $request->limit;
         }
 
+        if (isset($request->voteAvg) && !empty($request->voteAvg))
+        {
+            $voteAvg = $request->voteAvg;
+        }
+
         // some basic security - prevent users from injecting ajax requests
         if ($request->type === "popular")
         {
             // only get movies for the carousel that have a background
-            $movies = Movies::where("voteAvg", ">=", 6)
+            $movies = Movies::where("voteAvg", ">=", $voteAvg)
                             ->where("status", "showing")
                             ->whereNotNull("bg")
                             ->inRandomOrder()
@@ -50,14 +56,16 @@ class ClientRequestsController extends Controller
 
         foreach ($movies as $movie)
         {
-            $json[] = ["id" => $movie->id,
-                        "title" => $movie->title,
-                        "desc" => $movie->desc,
-                        "release_date" => $movie->release_date,
-                        "voteAvg" => $movie->voteAvg,
-                        "genre" => $movie->genre,
-                        "poster" => $movie->poster,
-                        "bg" => $movie->bg];
+            $json[] = [
+                "id" => $movie->id,
+                "title" => $movie->title,
+                "desc" => $movie->desc,
+                "release_date" => $movie->release_date,
+                "voteAvg" => $movie->voteAvg,
+                "genre" => $movie->genre,
+                "poster" => $movie->poster,
+                "bg" => $movie->bg
+            ];
         }
 
         return json_encode($json);
@@ -186,15 +194,17 @@ class ClientRequestsController extends Controller
     public function getLocationsForMovie(Request $request)
     {
         $json = [];
+
         if (!isset($request->m_id))
         {
             return null;
         }
 
         $location_id = Session::where("mv_id", $request->m_id)->get();
+
         foreach ($location_id as $id)
         {
-            $location = Theatre::where("id",  $id->t_id);
+            $location = Theatre::find($id->t_id);
             $json[] = [
                 "id" => $id->t_id,
                 "location" => $location->location
