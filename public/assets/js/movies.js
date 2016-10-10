@@ -85,7 +85,8 @@ $(function() {
         var mv_id = $(this).data("id");
 
         $.get("movieid", {id: mv_id}, function(movie) {
-            $("#populate_modal").append("<img class='featurette-image pull-left' src='" + movie.poster + "'>"+
+            $("#populate_modal").append("<div class='col-sm-3 text-center'><img class='featurette-image pull-left' src='" + movie.poster + "'>"+
+                    "<a class='btn btn-warning modal_button modalPopSessions remodal-bg'>Add to watchlist</a></div>"+
                 "<h1 class='featurette-heading'>"+movie.title+"</h1><p class='lead'>"+movie.desc+"</p>"+
                 "<i class='lead fa fa-calendar'> Release Date: "+movie.release_date+"</i></div></div>");
         }, "json");
@@ -99,7 +100,8 @@ $(function() {
 
         $.get("movieid", {id: mv_id}, function(movie) {
             $("#populate_modal").append("<div class='col-sm-3 text-center'><img class='featurette-image pull-left' src='" + movie.poster + "'>"+
-                "<a class='btn btn-primary modal_button modalPopSessions remodal-bg' href='#modal' data-id='" + mv_id + "' name='"+movie.title+"'>Sessions</a></div>"+
+                "<a class='btn btn-primary modal_button modalPopSessions remodal-bg' href='#modal' data-id='" + mv_id + "' name='"+movie.title+"'>Sessions</a>" +
+                "<a class='btn btn-warning modal_button modalPopSessions remodal-bg'>Add to watchlist</a></div>"+
                 "<h1 class='featurette-heading'>"+movie.title+"</h1><p class='lead'>"+movie.desc+"</p>"+
                 "<i class='lead fa fa-calendar'> Release Date: "+movie.release_date+"</i></div></div>");
         }, "json");
@@ -120,14 +122,14 @@ $(function() {
         $.get("locations", {m_id: mv_id}, function(locations) {
 
             $("#populate_modal").append(' ' +
-                '<div class="form-group"><strong>Cinema Location:  </strong><select class="form-control" autocomplete="on" name="t_id">');
+                '<strong>Select Your Cinema Location:  </strong><select class="form-control" autocomplete="on" name="t_id">');
             console.log(locations.length);
             $.each(locations, function(location, details) {
 
                 $("#populate_modal").append('<option value="'+details.id+'">'+details.location+'</option>');
             })
 
-            $("#populate_modal").append('</select></div></div></div>');
+            $("#populate_modal").append('</select></div></div>');
 
         }, "json");
     });
