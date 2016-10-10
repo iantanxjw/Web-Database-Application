@@ -9,17 +9,26 @@ $(function() {
             if(i==0) { $("#upcoming").append("<div class='row'>");}
             if (details.poster == null)
             {
-                $("#upcoming").append("<a class='col-sm-3 text-center modalPop' href='#modal' data-id='" + details.id + "' name = '"+details.title+
-                    "'><p>Poster not available</p><h3>" + details.title +"</h3><br></a>");
+                $("#upcoming").append(
+                    "<div class='col-sm-3 text-center'>" +
+                    "<div class='polaroid'>" +
+                    "<p style='margin-bottom:100px'>Poster not available</p>" +
+                    "<div class='p_container'><p>"+details.title+"</p>" +
+                    "<p><span class='icon-calendar' ></span> "+details.release_date+"</p>"+
+                    "<a class='btn btn-default modalPopCS' style='width:100%'href='#modal' data-id='" + details.id + "' name='"+details.title+"'>info</a>" +
+                    "</div></div></div>"
+                );
             }
             else
             {
 
-                $("#upcoming").append("<div class='col-sm-3 text-center'>" +
+                $("#upcoming").append(
+                    "<div class='col-sm-3 text-center'>" +
                     "<div class='polaroid'>" +
                     "<img class='img-responsive' src='" +details.poster +"'alt='poster'>" +
                     "<div class='p_container'><p>"+details.title+"</p>" +
-                    "<a class='btn btn-default modalPopCS' style='width:100%' href='#modal' data-id='" + details.id + "' name='"+details.title+"'>info</a>" +
+                    "<p><span class='icon-calendar' ></span> "+details.release_date+"</p>"+
+                    "<a class='btn btn-default modalPopCS' style='width:100%'href='#modal' data-id='" + details.id + "' name='"+details.title+"'>info</a>" +
                     "</div></div></div>");
             }
 
@@ -68,7 +77,8 @@ $(function() {
 
     }, "json");
 
-    // modal for coming soon click information
+    /*********************************** MODAL JS ***************************************************/
+    // modal click information for coming soon movies
     $(document).on("click", ".modalPopCS", function() {
         $("#populate_modal").html("<div class='featurette'><div class='row'>");
 

@@ -176,7 +176,7 @@ div.carousel-caption {
     font-family: 'Francois One', sans-serif;
     text-transform: uppercase;
     background: rgb(0, 0, 0); /* fallback color */
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
     border: 1px solid black;
     filter: alpha(opacity=60); /* For IE8 and earlier */
     padding: 10px;
