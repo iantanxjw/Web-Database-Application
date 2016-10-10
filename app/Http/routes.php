@@ -42,3 +42,4 @@ Route::get("searchmovies", "ClientRequestsController@searchForMovies");
 Route::get("movieidsessions", "ClientRequestsController@getMovieTitleSessions");
 Route::get("theatresessions", "ClientRequestsController@getSessionsAtTheatre");
 Route::get("theatres_available", "ClientRequestsController@getTheatres");
+Route::get("locations", "ClientRequestsController@getLocationsForMovie");

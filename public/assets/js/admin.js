@@ -86,8 +86,8 @@ $(function() {
             return;
         }
         $.each(theatres, function(theatre, details) {
-            $(".session_theatre_list").append('<option value="'+details.id+'">Location: '+details.location+
-                '  Theatre number: '+details.theatre_num+'</option>');
+            $(".session_theatre_list").append('<option value="'+details.id+'"> Location: '+details.location+
+                '  |   Theatre number: '+details.theatre_num+'</option>');
         });
 
     }, "json");

@@ -65,17 +65,7 @@ class ClientRequestsController extends Controller
 
     public function getTheatres()
     {
-        $theatres = Theatre::all();
-        $json = [];
-
-        foreach ($theatres as $theatre)
-        {
-            $json[] = ["id" => $theatre->id,
-                "theatre_num" => $theatre->theatre_num,
-                "location" => $theatre->location,
-                "seats" => $theatre->seats];
-        }
-        return json_encode($json);
+        return json_encode(Theatre::all());
     }
 
     // get _exact_ movie by the id
@@ -192,4 +182,26 @@ class ClientRequestsController extends Controller
     }
 
     //get locations into a list and then and then
+    // get all sessions at a specific theatre
+    public function getLocationsForMovie(Request $request)
+    {
+        $json = [];
+        if (!isset($request->m_id))
+        {
+            return null;
+        }
+
+        $location_id = Session::where("mv_id", $request->m_id)->get();
+        foreach ($location_id as $id)
+        {
+            $location = Theatre::where("id",  $id->t_id);
+            $json[] = [
+                "id" => $id->t_id,
+                "location" => $location->location
+            ];
+        }
+
+       // $result = array_unique($json);
+        return json_encode($json);
+    }
 }

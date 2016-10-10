@@ -11,7 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
         DB::table('movies')->insert(["name" => "Shrek", "desc" => "Green man in a swap with a donkey", "genre" => "comedy", "year" => "2001"]);
     }
 }
