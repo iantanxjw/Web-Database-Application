@@ -1,4 +1,4 @@
-$.get("api_request", {type: "popular", limit: 10}, function(movies) {
+$.get("api_request", {type: "popular", limit: 10, voteAvg: 6.5}, function(movies) {
     
     var items = [];
     var dots = [];
