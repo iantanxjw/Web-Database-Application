@@ -1,32 +1,68 @@
 <div class="row">
-    <!-- Text field for theatre number -->
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Theatre number</strong>
-            {!! Form::text('theatre_num', null, array('placeholder' => '123','class' => 'form-control')) !!}
+            {{ Form::label('id', 'ID:') }}
+            {{ Form::number('id', null, array('placeholder' => 'Enter movie id','class' => 'form-control')) }}
         </div>
     </div>
-
-    <!-- Text field for location name  -->
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <!-- duration could get from movie time? --->
-            <strong>Location</strong>
-            {!! Form::text('location', null, array('placeholder' => 'The moon','class' => 'form-control')) !!}
+            {{ Form::label('title', 'Title:') }}
+            {{ Form::text('title' , null, array('placeholder' => 'Enter movie title','class' => 'form-control')) }}
         </div>
     </div>
-
-    <!-- Text field for Number of seats  -->
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <!-- duration could get from movie time? --->
-            <strong>Number of seats</strong>
-            {!! Form::text('seats', null, array('placeholder' => '0','class' => 'form-control')) !!}
+            {{ Form::label('desc', 'Overview:') }}
+            {{ Form::text('desc' , null, array('placeholder' => 'Enter movie description','class' => 'form-control')) }}
         </div>
     </div>
-
-    <!-- Submit button for form -->
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            {{ Form::label('rel', 'Release date:') }}
+            {{ Form::date('release_date' , null, array('class' => 'form-control', 'min' => '2000-01-02')) }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            {{ Form::label('vote', 'Vote average:') }}
+            {{ Form::number('voteAvg', null, array('placeholder' => 'Enter vote average / 10',
+            'class' => 'form-control','min' => '0', 'max'=>'10' )) }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            {{ Form::label('status', 'Status:') }}
+            {{ Form::select('status',  array('showing' => 'Showing','not showing' => 'Not showing',
+            'upcoming' => 'Coming soon'), null, array('class' => 'form-control')) }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            {{ Form::label('genre[]', 'Genre:') }}
+            {{-- Genre needs to be an array to send multiple selections--}}
+            {{ Form::select('genre[]', $gnrs, null, [
+                'multiple' => true,
+                'class' => 'form-control',
+                'autocomplete' => 'on',
+                'onfocus'=> 'this.size=10;',
+                'onblur' => 'this.size=1;'
+            ])}}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            {{ Form::label('poster', 'Poster:') }}
+            {{ Form::text('poster', null, array('placeholder' => 'Enter url','class' => 'form-control')) }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            {{ Form::label('bg', 'Background:') }}
+            {{ Form::text('bg', null, array('placeholder' => 'Enter url','class' => 'form-control')) }}
+        </div>
+    </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        {{ Form::submit('Add/Update Movie', ['class' => 'btn btn-primary']) }}
     </div>
 </div>

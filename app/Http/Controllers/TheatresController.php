@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Theatre;
+use App\Session;
 
 class TheatresController extends Controller
 {
@@ -15,7 +16,7 @@ class TheatresController extends Controller
         /*generating id  ? */
         /*validation duplicate keys */
         $locations = Theatre::orderBy('id','DESC')->paginate(5);
-        return view('admin.locations',compact('locations')) ->with('i', ($request->input('page', 1) - 1) * 5);
+        return view('admin.theatres',compact('locations')) ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
 
@@ -33,12 +34,15 @@ class TheatresController extends Controller
             "seats"  => 'required',
         ]);
         Theatre::create($request->all());
-        return redirect()->route('admin_locations.index') ->with('success','Session created successfully');
+        return redirect()->route('admin_theatres.index') ->with('success', 'Theatre created successfully');
     }
 
-    public function create()
+    public function edit($id)
     {
-        return view('admin.locations');
+        // returning to an ajax call so encode json
+        $theatre = Theatre::find($id);
+
+        return json_encode($theatre);
     }
 
     public function update(Request $request, $id)
@@ -49,18 +53,18 @@ class TheatresController extends Controller
             "seats"  => 'required',
         ]);
         Theatre::find($id)->update($request->all());
-        return redirect()->route('admin_locations.index') ->with('success','Product updated successfully');
+        return redirect()->route('admin_theatres.index') ->with('success', 'Theatre updated successfully');
     }
 
     public function destroy($id)
     {
-        Theatre::find($id)->delete();
-        return redirect()->route('admin_locations.index') ->with('success','Theatre deleted successfully');
-    }
+        // theatre id is a foreign key of session so kill the session first
+        foreach (Session::where("t_id", $id)->get() as $session)
+        {
+            $session->delete();
+        }
 
-    public function edit($id)
-    {
-        $theatre = Theatre::find($id);
-        return view('admin.forms.theatre_edit',compact('theatre'));
+        Theatre::find($id)->delete();
+        return redirect()->route('admin_theatres.index') ->with('success','Theatre deleted successfully');
     }
 }
