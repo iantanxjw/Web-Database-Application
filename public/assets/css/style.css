@@ -156,7 +156,7 @@ body {
 
 
 
-/* CUSTOMIZE THE CAROUSEL
+/* CUSTOMIZE THE CAROUfEL
 -------------------------------------------------- */
 
 /* Carousel base class */
@@ -627,4 +627,12 @@ http://bootsnipp.com/snippets/featured/custom-search-input*/
 .search {
     display: none;
 }
+.form-control {
+    width:70%;
+}
+
+.a.btn.btn-warning.modal_button.confirm_location {
+    float: right;
+}
+
 

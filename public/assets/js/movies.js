@@ -84,7 +84,7 @@ $(function() {
      */
     $(document).on("click", ".modalPopCS", function() {
         $(".modal_list_NA").hide();
-        $(".select_modal_list.show_sessions").hide();
+        $(".select_modal_list").hide();
         $(".show_sessions").hide();
 
         $("#populate_modal").html("<div class='featurette'><div class='row'>");
