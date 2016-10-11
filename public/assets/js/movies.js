@@ -195,6 +195,7 @@ $(function() {
             }
             else {
                 $(".select_modal_list").hide();
+                $(".show_sessions").hide();
                 $(".modal_list_NA").show();
             }
 
