@@ -130,6 +130,7 @@ class ClientRequestsController extends Controller
         return json_encode($json);
     }
 
+    // get sessions for movie by the id
     public function getMovieIDSessions(Request $request)
     {
         if (!isset($request->id))
@@ -167,6 +168,24 @@ class ClientRequestsController extends Controller
         $sessions = Session::where("mv_id", $movie->id)->get();
 
         return json_encode($sessions);
+    }
+
+    // get the theatre from the session
+    public function getTheatreFromSession(Request $request)
+    {
+        if (!isset($request->id))
+        {
+            return null;
+        }
+
+        $theatre = Theatre::find($request->id);
+
+        if (!isset($theatre))
+        {
+            return "Could not find movie theatre with the id: " . $request->id;
+        }
+
+        return json_encode($theatre);
     }
 
     // get all sessions at a specific theatre
