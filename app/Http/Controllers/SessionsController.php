@@ -19,9 +19,9 @@ class SessionsController extends Controller
     public function index(Request $request)
     {
         /*generating id  ? */
-        $sessions = Session::orderBy('id', 'DESC')->paginate(5);
+        $sessions = Session::all()->sortBy('id');
 
-        return view('admin.sessions', compact('sessions'))->with('i', ($request->input('page', 1) - 1) * 5);
+        return view('admin.sessions', compact('sessions'));
     }
 
 

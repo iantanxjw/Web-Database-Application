@@ -15,7 +15,7 @@
         </div>
         <div id="populate_modal_bottom"></div>
         <br>
-        <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-        <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+        {{-- <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+        <button data-remodal-action="confirm" class="remodal-confirm">OK</button> --}}
     </div>
 </div>

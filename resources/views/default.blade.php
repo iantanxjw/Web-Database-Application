@@ -16,9 +16,7 @@
             <li><a href="#" class="tablinks" onclick="opentabs(event, 'CS')">Coming Soon</a></li>
         </ul>
         </div>
-
             @include('shared.modal')
-
             <div id="NS" class="tabcontent">
                 <div class="row">
                     <div id="movies"></div>

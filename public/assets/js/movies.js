@@ -4,7 +4,6 @@ $(function() {
     // coming soon tab
     $.get("api_request", {type: "upcoming"}, function(movies) {
         i=0;
-
         $.each(movies, function(movie, details) {
             if(i==0) { $("#upcoming").append("<div class='row'>");}
             if (details.poster == null)
@@ -38,6 +37,10 @@ $(function() {
                 i=0;
             }
         })
+        if(i<4) {
+            $("#upcoming").append("</div>");
+        }
+
     }, "json");
 
     // showing tab
@@ -70,6 +73,9 @@ $(function() {
                 i = 0;
             }
         });
+        if(i<4) {
+            $("#movies").append("</div>");
+        }
 
         opentabs(event, 'NS');
         $(".tablinks:contains(Now Showing)").addClass("active");
@@ -84,7 +90,7 @@ $(function() {
      */
     $(document).on("click", ".modalPopCS", function() {
         $(".modal_list_NA").hide();
-        $(".select_modal_list.show_sessions").hide();
+        $(".select_modal_list").hide();
         $(".show_sessions").hide();
 
         $("#populate_modal").html("<div class='featurette'><div class='row'>");
@@ -123,13 +129,14 @@ $(function() {
 
 
     /*
-     On Click function:
-
-
-
+     On Click function: populates select options with locations available for sessions
+     if no sessions available notify users. After confirmation of locations get sessions.
      */
+
+    var mv_id = null;
     $(document).on("click", ".modalPopSessions", function() {
 
+        /* Add cinemas to dictionary to get unique cinema name*/
         function addCinema(cinema, theatre_id) {
 
             for (i=0; i<cinemas.length; i++)
@@ -146,9 +153,11 @@ $(function() {
         }
 
         function populateSelectList(){
+
             var t = [];
             $(".modal_list_options").html("");
             for (var index in cinemas) {
+
                 if (cinemas.hasOwnProperty(index)) {
                     for(var key in cinemas[index].theatres) {
                         if (cinemas[index].theatres.hasOwnProperty(key)) {
@@ -158,14 +167,12 @@ $(function() {
                     }
                     $(".modal_list_options").append('<option value="'+t+'">'+cinemas[index].location+'</option>');
                 }
+                t = [];
             }
-            $(".modal_list_options").append(
-                "<a class='btn btn-warning modal_button showSessions remodal-bg'>Confirm location</a>");
         }
 
         var cinemas = [];
-        var mv_id = $(this).data("id");
-
+        mv_id = $(this).data("id");
 
         $("#populate_modal").html("<div class='featurette'><div class='row'>");
 
@@ -186,10 +193,7 @@ $(function() {
                 $(".select_modal_list").show();
 
                 $.each(locations, function(location, details) {
-                    console.log(details.location);
                     addCinema(details.location, details.id);
-                    //$(".modal_list_options").append('<option value="'+details.id+'">'+details.location+'</option>');
-
                 });
                 populateSelectList();
             }
@@ -207,9 +211,33 @@ $(function() {
     /*
      On Click function: get session times for the option selected
 
-
     */
-    $(document).on("click", ".showSessions", function() {
 
+    $(document).on("click", ".confirm_location", function() {
+        $(".show_sessions").show();
+        $(".select_modal_list").hide();
+        var t_id = $( "select.modal_list_options option:selected").val().split(",");
+
+        //console.log(t_id);
+        $(".modal_list_sessions").append("<ul>");
+        for (var i=0; i < t_id.length; i++)
+        {
+            console.log(t_id[i]);
+            //Getting session times
+            $.get("sessions", {mv_id: mv_id, t_id: t_id[i]}, function(sessions)
+            {
+                $.each(sessions, function(session, details) {
+                    //console.log(session.weekday);
+                    $(".modal_list_sessions").append("<li><span class='day'>"+details.weekday+"</span><span class='day'>"+
+                        details.start_time+"</span></li>");
+                });
+
+            }, "json");
+        }
+
+        $(".modal_list_sessions").append("</ul>");
+        // get session times with the id and store
+        //console.log(mv_id);
+        //console.log(t_id);
     });
 });
