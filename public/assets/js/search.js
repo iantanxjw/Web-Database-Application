@@ -48,8 +48,14 @@ function appendResult(data) {
 
 
 $("#search-form").on("submit", function(event) {
+    // prevent the form from submitting and clear results on enter
     event.preventDefault();
-})
+
+    if ($("input[name=search]").val().length == 0)
+    {
+        $("#search-result").empty();
+    }
+});
 
 $("input[name=search]").keyup(function() {
 

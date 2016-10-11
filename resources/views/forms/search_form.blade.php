@@ -6,9 +6,9 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         {{ Form::label('movie', 'Search by movie:') }}
-                        {{ Form::radio('type', 'movie', ['class' => 'form-control']) }}
+                        {{ Form::radio('type', 'movie', true) }} {{-- movie is the default selected option --}}
                         {{ Form::label('location', 'Search by location:') }}
-                        {{ Form::radio('type', 'location', ['class' => 'form-control']) }}
+                        {{ Form::radio('type', 'location') }}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
