@@ -84,7 +84,8 @@ $(function() {
      */
     $(document).on("click", ".modalPopCS", function() {
         $(".modal_list_NA").hide();
-        $(".select_modal_list").hide();
+        $(".select_modal_list.show_sessions").hide();
+        $(".show_sessions").hide();
 
         $("#populate_modal").html("<div class='featurette'><div class='row'>");
 
@@ -106,6 +107,7 @@ $(function() {
     $(document).on("click", ".modalPop", function() {
         $(".modal_list_NA").hide();
         $(".select_modal_list").hide();
+        $(".show_sessions").hide();
         $("#populate_modal").html("<div class='featurette'><div class='row'>");
 
         var mv_id = $(this).data("id");
@@ -145,6 +147,7 @@ $(function() {
 
         function populateSelectList(){
             var t = [];
+            $(".modal_list_options").html("");
             for (var index in cinemas) {
                 if (cinemas.hasOwnProperty(index)) {
                     for(var key in cinemas[index].theatres) {
@@ -179,6 +182,7 @@ $(function() {
             if (locations.length > 0)
             {
                 $(".modal_list_NA").hide();
+                $(".show_sessions").hide();
                 $(".select_modal_list").show();
 
                 $.each(locations, function(location, details) {
