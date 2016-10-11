@@ -130,6 +130,7 @@ class ClientRequestsController extends Controller
         return json_encode($json);
     }
 
+    // get sessions for movie by the id
     public function getMovieIDSessions(Request $request)
     {
         if (!isset($request->id))
