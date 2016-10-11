@@ -233,4 +233,29 @@ class ClientRequestsController extends Controller
        // $result = array_unique($json);
         return json_encode($json);
     }
+
+    public function getSessionsForMovie(Request $request)
+    {
+        $json = [];
+
+        if (!isset($request->mv_id) || !isset($request->t_id))
+        {
+            return null;
+        }
+
+        $sessions = Session::where([
+            ["mv_id", '=', $request->mv_id],
+            ["t_id", '=',$request->t_id]
+            ])->get();
+
+        foreach ($sessions as $session)
+        {
+            $json[] = [
+                "id" => $session->id,
+                "weekday" => $session->weekday,
+                "start_time" => $session->start_time
+            ];
+        }
+        return json_encode($json);
+    }
 }

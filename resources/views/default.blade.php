@@ -25,12 +25,11 @@
                 <div class="select_modal_list">
                     <strong>Select Your Cinema Location:  </strong>
                     <select class="form-control modal_list_options" autocomplete="on" name="t_id"></select>
-                    <a class='btn btn-warning modal_button confirm_location'>Confirm location</a>
+                    <button class='btn btn-warning modal_button confirm_location'>Confirm location</button>
                 </div>
                 <div class="show_sessions">
                     <strong>Select sessions and book now! </strong>
-                    <select class="form-control modal_list_options" autocomplete="on" name="t_id">
-                    </select>
+                    <div class="modal_list_sessions"></div>
                 </div>
                 <div id="populate_modal_bottom"></div>
                 <br>
