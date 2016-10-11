@@ -19,7 +19,7 @@
 
         <div class="remodal-bg">
             <div class="remodal" data-remodal-id="modal">
-                <button data-remodal-action="close" class="remodal-close"></button>
+                <button data-remodal-action="close" class="remodal-close" style="width:100px"></button>
                 <div id="populate_modal"></div>
                 <div class="modal_list_NA"><p>Unfortunately there are no cinemas showing this movie</p></div>
                 <div class="select_modal_list">
@@ -33,7 +33,8 @@
                 </div>
                 <div id="populate_modal_bottom"></div>
                 <br>
-                <button data-remodal-action="close" class="remodal-cancel">Close</button>
+ {{--               <button data-remodal-action="close" class="remodal-cancel">Close</button>
+                <button data-remodal-action="close" class="remodal-confirm">Confirm</button>--}}
             </div>
 
             <div id="NS" class="tabcontent">
