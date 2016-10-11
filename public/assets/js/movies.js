@@ -35,7 +35,6 @@ $(function() {
             i++;
             if(i==4) {
                 $("#upcoming").append("</div>");
-
                 i=0;
             }
         })
@@ -70,16 +69,23 @@ $(function() {
                 $("#movies").append("</div>");
                 i = 0;
             }
-        })
+        });
 
         opentabs(event, 'NS');
         $(".tablinks:contains(Now Showing)").addClass("active");
 
     }, "json");
 
-    /*********************************** MODAL JS ***************************************************/
-    // modal click information for coming soon movies
+    /********************************************* MODAL JS ***************************************************/
+    /*
+      On Click function: modal click information for coming soon movies
+      It only appends movie title, description, poster and an add to watchlist button
+      Sessions button for coming soon movies is not available
+     */
     $(document).on("click", ".modalPopCS", function() {
+        $(".modal_list_NA").hide();
+        $(".select_modal_list").hide();
+
         $("#populate_modal").html("<div class='featurette'><div class='row'>");
 
         var mv_id = $(this).data("id");
@@ -92,8 +98,14 @@ $(function() {
         }, "json");
     });
 
-    // modal click information
+    /*
+     On Click function: modal click information for Now showing movies
+     It appends movie title, description, poster and an add to watchlist button
+     and a Sessions button that loads sessions modal pop up
+     */
     $(document).on("click", ".modalPop", function() {
+        $(".modal_list_NA").hide();
+        $(".select_modal_list").hide();
         $("#populate_modal").html("<div class='featurette'><div class='row'>");
 
         var mv_id = $(this).data("id");
@@ -107,30 +119,92 @@ $(function() {
         }, "json");
     });
 
-    // modal click sessions
-    $(document).on("click", ".modalPopSessions", function() {
-        $("#populate_modal").html("<div class='featurette'><div class='row'>");
 
+    /*
+     On Click function:
+
+
+
+     */
+    $(document).on("click", ".modalPopSessions", function() {
+
+        function addCinema(cinema, theatre_id) {
+
+            for (i=0; i<cinemas.length; i++)
+            {
+                if (cinemas[i].location == cinema) {
+                    //add theatre only
+                    var key = "t"+(Object.keys(cinemas[0].theatres).length+1);
+                    cinemas[i].theatres[key] = theatre_id;
+                    return true;
+                }
+            }
+            //add new location and theatre if cinema does not already exist
+            cinemas.push({location: cinema, theatres:{t1:theatre_id}});
+        }
+
+        function populateSelectList(){
+            var t = [];
+            for (var index in cinemas) {
+                if (cinemas.hasOwnProperty(index)) {
+                    for(var key in cinemas[index].theatres) {
+                        if (cinemas[index].theatres.hasOwnProperty(key)) {
+                            var value = cinemas[index].theatres[key];
+                            t.push(value);
+                        }
+                    }
+                    $(".modal_list_options").append('<option value="'+t+'">'+cinemas[index].location+'</option>');
+                }
+            }
+            $(".modal_list_options").append(
+                "<a class='btn btn-warning modal_button showSessions remodal-bg'>Confirm location</a>");
+        }
+
+        var cinemas = [];
         var mv_id = $(this).data("id");
+
+
+        $("#populate_modal").html("<div class='featurette'><div class='row'>");
 
         $.get("movieid", {id: mv_id}, function(movie) {
             $("#populate_modal").append("<img class='featurette-image pull-left' src='" + movie.poster + "'>");
             $("#populate_modal").append("<h1 class='featurette-heading'>"+movie.title+"</h1>");
         }, "json");
 
-        //get theatres available
-        $.get("locations", {m_id: mv_id}, function(locations) {
+        /*
+        Get theatres available and if not available then show .modal_list_NA.
+         */
+        $.get("locations", {m_id: mv_id}, function(locations)
+        {
+            if (locations.length > 0)
+            {
+                $(".modal_list_NA").hide();
+                $(".select_modal_list").show();
 
-            $("#populate_modal").append(' ' +
-                '<strong>Select Your Cinema Location:  </strong><select class="form-control" autocomplete="on" name="t_id">');
-            console.log(locations.length);
-            $.each(locations, function(location, details) {
+                $.each(locations, function(location, details) {
+                    console.log(details.location);
+                    addCinema(details.location, details.id);
+                    //$(".modal_list_options").append('<option value="'+details.id+'">'+details.location+'</option>');
 
-                $("#populate_modal").append('<option value="'+details.id+'">'+details.location+'</option>');
-            })
+                });
+                populateSelectList();
+            }
+            else {
+                $(".select_modal_list").hide();
+                $(".modal_list_NA").show();
+            }
 
-            $("#populate_modal").append('</select></div></div>');
+            $("#populate_modal_bottom").append('</div></div>');
 
         }, "json");
+    });
+
+    /*
+     On Click function: get session times for the option selected
+
+
+    */
+    $(document).on("click", ".showSessions", function() {
+
     });
 });
