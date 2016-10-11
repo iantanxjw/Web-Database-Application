@@ -219,7 +219,7 @@ $(function() {
         var t_id = $( "select.modal_list_options option:selected").val().split(",");
 
         //console.log(t_id);
-        $(".modal_list_sessions").append("<ul>");
+        $(".modal_list_sessions").html("<ul>");
         for (var i=0; i < t_id.length; i++)
         {
             console.log(t_id[i]);
@@ -228,7 +228,7 @@ $(function() {
             {
                 $.each(sessions, function(session, details) {
                     //console.log(session.weekday);
-                    $(".modal_list_sessions").append("<li><span class='day'>"+details.weekday+"</span><span class='day'>"+
+                    $(".modal_list_sessions").append("<li><span class='day'>"+details.weekday+" </span> <span class='day'>"+
                         details.start_time+"</span></li>");
                 });
 
