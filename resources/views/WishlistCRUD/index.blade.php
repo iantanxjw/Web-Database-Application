@@ -15,8 +15,7 @@
                             <table>
                                 <th>No</th>
                                 <th>Movie Name</th>
-                                <th>Reason</th>
-                                <th>Email</th>
+                                <th>User ID</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
 
@@ -24,9 +23,8 @@
 
                                     <tr>
                                         <td>{{ ++$i }}</td>
-                                        <td>{{ $wishlist->movie}}</td>
-                                        <td>{{ $wishlist->reason}}</td>
-                                        <td>{{ $wishlist->email}}</td>
+                                        <td>{{ $wishlist->mv_id_array}}</td>
+                                        <td>{{ $wishlist->u_id}}</td>
                                         <td><a class="btn btn-primary" href="{{ route('WishlistCRUD.edit',$wishlist->id) }}">Edit</a></td>
                                         <td>
                                         {!! Form::open(['method' => 'DELETE','route' => ['WishlistCRUD.destroy', $wishlist->id],'style'=>'display:inline']) !!}

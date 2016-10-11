@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Wishlist extends Model
 {
-    public $fillable = ['movie', 'reason','email'
+    public $fillable = ['movie', 'mv_id_array','u_id'
     ];
 }

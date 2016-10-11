@@ -93,7 +93,12 @@ $(function() {
 
         $.get("movieid", {id: mv_id}, function(movie) {
             $("#populate_modal").append("<div class='col-sm-3 text-center'><img class='featurette-image pull-left' src='" + movie.poster + "'>"+
-                    "<a class='btn btn-warning modal_button modalPopSessions remodal-bg'>Add to watchlist</a></div>"+
+               /* "<form action='"+ "{!! route('WishlistCRUD.store') !!}" +"' method='post'>"
+                    + "<input type='hidden' name='name' value='movie123'>"+
+                    + "<input type='submit'>"
+                    + "<a class='btn btn-warning modal_button modalPopSessions remodal-bg'>Add to watchlist</a></div>"
+                    + "</input>"+
+                    "</form>"+*/
                 "<h1 class='featurette-heading'>"+movie.title+"</h1><p class='lead'>"+movie.desc+"</p>"+
                 "<i class='lead fa fa-calendar'> Release Date: "+movie.release_date+"</i></div></div>");
         }, "json");

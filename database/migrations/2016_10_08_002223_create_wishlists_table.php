@@ -14,10 +14,12 @@ class CreateWishlistsTable extends Migration
     {
         Schema::create('wishlists', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('movie');
-            $table->string('reason');
-            $table->string('email');
+            $table->string('mv_id_array');
+            $table->integer('u_id')->unsigned();
             $table->timestamps();
+        });
+        Schema::table("wishlists", function(Blueprint $table) {
+                $table->foreign('u_id')->references('id')->on('users');
         });
     }
 
