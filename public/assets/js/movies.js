@@ -159,8 +159,6 @@ $(function() {
                     $(".modal_list_options").append('<option value="'+t+'">'+cinemas[index].location+'</option>');
                 }
             }
-            $(".modal_list_options").append(
-                "<a class='btn btn-warning modal_button showSessions remodal-bg'>Confirm location</a>");
         }
 
         var cinemas = [];
@@ -209,7 +207,7 @@ $(function() {
 
 
     */
-    $(document).on("click", ".showSessions", function() {
+    $(document).on("click", ".show_sessions", function() {
 
     });
 });
