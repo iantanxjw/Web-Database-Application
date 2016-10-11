@@ -623,3 +623,8 @@ http://bootsnipp.com/snippets/featured/custom-search-input*/
 .edit-margin{
     margin-top: 200px;
 }
+
+.search {
+    display: none;
+}
+
