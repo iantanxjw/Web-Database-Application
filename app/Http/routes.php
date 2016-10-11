@@ -24,6 +24,10 @@ Route::get("contact", ["as" => "contact", "uses" => "PageController@contact"]);
 Route::get("icons", ["as" => "icons", "uses" => "PageController@icons"]);
 Route::get("form", ["as" => "form", "uses" => "PageController@form"]);
 Route::post("test", ["as" => "test", "uses" => "PageController@test"]);
+
+// Wishlist
+Route::resource('WishlistCRUD','WishlistController');
+
 // Admin panel
 Route::get("admin", ["as" => "admin", "uses" => "AdminController@index"]);
 Route::get("api_refresh", ["as" => "api_refresh", "uses" => "AdminController@api_refresh"]);

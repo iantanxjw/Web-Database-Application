@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
 use App\Http\Requests;
 
 class PageController extends Controller
@@ -30,14 +31,14 @@ class PageController extends Controller
 
     public function form()
     {
-        return view("form");
+        return view("Bookings.form");
     }
 
-    public function test()
+    public function test(Request $request,$name)
     {
+        User::find($name)->update($request->all());
+        return redirect()->route('test');
 
-
-        return view("test");
     }
 
     public function search()
