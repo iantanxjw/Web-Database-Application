@@ -17,6 +17,7 @@
         </ul>
         </div>
             @include('shared.modal')
+
             <div id="NS" class="tabcontent">
                 <div class="row">
                     <div id="movies"></div>
