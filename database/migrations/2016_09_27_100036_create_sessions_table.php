@@ -13,17 +13,21 @@ class CreateSessionsTable extends Migration
     public function up()
     {
         Schema::create('sessions', function (Blueprint $table) {
-            $table->increments('session_id');
+            $table->increments('id');
             $table->string('start_time');
             $table->string('duration');
             $table->integer('num_bookings');
+            $table->string('weekday');
             $table->string('mv_id');
-            $table->string('t_id');
+            // artisan will have a whinge about malformed
+            // foreign keys if you don't use unsigned() on int
+            // based fields they're referencing 
+            $table->integer('t_id')->unsigned();
         });
 
         Schema::table("sessions", function(Blueprint $table) {
-            $table->foreign('mv_id')->references('mv_id')->on('movies');
-            $table->foreign('t_id')->references('t_id')->on('theatres');
+            $table->foreign('mv_id')->references('id')->on('movies');
+            $table->foreign('t_id')->references('id')->on('theatres');
         });
     }
 

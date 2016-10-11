@@ -61,11 +61,6 @@ class Movie extends Model
 
     public function getGenre()
     {
-        return unserialize($this->genre);
-    }
-
-    public function getGenreSerialized()
-    {
         return $this->genre;
     }
 
@@ -135,15 +130,7 @@ class Movie extends Model
         }
         else
         {
-            // check if serialised, if not serialise it
-            if (@unserialize($genre) == false)
-            {
-                $this->genre = serialize($genre);
-            }
-            else
-            {
-                $this->genre = $genre;
-            }
+            $this->genre = $genre;
         }
     }
 
@@ -190,11 +177,10 @@ class Movie extends Model
 
     // cos i'm lazy and don't want to type $movie->getBlahblah() every time....
     // this returns an ordered array of all vars
-    // IMPORTANT: GENRE IS SERIALISED HERE
     public function getVars()
     {
         return [
-            "mv_id" => $this->id,
+            "id" => $this->id,
             "title" => $this->title,
             "desc" => $this->desc,
             "release_date" => $this->rel_date,

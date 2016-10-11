@@ -8,6 +8,9 @@ input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
 input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
 input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
 
+h1.carousel-caption {
+    font-size: 55px;
+}
 body {
     background-color: #191919;
 }
@@ -172,9 +175,8 @@ div.carousel-caption {
     left: 0;
     font-family: 'Francois One', sans-serif;
     text-transform: uppercase;
-
     background: rgb(0, 0, 0); /* fallback color */
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
     border: 1px solid black;
     filter: alpha(opacity=60); /* For IE8 and earlier */
     padding: 10px;
@@ -203,7 +205,7 @@ img {
     margin:auto;
 }
 
-a.col-sm-3.text-center {
+.col-sm-3.text-center {
     text-decoration: none;
     transition: color 1s;
     color: whitesmoke;
@@ -223,9 +225,21 @@ a:hover.col-sm-3.text-center {
 
 div.p_container {
     background: #212121;
-    height:100px;
+    height:130px;
     padding:10px;
     transition: background 1s;
+}
+
+a.modal_button.modalPopSessions{
+    padding:10px;
+    width:100%;
+    margin:10px;
+
+}
+
+p.title_movies {
+    font-weight: bold;
+    font-size: medium;
 }
 
 
@@ -238,21 +252,20 @@ div.polaroid {
     text-align: center;
     background:#060d10;
     width:220px;
-    transition:box-shadow 1s;
+    transition:box-shadow 0.5s;
 }
 
 div.polaroid:hover{
     background: #24435c;
-    box-shadow: 25px 25px 20px 0 rgba(0, 0, 0, 0.9), 10px 10px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.9), 0px 10px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-
+/*
 div#movies{
     margin-top: 40px;
     height: 500px;
     overflow-y:auto;
     overflow-x: hidden;
-   /* background:black;*/
     width: 99.7%;
 }
 div#movies::-webkit-scrollbar
@@ -280,7 +293,7 @@ div.fixed_container{
     height: 500px;
     width: 1020px;
 }
-
+*/
 
 
 /* MARKETING CONTENT
@@ -384,7 +397,18 @@ div.fixed_container{
     border: 2px solid #24435c;
     overflow:hidden;
     position:relative;
+    background-color: #191919;
 }
+/*
+#NS{
+    background-color: rgba(119, 119, 119, 0.05);
+}
+
+#CS{
+    background-color: rgba(119, 119, 119, 0.05);
+}
+*/
+
 #centeredmenu ul {
     clear:left;
     float:left;
@@ -522,5 +546,85 @@ div.navbar-collapse.collapse
 .receipt-body
 {
     margin: 5% 15%;
+}
+
+/**********Admin css ****************/
+
+
+/********sessions ***************/
+
+div.create-form {
+    display: none;
+}
+
+div.edit-form {
+    display: none;
+}
+
+.create_button{
+    text-align: right;
+    margin-top: 10px;
+    margin: 20px;
+}
+
+ul.manage_list{
+    text-align: center;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+ul.manage_list li{
+    margin:10px;
+}
+
+.admin_tables{
+    margin-top: 50px;
+}
+
+/********* Search bar ***************
+http://bootsnipp.com/snippets/featured/custom-search-input*/
+
+#custom-search-input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
+}
+
+.panel {
+    margin-top: 10px;
+}
+
+.edit-margin{
+    margin-top: 200px;
+}
+
+.search {
+    display: none;
 }
 

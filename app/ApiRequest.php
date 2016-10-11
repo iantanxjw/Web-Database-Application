@@ -8,14 +8,27 @@ use App\Movie;
 class ApiRequest extends Model
 {
     private $url;
+    private $imgUrl;
+    private $posterSize;
+    private $bgSize;
     private $request_type;
     private $options;
+    private $genres;
 
-    public function __construct($url = null, $request_type = null, $options = null)
+    public function __construct($url = null, $request_type = null, $options = null, $imgUrl = null, $posterSize = null, $bgSize = null)
     {
         $this->setUrl($url);
         $this->setRequestType($request_type);
         $this->setOptions($options);
+        $this->setImgUrl($imgUrl);
+        $this->setPosterSize($posterSize);
+        $this->setBgSize($bgSize);
+        $this->setGenres();
+    }
+
+    public function getGenres()
+    {
+        return $this->genres;
     }
 
     public function setUrl($url)
@@ -27,6 +40,44 @@ class ApiRequest extends Model
         else
         {
             $this->url = $url;
+        }
+    }
+
+    public function setImgUrl($imgUrl)
+    {
+        if (!isset($imgUrl))
+        {
+            $this->imgUrl = config("tmdb.api.img_url");
+        }
+        else
+        {
+            $this->imgUrl = $imgUrl;
+        }
+    }
+
+    public function setPosterSize($posterSize)
+    {
+        if (!isset($posterSize) && $this->imgUrl === config("tmdb.api.img_url"))
+        {
+            // only change set the size to original if using tmdb
+            $this->posterSize = "original/";
+        }
+        else
+        {
+            // otherwise set it to null or whatever
+            $this->posterSize = $posterSize;
+        }
+    }
+
+    public function setBgSize($bgSize)
+    {
+        if (!isset($bgSize) && $this->imgUrl === config("tmdb.api.img_url"))
+        {
+            $this->bgSize = "original/";
+        }
+        else
+        {
+            $this->bgSize = $bgSize;
         }
     }
 
@@ -56,6 +107,13 @@ class ApiRequest extends Model
         $this->options["language"] = config("tmdb.api.default_language");
     }
 
+    // calls the api for genre ids and names
+    private function setGenres()
+    {
+        $json = file_get_contents(config("tmdb.api.genre_url") . "?api_key=" . config("tmdb.api.key"));
+        $this->genres = json_decode($json)->genres;
+    }
+
     // returns an array of movie objects
     public function request($requestType)
     {
@@ -67,55 +125,44 @@ class ApiRequest extends Model
         // now populate with relevant bs
         foreach ($data->results as $result)
         {
+            // get the names from genre ids
+            $genre = $this->getGenreNames($result->genre_ids);
+
             // create a movie object and dump it into an array of movies
-            $movie = new Movie($result->id, $result->title, $result->overview,
-                                $result->release_date, $result->vote_average, strtolower($requestType), $result->genre_ids,
-                                $result->poster_path, $result->backdrop_path);
-            $movies[] = $movie;
+            // if poster or bg aren't set they're set as null
+            $movies[] = new Movie(
+                $result->id, 
+                $result->title,
+                $result->overview,
+                $result->release_date,
+                $result->vote_average,
+                strtolower($requestType),
+                $genre,
+                isset($result->poster_path) ? $this->imgUrl . $this->posterSize . $result->poster_path : null,
+                isset($result->backdrop_path) ? $this->imgUrl . $this->bgSize . $result->backdrop_path : null
+            );
         }
 
         return $movies;
     }
 
+    // returns a comma delim string
+    private function getGenreNames($idArray)
+    {
+        $genreString = "";
 
+        foreach ($this->genres as $index)
+        {
+            foreach ($idArray as $genreID)
+            {
+                if ($index->id === $genreID)
+                {
+                    $genreString .= $index->name . ", ";
+                }
+            }
+        }
 
-
-
-
-
-
-
-
-    //         // batch insert to db from api
-    // public static function batchInsert(Request $request)
-    // {
-    //     $json = ApiRequest::getRequest($request->input("api"));
-
-    //     // get an array of movie objects to dump into db
-    //     $movies = ApiRequest::getMovieDetails($json);
-        
-
-    //     return [$success, $failure];
-    // }
-
-    // // insert single movie
-    // public static function insert(Request $request)
-    // {
-
-    // }
-
-    // // batch update from api
-    // public static function batchUpdate(Request $request)
-    // {
-
-    // }
-
-    // // remove movie from database
-    // public static function remove(Request $request)
-    // {
-
-    // }
-
-    //     return view("admin.panel", compact("data"));
-    // }
+        // remove trailing comma and space
+        return substr($genreString, 0, -2);
+    }
 }
