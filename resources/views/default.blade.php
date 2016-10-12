@@ -20,8 +20,17 @@
 
         <div class="remodal-bg">
             <div class="remodal" data-remodal-id="modal">
-                <button data-remodal-action="close" class="remodal-close" style="width:100px"></button>
+
+                <button data-remodal-action="close" class="remodal-close"style="width:100px"></button>
+                {!! Form::open(array('route' => 'WishlistCRUD.store','method'=>'POST')) !!}
+
                 <div id="populate_modal"></div>
+                @if (Auth::guest())
+
+                @else
+                    {!! Form::hidden('u_id', Auth::user()->id) !!}
+                @endif
+                {!! Form::close() !!}
                 <div class="modal_list_NA"><p>Unfortunately there are no cinemas showing this movie</p></div>
                 <div class="select_modal_list">
                     <strong>Select Your Cinema Location:  </strong>

@@ -83,14 +83,7 @@ class ApiRequest extends Model
 
     public function setRequestType($request_type)
     {
-        if (!$request_type || $request_type === "")
-        {
-            $this->request_type = "top_rated?";
-        }
-        else
-        {
-            $this->request_type = $request_type;
-        }
+        $this->request_type = $request_type;
     }
 
     public function setOptions($options)
@@ -122,8 +115,17 @@ class ApiRequest extends Model
         $data = json_decode($json);
         $movies = [];
 
+        if (isset($data->results))
+        {
+            $data = $data->results;
+        }
+        else
+        {
+            $data = $data->items;
+        }
+
         // now populate with relevant bs
-        foreach ($data->results as $result)
+        foreach ($data as $result)
         {
             // get the names from genre ids
             $genre = $this->getGenreNames($result->genre_ids);

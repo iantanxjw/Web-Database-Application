@@ -1,4 +1,3 @@
-
 {{-- NEW TEMPLATE BASED NAV --}}
 @extends('layouts.navbar_template')
 @section('header')
@@ -35,10 +34,12 @@
 
             <ul class="dropdown-menu" role="menu">
                 <li><a>{{ Auth::user()->name }}</a></li>
-                <li><a>My Tickets </a></li>
-                <li><a>My Wishlist</a></li>
+                <li><a>My Bookings </a></li>
+                <li><a href="{!! route('WishlistCRUD.index') !!}">My Watchlist</a></li>
                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
             </ul>
         </li>
     @endif
+
+
 @endsection

@@ -27,8 +27,20 @@ class AdminController extends Controller
 
     public function updateAPI(Request $request)
     {
-        $apiRequest = new ApiRequest(config("tmdb.api.url"), $request->input("api") . "?", null, null, $request->postersize, $request->bgsize);
-        $movies = $apiRequest->request($request->input("type"));
+        $apiRequest = null;
+        $movies = null;
+
+        if ($request->api === "list")
+        {
+            $apiRequest = new ApiRequest(config("tmdb.api.list_url"), config("tmdb.api.showing_list") . "?", null, null, $request->postersize, $request->bgsize);
+            $movies = $apiRequest->request("showing");
+        }
+        else
+        {
+            $apiRequest = new ApiRequest(config("tmdb.api.url"), $request->input("api") . "?", null, null, $request->postersize, $request->bgsize);
+            $movies = $apiRequest->request($request->input("type"));
+
+        }
 
         $success = [];
         $update = [];
