@@ -234,4 +234,23 @@ $(function() {
             }, "json");
         }
     });
+
+    /*** Form validation ***/
+    function validateForm() {
+        var adult = document.forms["myForm"]["adult"].value;
+        var conc = document.forms["myForm"]["concession"].value;
+        var child = document.forms["myForm"]["child"].value;
+        var senior = document.forms["myForm"]["senior"].value;
+
+        if (adult == null || adult == "") {
+            if (conc == null || conc == "") {
+                if (child == null || child == "") {
+                    if (senior == null || senior == "") {
+                        alert("At least one field needs to be filled out.");
+                        return false;
+                    }
+                }
+            }
+        }
+    }
 });
