@@ -18,7 +18,12 @@ class WishlistController extends Controller
     {
         $wishlists = Wishlist::orderBy('id','DESC')
             ->paginate(20);
-        /*$wishlists = Wishlist::where('email', User::user()->email)
+        /*
+        $wishlists = Wishlist::where('u_id',$request->u_id)
+            ->orderBy('id','DESC')
+            ->paginate(20);
+                
+        $wishlists = Wishlist::where('email', User::user()->email)
             ->orderBy('id','DESC')
             ->paginate(20);*/
         return view('WishlistCRUD.index',compact('wishlists')) ->with('i', ($request->input('page', 1) - 1) * 5);
