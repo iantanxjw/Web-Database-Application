@@ -27,10 +27,20 @@
                     <select class="form-control modal_list_options" autocomplete="on" name="t_id"></select>
                     <button class='btn btn-warning modal_button confirm_location' style='margin-top:40px'>Get Sessions</button>
                 </div>
-                <div class="show_sessions">
-                    <strong>Select sessions and book now! </strong>
-                    <div class="modal_list_sessions"></div>
-                </div>
+                @if (Auth::guest())
+                    <div class="show_sessions">
+                        <h4 style="color: orangered; padding:10px;"><strong>Login to book now! </strong></h4>
+                        <ul><div class="modal_list_sessions"></div></ul>
+                    </div>
+                @else
+                    <div class="show_sessions">
+                        <strong>Select sessions and book now! </strong>
+                        {!! Form::open(array('route' => 'admin_bookings.store','method'=>'POST')) !!}
+                        <input type='hidden' value='{{ Auth::user()->id}}' name='user_id'>
+                        <ul><div class="modal_list_sessions"></div></ul>
+                        {!! Form::close() !!}
+                    </div>
+                @endif
                 <div id="populate_modal_bottom"></div>
                 <br>
  {{--               <button data-remodal-action="close" class="remodal-cancel">Close</button>

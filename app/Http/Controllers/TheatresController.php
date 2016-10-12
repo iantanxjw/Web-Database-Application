@@ -53,7 +53,7 @@ class TheatresController extends Controller
             "seats"  => 'required',
         ]);
         Theatre::find($id)->update($request->all());
-        return redirect()->route('admin_theatres.index') ->with('success', 'Theatre updated successfully');
+        return redirect()->route('admin_theatres.index')->with('success', 'Theatre updated successfully');
     }
 
     public function destroy($id)

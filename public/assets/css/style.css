@@ -230,7 +230,7 @@ div.p_container {
     transition: background 1s;
 }
 
-a.modal_button.modalPopSessions{
+a.modal_button{
     padding:10px;
     width:100%;
     margin:10px;
@@ -635,4 +635,31 @@ http://bootsnipp.com/snippets/featured/custom-search-input*/
     float: right;
 }
 
+.modal_list_sessions li{
+    line-height:  31px;
+    padding-left: 5px;
+    font-size: 15px;
+    background: #f0eff1;
+    margin: 3px;
+    /*border-bottom: 2px #999 solid;
+    border-right: 2px #999 solid;*/
+    width: 100%;
+    border-radius: 5px;
+}
+.show_sessions ul {
+    margin: 10px;
+    padding: 0;
+    list-style: none;
+    margin-left: 35%;
+    margin-right: 10%;
+}
+
+.modal_list_sessions button {
+    width: 6em;
+    /*background: #24435c;*/
+    color: white;
+    margin:8px;
+}
+.modal_list_sessions button:hover span {display:none}
+.modal_list_sessions button:hover:before {content:"Book now!"}
 
