@@ -61,14 +61,12 @@ class MoviesController extends Controller
             genre is an array so implode it make it a comma delim string */
         $request->offsetSet("genre", implode(", ", $request->genre));
         Movies::create($request->all());
-
         return redirect()->route("admin_movies.index")->with("success", $request->title . " added successfully");
     }
 
     public function edit($movieID)
     {
         $movie = Movies::find($movieID);
-
         return json_encode($movie);
     }
 

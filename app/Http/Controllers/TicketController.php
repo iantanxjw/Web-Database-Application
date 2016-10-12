@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-
 use Illuminate\Http\Request;
-use App\Booking;
-use App\Movies;
-use App\Session;
 
-class BookingsController extends Controller
+use App\Http\Requests;
+use App\ticket;
+
+class TicketController extends Controller
 {
     public function store(Request $request)
     {
         $this->validate($request, [
-            "sess_id" => 'required',
-            "user_id" => 'required'
+            "type" => 'required',
+            "qty" => 'required',
+            "booking_id" => 'required'
         ]);
-        Booking::create($request->all());
+
+        ticket::create($request->all());
 
 
         $session = Session::find($request->sess_id);

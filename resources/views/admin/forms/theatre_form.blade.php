@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Theatre number</strong>
-            {!! Form::number('theatre_num', null, array('placeholder' => 'Enter theatre number','class' => 'form-control')) !!}
+            {!! Form::number('theatre_num', null, array('class' => 'form-control')) !!}
         </div>
     </div>
 
@@ -12,7 +12,7 @@
         <div class="form-group">
             <!-- duration could get from movie time? --->
             <strong>Location</strong>
-            {!! Form::text('location', null, array('placeholder' => 'Enter location','class' => 'form-control')) !!}
+            {!! Form::text('location', null, array('class' => 'form-control')) !!}
         </div>
     </div>
 
@@ -21,7 +21,7 @@
         <div class="form-group">
             <!-- duration could get from movie time? --->
             <strong>Number of seats</strong>
-            {!! Form::number('seats', null, array('placeholder' => 'Enter number of seats available','class' => 'form-control')) !!}
+            {!! Form::number('seats', null, array('class' => 'form-control')) !!}
         </div>
     </div>
 
