@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Movies;
 use App\Session;
 use App\Theatre;
+use App\Http\Controllers\Auth;
+use App\User;
 
 
 class ClientRequestsController extends Controller
@@ -231,6 +233,67 @@ class ClientRequestsController extends Controller
         }
 
        // $result = array_unique($json);
+        return json_encode($json);
+    }
+
+    // get all the movies showing at this location
+    public function getTheatreMovies(Request $request)
+    {
+        if (!isset($request->location))
+        {
+            return null;
+        }
+
+        // find all theatres where location name matches
+        $theatre = Theatre::where("location", "like", "%" . $request->location . "%")->get();
+
+        if (!isset($theatre))
+        {
+            return "Could not find any theatres with name: " . $request->location;
+        }
+
+        // find all sessions at that theatre
+        $sessions = Session::where("t_id", $theatre[0]->id)->get();
+
+        if (!isset($sessions))
+        {
+            return "Could not any sessions at: " . $request->location;
+        }
+
+        $movies = [];
+
+        // for each session get the movie
+        foreach ($sessions as $session)
+        {
+            $movies[] = Movies::find($session->mv_id);
+        }
+
+        return json_encode($movies);
+    }
+
+    public function getSessionsForMovie(Request $request)
+    {
+        $json = [];
+
+        if (!isset($request->mv_id) || !isset($request->t_id))
+        {
+            return null;
+        }
+
+        $sessions = Session::where([
+            ["mv_id", '=', $request->mv_id],
+            ["t_id", '=',$request->t_id]
+            ])->get();
+
+        foreach ($sessions as $session)
+        {
+            $json[] = [
+                "id" => $session->id,
+                "weekday" => $session->weekday,
+                "start_time" => $session->start_time
+            ];
+        }
+
         return json_encode($json);
     }
 }

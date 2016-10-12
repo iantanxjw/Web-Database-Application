@@ -50,6 +50,10 @@ class WishlistController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            "mv_name" => "required|unique:wishlists",
+            "u_id" => "required"
+        ]);
         Wishlist::create($request->all());
         return redirect()->route('index') ->with('success','Product added successfully');
     }

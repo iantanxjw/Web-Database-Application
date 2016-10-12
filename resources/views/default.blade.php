@@ -17,10 +17,13 @@
         </ul>
         </div>
 
+
         <div class="remodal-bg">
             <div class="remodal" data-remodal-id="modal">
-                <button data-remodal-action="close" class="remodal-close"></button>
+
+                <button data-remodal-action="close" class="remodal-close"style="width:100px"></button>
                 {!! Form::open(array('route' => 'WishlistCRUD.store','method'=>'POST')) !!}
+
                 <div id="populate_modal"></div>
                 @if (Auth::guest())
 
@@ -30,20 +33,30 @@
                 {!! Form::close() !!}
                 <div class="modal_list_NA"><p>Unfortunately there are no cinemas showing this movie</p></div>
                 <div class="select_modal_list">
-                        <strong>Select Your Cinema Location:  </strong>
-                        <select class="form-control modal_list_options" autocomplete="on" name="t_id">
-                        </select>
+                    <strong>Select Your Cinema Location:  </strong>
+                    <select class="form-control modal_list_options" autocomplete="on" name="t_id"></select>
+                    <button class='btn btn-warning modal_button confirm_location' style='margin-top:40px'>Get Sessions</button>
                 </div>
-                <div class="show_sessions">
-                    <strong>Select sessions and book now! </strong>
-                    <select class="form-control modal_list_options" autocomplete="on" name="t_id">
-                    </select>
-                </div>
+                @if (Auth::guest())
+                    <div class="show_sessions">
+                        <h4 style="color: orangered; padding:10px;"><strong>Login to book now! </strong></h4>
+                        <ul><div class="modal_list_sessions"></div></ul>
+                    </div>
+                @else
+                    <div class="show_sessions">
+                        <strong>Select sessions and book now! </strong>
+                        {!! Form::open(array('route' => 'admin_bookings.store','method'=>'POST')) !!}
+                        <input type='hidden' value='{{ Auth::user()->id}}' name='user_id'>
+                        <ul><div class="modal_list_sessions"></div></ul>
+                        {!! Form::close() !!}
+                    </div>
+                @endif
                 <div id="populate_modal_bottom"></div>
                 <br>
-                <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-                <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+ {{--               <button data-remodal-action="close" class="remodal-cancel">Close</button>
+                <button data-remodal-action="close" class="remodal-confirm">Confirm</button>--}}
             </div>
+            @include('shared.modal')
 
             <div id="NS" class="tabcontent">
                 <div class="row">
@@ -76,4 +89,4 @@
 
 
             <!-- /END THE FEATURETTES -->
-@endsection('content')
+@endsection

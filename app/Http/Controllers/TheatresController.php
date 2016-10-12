@@ -15,8 +15,8 @@ class TheatresController extends Controller
     {
         /*generating id  ? */
         /*validation duplicate keys */
-        $locations = Theatre::orderBy('id','DESC')->paginate(5);
-        return view('admin.theatres',compact('locations')) ->with('i', ($request->input('page', 1) - 1) * 5);
+        $locations = Theatre::all()->sortBy("id");
+        return view('admin.theatres',compact('locations'));
     }
 
 
@@ -53,7 +53,7 @@ class TheatresController extends Controller
             "seats"  => 'required',
         ]);
         Theatre::find($id)->update($request->all());
-        return redirect()->route('admin_theatres.index') ->with('success', 'Theatre updated successfully');
+        return redirect()->route('admin_theatres.index')->with('success', 'Theatre updated successfully');
     }
 
     public function destroy($id)

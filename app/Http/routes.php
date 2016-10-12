@@ -11,10 +11,6 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});
-*/
 Route::get("/", ["as" => "index", "uses" => "PageController@index"]);
 Route::auth();
 Route::get("register", ["as" => "register", "uses" => "PageController@register"]);
@@ -31,11 +27,12 @@ Route::resource('WishlistCRUD','WishlistController');
 // Admin panel
 Route::get("api_refresh", ["as" => "api_refresh", "uses" => "AdminController@api_refresh"]);
 Route::post("updatedb", "AdminController@updateAPI");
-
 Route::resource('admin_sessions','SessionsController');
 Route::resource('admin_theatres','TheatresController');
 Route::resource('admin_users','UsersController');
 Route::resource('admin_movies','MoviesController');
+Route::resource('admin_bookings','BookingsController');
+Route::resource('admin_tickets','TicketController');
 
 // AJAX requests
 Route::get("api_request", "ClientRequestsController@ajax");
@@ -47,3 +44,5 @@ Route::get("theatresessions", "ClientRequestsController@getSessionsAtTheatre");
 Route::get("sessiontheatre", "ClientRequestsController@getTheatreFromSession");
 Route::get("theatres_available", "ClientRequestsController@getTheatres");
 Route::get("locations", "ClientRequestsController@getLocationsForMovie");
+Route::get("theatremovies", "ClientRequestsController@getTheatreMovies");
+Route::get("sessions", "ClientRequestsController@getSessionsForMovie");
