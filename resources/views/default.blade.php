@@ -17,6 +17,7 @@
         </ul>
         </div>
 
+
         <div class="remodal-bg">
             <div class="remodal" data-remodal-id="modal">
                 <button data-remodal-action="close" class="remodal-close" style="width:100px"></button>
@@ -46,6 +47,7 @@
  {{--               <button data-remodal-action="close" class="remodal-cancel">Close</button>
                 <button data-remodal-action="close" class="remodal-confirm">Confirm</button>--}}
             </div>
+            @include('shared.modal')
 
             <div id="NS" class="tabcontent">
                 <div class="row">
@@ -78,4 +80,4 @@
 
 
             <!-- /END THE FEATURETTES -->
-@endsection('content')
+@endsection
