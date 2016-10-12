@@ -1,5 +1,6 @@
 {{ Form::label('api', 'Populate DB using:') }}
-{{ Form::select('api', ['now_playing' => 'Now playing',
+{{ Form::select('api', ['list' => 'List',
+                        'now_playing' => 'Now playing',
                         'popular' => 'Popular',
                         'top_rated' => 'Top Rated',
                         'upcoming' => 'Upcoming'], 'now_playing') }}
