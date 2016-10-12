@@ -7,6 +7,8 @@ use App\Wishlist;
 use App\User;
 use App\Http\Requests;
 
+global $globals;
+
 class WishlistController extends Controller
 {
     /**
@@ -16,13 +18,14 @@ class WishlistController extends Controller
      */
     public function index(Request $request)
     {
-        $wishlists = Wishlist::orderBy('id','DESC')
+        /*$wishlists = Wishlist::orderBy('id','DESC')
             ->paginate(20);
-        /*
-        $wishlists = Wishlist::where('u_id',$request->u_id)
+        */
+
+        $wishlists = Wishlist::where('u_id', \Auth::user()->id )
             ->orderBy('id','DESC')
             ->paginate(20);
-                
+    /*
         $wishlists = Wishlist::where('email', User::user()->email)
             ->orderBy('id','DESC')
             ->paginate(20);*/
@@ -47,9 +50,8 @@ class WishlistController extends Controller
      */
     public function store(Request $request)
     {
-
         Wishlist::create($request->all());
-        return redirect()->route('WishlistCRUD.index');
+        return redirect()->route('index') ->with('success','Product added successfully');
     }
 
     /**
@@ -71,8 +73,8 @@ class WishlistController extends Controller
      */
     public function edit($id)
     {
-        $wishlist= Wishlist::find($id);
-        return view('WishlistCRUD.edit',compact('wishlist'));
+        /*$wishlist= Wishlist::find($id);
+        return view('WishlistCRUD.edit',compact('wishlist'));*/
     }
 
     /**
@@ -84,8 +86,8 @@ class WishlistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Wishlist::find($id)->update($request->all());
-        return redirect()->route('WishlistCRUD.index');
+        /*Wishlist::find($id)->update($request->all());
+        return redirect()->route('WishlistCRUD.index');*/
     }
 
     /**
@@ -97,6 +99,6 @@ class WishlistController extends Controller
     public function destroy($id)
     {
         Wishlist::find($id)->delete();
-        return redirect()->route('WishlistCRUD.index');
+        return redirect()->route('WishlistCRUD.index') ->with('success','Product deleted successfully');
     }
 }

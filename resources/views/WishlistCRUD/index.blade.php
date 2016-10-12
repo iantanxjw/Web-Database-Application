@@ -5,28 +5,24 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">My Wishlist</div>
+                    <div class="panel-heading">{{ Auth::user()->name }}'s watchlist</div>
                     <div class="panel-body">
                         <div class="col-md-8 col-md-offset-2">
-                            <a class="btn btn-success" href="{{ route('WishlistCRUD.create') }}"> Add new items</a>
 
-                            <div>Owned By : {{ Auth::user()->name }}</div>
 
                             <table>
-                                <th>No</th>
-                                <th>Movie Name</th>
-                                <th>User ID</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th class="col-md-1">No</th>
+                                <th class="col-md-4">Movie Name</th>
+                                <!--<th>USER ID</th>-->
+                                <th class="col-md-1">Delete</th>
 
                             @foreach ($wishlists as $wishlist)
 
                                     <tr>
-                                        <td>{{ ++$i }}</td>
-                                        <td>{{ $wishlist->mv_id_array}}</td>
-                                        <td>{{ $wishlist->u_id}}</td>
-                                        <td><a class="btn btn-primary" href="{{ route('WishlistCRUD.edit',$wishlist->id) }}">Edit</a></td>
-                                        <td>
+                                        <td class="col-md-1">{{ ++$i }}</td>
+                                        <td class="col-md-4">{{ $wishlist->mv_name}}</td>
+                                        <!--<td>{{ $wishlist->u_id}}</td>-->
+                                        <td class="col-md-1">
                                         {!! Form::open(['method' => 'DELETE','route' => ['WishlistCRUD.destroy', $wishlist->id],'style'=>'display:inline']) !!}
                                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                         {!! Form::close() !!}
