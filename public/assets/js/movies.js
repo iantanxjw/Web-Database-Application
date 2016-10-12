@@ -20,7 +20,6 @@ $(function() {
             }
             else
             {
-
                 $("#upcoming").append(
                     "<div class='col-sm-3 text-center'>" +
                     "<div class='polaroid'>" +
@@ -36,7 +35,7 @@ $(function() {
                 $("#upcoming").append("</div>");
                 i=0;
             }
-        })
+        });
         if(i<4) {
             $("#upcoming").append("</div>");
         }
@@ -177,7 +176,10 @@ $(function() {
         $("#populate_modal").html("<div class='featurette'><div class='row'>");
 
         $.get("movieid", {id: mv_id}, function(movie) {
-            $("#populate_modal").append("<img class='featurette-image pull-left' src='" + movie.poster + "'>");
+            $("#populate_modal").append("<div class='col-sm-3 text-center'><img class='featurette-image pull-left' src='" + movie.poster + "'>" +
+                "<a class='btn btn-default modal_button modalPop' href='#modal' data-id='" + movie.id + "' name='"+movie.title+
+                "' style='width:100%'>info</a>" +
+                "<a class='btn btn-warning modal_button modalPopSessions remodal-bg'>Add to watchlist</a></div>");
             $("#populate_modal").append("<h1 class='featurette-heading'>"+movie.title+"</h1>");
         }, "json");
 
@@ -216,28 +218,20 @@ $(function() {
     $(document).on("click", ".confirm_location", function() {
         $(".show_sessions").show();
         $(".select_modal_list").hide();
+        $(".modal_list_sessions").html("");
+
         var t_id = $( "select.modal_list_options option:selected").val().split(",");
+        $.unique(t_id);
 
-        //console.log(t_id);
-        $(".modal_list_sessions").html("<ul>");
-        for (var i=0; i < t_id.length; i++)
-        {
-            console.log(t_id[i]);
-            //Getting session times
-            $.get("sessions", {mv_id: mv_id, t_id: t_id[i]}, function(sessions)
-            {
+        for (var j = 0; j < t_id.length; j++) {
+
+            $.get("sessions", {mv_id: mv_id, t_id: t_id[j]}, function(sessions) {
+
                 $.each(sessions, function(session, details) {
-                    //console.log(session.weekday);
-                    $(".modal_list_sessions").append("<li><span class='day'>"+details.weekday+" </span> <span class='day'>"+
-                        details.start_time+"</span></li>");
+                    $(".modal_list_sessions").append("<li><span class='day'>"+details.weekday+" </span> " +
+                        "<button class='btn btn-danger' name='sess_id' type='submit' value='"+details.id+"'><span class='time'>"+ details.start_time+"</span></button></li>");
                 });
-
             }, "json");
         }
-
-        $(".modal_list_sessions").append("</ul>");
-        // get session times with the id and store
-        //console.log(mv_id);
-        //console.log(t_id);
     });
 });

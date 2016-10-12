@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Movies;
 use App\Session;
 use App\Theatre;
+use App\Http\Controllers\Auth;
+use App\User;
 
 
 class ClientRequestsController extends Controller
