@@ -59,7 +59,7 @@ class UsersController extends Controller
 
             $user->save();
 
-            return view("test",compact('user'))->with(["poop"=>"this is from user page"]);
+            return view("test",compact('user'));//->with(["testing"=>"this is from user page"]);
         }
         else
         {
@@ -69,7 +69,7 @@ class UsersController extends Controller
 
             $user->save();
 
-            return view("test_request")->with(["poop"=>"from admin page"]);
+            return view("test",compact('user'));//->with(["testing"=>"from admin page"]);
             //return view("test_request")->with(["header" => $request->path()]);
         }
         //return redirect()->route('admin_users.index')->with('success', 'User updated successfully');
