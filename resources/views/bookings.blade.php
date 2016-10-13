@@ -14,7 +14,6 @@
                         <input type='hidden' value='{{$booking->id}}' name='booking_id'>
                         @include('ticket_form')
                     </form>
-
                 </div>
             </div>
         </div>

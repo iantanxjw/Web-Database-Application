@@ -85,4 +85,20 @@ $("#btn1").click(function(event){
         $( "#eExp" ).text( "*Required" ).show().fadeOut( 4000 );
         event.preventDefault();
     }
+
+});
+
+
+$("#btn2").click(function(event){
+    var total = 0;
+    total = total + parseInt($("#Adult").val(),10);
+    total = total + parseInt($("#Child").val(),10)
+    total = total + parseInt($("#Student").val(),10)
+    total = total + parseInt($("#Senior").val(),10)
+    
+     //   alert(total);
+    if (total == 0){
+        event.preventDefault();
+    }
+
 });
