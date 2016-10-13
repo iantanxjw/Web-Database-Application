@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,6 +10,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('movies')->insert(["name" => "Shrek", "desc" => "Green man in a swap with a donkey", "genre" => "comedy", "year" => "2001"]);
+        //DB::table('movies')->insert(["name" => "Shrek", "desc" => "Green man in a swap with a donkey", "genre" => "comedy", "year" => "2001"]);
+        $this->call('SessionSeeder');
+        $this->call('TheatreSeeder');
     }
 }

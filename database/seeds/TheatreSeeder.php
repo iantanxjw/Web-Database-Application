@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class theatreSeeder extends Seeder
+class TheatreSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,13 +18,13 @@ class theatreSeeder extends Seeder
             ]);
 
         DB::table('theatres')->insert([
-            'location' => 'Daisy Land',
+            'location' => 'DaisyLand',
             'theatre_num' => 2,
             'seats' => 200,
             ]);
 
         DB::table('theatres')->insert([
-            'location' => 'Daisy Land',
+            'location' => 'DaisyLand',
             'theatre_num' => 3,
             'seats' => 200,
         ]);
