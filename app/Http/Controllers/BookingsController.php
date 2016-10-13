@@ -8,6 +8,7 @@ use App\Booking;
 use App\Movies;
 use App\Session;
 use App\Tickets;
+use App\Ticket;
 
 class BookingsController extends Controller
 {
@@ -77,7 +78,11 @@ class BookingsController extends Controller
             $ticket->delete();
         }
 
-        Booking::find($id)->delete();
+        if (Booking::find($id) != null)
+        {
+            Booking::find($id)->delete();
+        }
+
 
         return redirect()->route('booking_tickets.index') ->with('success','Session deleted successfully');
     }

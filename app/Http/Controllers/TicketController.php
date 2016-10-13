@@ -89,7 +89,7 @@ class TicketController extends Controller
     {
         Ticket::find($id)->delete();
 
-        return redirect()->route('Bookings.form') ->with('success','Session deleted successfully');
+        return redirect()->route('booking_tickets.index') ->with('success','Session deleted successfully');
     }
 
 }

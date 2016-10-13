@@ -18,7 +18,7 @@
                                         <td>{{ $ticket->getType() }}</td>
                                         <td>{{ $ticket->getQty() }}</td>
                                         <td><a class="btn btn-primary show-edit" data-id="{{ $ticket->getId() }}">Edit</a>
-                                            {!! Form::open(['method' => 'DELETE','route' => ['bookings.destroy', $ticket->getId()],'style'=>'display:inline']) !!}
+                                            {!! Form::open(['method' => 'DELETE','route' => ['booking_tickets.destroy', $ticket->getId()],'style'=>'display:inline']) !!}
                                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                             {!! Form::close() !!}</td>
                                     </tr>

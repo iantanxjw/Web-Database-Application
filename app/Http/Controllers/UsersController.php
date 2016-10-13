@@ -64,6 +64,17 @@ class UsersController extends Controller
 
             $user->save();
 
+            $bookings = Booking::all();
+
+            foreach ($bookings as $booking)
+            {
+                if ($booking->status =="Pending"){
+                    $booking->status = "Success";
+                    $booking->save();
+                }
+            }
+
+
             return view("test",compact('user'));//->with(["testing"=>"this is from user page"]);
         }
         else
