@@ -15,7 +15,7 @@ class BookingsController extends Controller
     {
         $bookings = Booking::where([
             ['user_id','=',\Auth::user()->id ],
-            ['status', '=', 'success']
+            ['status', '=', 'Success']
         ])->get();
 
         $tickets= [];

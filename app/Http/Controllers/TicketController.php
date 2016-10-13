@@ -15,7 +15,10 @@ class TicketController extends Controller
 {
     public function index(Request $request)
     {
-        $bookings = Booking::where('user_id', \Auth::user()->id )->get();
+        $bookings = Booking::where([
+            ['user_id','=',\Auth::user()->id ],
+            ['status', '=', 'Pending']
+        ])->get();
 
         $tickets= [];
 

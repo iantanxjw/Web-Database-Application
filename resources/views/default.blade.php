@@ -35,7 +35,7 @@
                 <div class="select_modal_list">
                     <strong>Select Your Cinema Location:  </strong>
                     <select class="form-control modal_list_options" autocomplete="on" name="t_id"></select>
-                    <button class='btn btn-warning modal_button confirm_location' style='margin-top:40px'>Get Sessions</button>
+                    <button class='btn btn-info confirm_location' style='margin-top:40px'>Get Sessions</button>
                 </div>
                 @if (Auth::guest())
                     <div class="show_sessions">

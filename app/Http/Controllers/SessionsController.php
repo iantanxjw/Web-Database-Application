@@ -69,7 +69,6 @@ class SessionsController extends Controller
     public function edit($id)
     {
         $sessions = Session::find($id);
-
         return json_encode($sessions);
     }
 

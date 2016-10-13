@@ -27,7 +27,7 @@
                         </div>
                         <a class ="btn btn-success pay_button">Pay</a>
                         <div class = "checkout">
-                        {!! Form::open( ['class'=>'form-horizontal','method' => 'PATCH','route' => ['admin_users.update',Auth::user()->id]]) !!}
+                        {!! Form::open( ['class'=>'form-horizontal','method' => 'PATCH','route' => ['admin_users.update', Auth::user()->id]]) !!}
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="Name" class="col-md-4 control-label">Name:</label>
@@ -99,7 +99,6 @@
                             </br></br>
                             <div class="form-group">
                                 <div class="col-md-5 col-md-offset-5">
-
                                     <input id="btn1" type="submit"> <!-- <button id="btn1" >Submit</button> -->
                                 </div>
                             </div>

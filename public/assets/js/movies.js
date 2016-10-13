@@ -98,7 +98,7 @@ $(function() {
 
         $.get("movieid", {id: mv_id}, function(movie) {
             $("#populate_modal").append("<div class='col-sm-3 text-center'><img class='featurette-image pull-left' src='" + movie.poster + "'>"+
-                "<button type='submit' class='btn btn-primary' name='mv_name' value='"+movie.title+"'>Add to watchlist</button></div>"+
+                "<button type='submit' class='btn btn-warning modal_button' name='mv_name' value='"+movie.title+"'>Add to watchlist</button></div>"+
                 "<h1 class='featurette-heading'>"+movie.title+"</h1><p class='lead'>"+movie.desc+"</p>"+
                 "<i class='lead fa fa-calendar'> Release Date: "+movie.release_date+"</i></div></div>");
         }, "json");
@@ -120,7 +120,7 @@ $(function() {
         $.get("movieid", {id: mv_id}, function(movie) {
             $("#populate_modal").append("<div class='col-sm-3 text-center'><img class='featurette-image pull-left' src='" + movie.poster + "'>"+
                 "<a class='btn btn-primary modal_button modalPopSessions remodal-bg' href='#modal' data-id='" + mv_id + "' name='"+movie.title+"'>Sessions</a>" +
-                "<button type='submit' class='btn btn-primary' name='mv_name' value='"+movie.title+"'>Add to watchlist</button></div>"+
+                "<button type='submit' class='btn btn-warning modal_button' name='mv_name' value='"+movie.title+"'>Add to watchlist</button></div>"+
                 "<h1 class='featurette-heading'>"+movie.title+"</h1><p class='lead'>"+movie.desc+"</p>"+
                 "<i class='lead fa fa-calendar'> Release Date: "+movie.release_date+"</i></div></div>");
         }, "json");
@@ -179,8 +179,7 @@ $(function() {
             $("#populate_modal").append("<div class='col-sm-3 text-center'><img class='featurette-image pull-left' src='" + movie.poster + "'>" +
                 "<a class='btn btn-default modal_button modalPop' href='#modal' data-id='" + movie.id + "' name='"+movie.title+
                 "' style='width:100%'>info</a>" +
-
-                "<button type='submit' class='btn btn-warning modal_button modalPopSessions remodal-bg' name='mv_id' value='"+movie.id+"'>Add to watchlist</button></div>");
+                "<button type='submit' class='btn btn-warning modal_button' name='mv_id' value='"+movie.id+"'>Add to watchlist</button></div>");
 
             $("#populate_modal").append("<h1 class='featurette-heading'>"+movie.title+"</h1>");
         }, "json");

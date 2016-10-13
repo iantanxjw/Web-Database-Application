@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\User;
+use App\Booking;
 
 class UsersController extends Controller
 {
@@ -36,8 +37,12 @@ class UsersController extends Controller
         return redirect()->route("admin_users.index")->with("success", $request->name . " created successfully");
     }
 
+
     public function update(Request $request, $id)
     {
+
+        //Change status of all bookings to success
+
 
         // $this->validate($request, [
         //     'name' => "required",
