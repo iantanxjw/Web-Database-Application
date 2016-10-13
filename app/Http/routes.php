@@ -31,8 +31,8 @@ Route::resource('admin_sessions','SessionsController');
 Route::resource('admin_theatres','TheatresController');
 Route::resource('admin_users','UsersController');
 Route::resource('admin_movies','MoviesController');
-Route::resource('admin_bookings','BookingsController');
-Route::resource('admin_tickets','TicketController');
+Route::resource('bookings','BookingsController');
+Route::resource('booking_tickets','TicketController');
 
 // AJAX requests
 Route::get("api_request", "ClientRequestsController@ajax");

@@ -7,6 +7,19 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Personal Details</div>
                     <div class="panel-body">
+                        <div class="booking_summary">
+                            <table align="center">
+                                @foreach ($tickets as $ticket)
+                                    <tr><th colspan="2"> {{$ticket->getTitle()}} <br> {{$ticket->getWeekday()}} <br> {{$ticket->getStartTime()}}</th></tr>
+                                    <tr>
+                                        <td>{{ $ticket->getType() }}</td>
+                                        <td>{{ $ticket->getQty() }}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
+
+                        <div class = "checkout">
                         {!! Form::open( ['class'=>'form-horizontal','method' => 'PATCH','route' => ['admin_users.update',Auth::user()->id]]) !!}
                             {{ csrf_field() }}
                             <div class="form-group">
@@ -83,6 +96,7 @@
                                 </div>
                             </div>
                         {!! Form::close() !!}
+                            </div>
                     </div>
 
                 </div>

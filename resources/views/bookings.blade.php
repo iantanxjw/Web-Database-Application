@@ -9,7 +9,7 @@
             <div class="panel-body">
                     <!-- Text field for theatre number -->
                 <div class="row">
-                    <form name = "myForm" method="POST" action="{{route('admin_tickets.store')}}" id="commentForm" onsubmit="return validateForm()">
+                    <form name = "myForm" method="POST" action="{{route('booking_tickets.store')}}" id="commentForm" onsubmit="return validateForm()">
                         {{ csrf_field() }}
                         <input type='hidden' value='{{$booking->id}}' name='booking_id'>
                         @include('ticket_form')

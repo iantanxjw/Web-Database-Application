@@ -45,7 +45,7 @@
                 @else
                     <div class="show_sessions">
                         <strong>Select sessions and book now! </strong>
-                        {!! Form::open(array('route' => 'admin_bookings.store','method'=>'POST')) !!}
+                        {!! Form::open(array('route' => 'bookings.store','method'=>'POST')) !!}
                         <input type='hidden' value='{{ Auth::user()->id}}' name='user_id'>
                         <input type='hidden' value='Pending' name='status'>
                         <ul><div class="modal_list_sessions"></div></ul>

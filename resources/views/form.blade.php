@@ -9,8 +9,8 @@
                         <div class="booking_summary">
                             <table align="center">
                                 @foreach ($tickets as $ticket)
-                                        <tr><th colspan="2"> $ticket->getTitle() <br> $ticket->getWeekday() <br> $ticket->getStartTime()</th></tr>
-                                        <tr>
+                                    <tr><th colspan="2"> {{$ticket->getTitle()}} <br> {{$ticket->getWeekday()}} <br> {{$ticket->getStartTime()}}</th></tr>
+                                    <tr>
                                         <td>{{ $ticket->getType() }}</td>
                                         <td>{{ $ticket->getQty() }}</td>
                                     </tr>

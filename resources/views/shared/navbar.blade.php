@@ -26,7 +26,7 @@
         <li><a href="{{ url('/register') }}">Register</a></li>
     @else
         <li ><a href="{!! route('icons') !!}"><span class="icon-star-full" ></span></a></li>
-        <li ><a href="{!! route('form') !!}"><span class="icon-cart" ></span></a></li>
+        <li ><a href="{!! route('booking_tickets.index') !!}"><span class="icon-cart" ></span></a></li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                 My Account <span class="caret"></span>
@@ -34,7 +34,7 @@
 
             <ul class="dropdown-menu" role="menu">
                 <li><a>{{ Auth::user()->name }}</a></li>
-                <li><a>My Bookings </a></li>
+                <li><a href="{!! route('booking_tickets.bookings') !!}">My Bookings </a></li>
                 <li><a href="{!! route('WishlistCRUD.index') !!}">My Watchlist</a></li>
                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
             </ul>

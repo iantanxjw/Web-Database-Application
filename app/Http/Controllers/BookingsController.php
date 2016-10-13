@@ -13,8 +13,7 @@ class BookingsController extends Controller
 {
     public function index(Request $request)
     {
-
-        return view('form');
+        return view('Booking.form');
     }
 
     public function store(Request $request)
@@ -30,5 +29,11 @@ class BookingsController extends Controller
         $movie = Movies::find($session->mv_id);
 
         return view('bookings', compact('session', 'movie', 'booking'));
+    }
+
+    public function destroy($id)
+    {
+        Booking::find($id)->delete();
+        return redirect()->route('default') ->with('success','Session deleted successfully');
     }
 }
