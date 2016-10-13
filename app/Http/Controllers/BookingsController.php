@@ -77,7 +77,11 @@ class BookingsController extends Controller
             $ticket->delete();
         }
 
-        Booking::find($id)->delete();
+        if (Booking::find($id) != null)
+        {
+            Booking::find($id)->delete();
+        }
+
 
         return redirect()->route('booking_tickets.index') ->with('success','Session deleted successfully');
     }
