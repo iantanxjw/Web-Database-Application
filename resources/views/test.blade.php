@@ -13,14 +13,12 @@
                             </div>
                             <div class="receipt-body">
                             <hr>
-                                <?php
 
-                                    echo "Name: " . $_POST["name"] . "<br>";
-                                    echo "Address: " . $_POST["address"] .  "<br>";
-                                    echo "Suburb: " . $_POST["suburb"] .  "<br>";
-                                    echo "Post Code: " . $_POST["pcode"] .  "<br>";
+                                <div>NAME:   {{ ($user->name) }}</div>
+                                <div>Address:{{ ($user->address) }}</div>
+                                <div>Suburb: {{ ($user->suburb) }}</div>
+                                <div>Pcode:  {{ ($user->postcode) }}</div>
 
-                                ?>
                             </div>
                         </div>
 

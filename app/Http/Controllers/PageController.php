@@ -34,10 +34,9 @@ class PageController extends Controller
         return view("Bookings.form");
     }
 
-    public function test(Request $request,$name)
+    public function test()
     {
-        User::find($name)->update($request->all());
-        return redirect()->route('test');
+        return view('test');
 
     }
 

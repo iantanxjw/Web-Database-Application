@@ -238,7 +238,7 @@ $(function() {
         }
     });
 
-    /*** Form validation ***/
+    /*** Form validation
     function validateForm() {
         var adult = document.forms["myForm"]["adult"].value;
         var conc = document.forms["myForm"]["concession"].value;
@@ -256,4 +256,5 @@ $(function() {
             }
         }
     }
+     ***/
 });

@@ -44,16 +44,35 @@ class UsersController extends Controller
         //     'email' => "required",
         //     'password' => "required",
         // ]);
+
         $user = User::find($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->admin = $request->admin;
+
 
         // save only runs if things have changed
-        $user->save();
+        //$user->save();
+        if ($request->source == 0) {
 
-        return redirect()->route('admin_users.index')->with('success', 'User updated successfully');
+            $user->admin = $request->admin;
+            $user->address = $request->address;
+            $user->suburb = $request->suburb;
+            $user->postcode = $request->pcode;
+
+            $user->save();
+
+            return view("test",compact('user'))->with(["poop"=>"this is from user page"]);
+        }
+        else
+        {
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+
+            $user->save();
+
+            return view("test_request")->with(["poop"=>"from admin page"]);
+            //return view("test_request")->with(["header" => $request->path()]);
+        }
+        //return redirect()->route('admin_users.index')->with('success', 'User updated successfully');
     }
 
     public function destroy($id)

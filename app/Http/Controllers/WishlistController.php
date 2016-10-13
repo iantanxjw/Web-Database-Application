@@ -20,15 +20,15 @@ class WishlistController extends Controller
     {
         /*$wishlists = Wishlist::orderBy('id','DESC')
             ->paginate(20);
-        */
+
+        $wishlists = Wishlist::where('email', User::user()->email)
+            ->orderBy('id','DESC')
+            ->paginate(20);*/
 
         $wishlists = Wishlist::where('u_id', \Auth::user()->id )
             ->orderBy('id','DESC')
             ->paginate(20);
-    /*
-        $wishlists = Wishlist::where('email', User::user()->email)
-            ->orderBy('id','DESC')
-            ->paginate(20);*/
+
         return view('WishlistCRUD.index',compact('wishlists')) ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -39,7 +39,7 @@ class WishlistController extends Controller
      */
     public function create()
     {
-        return view('WishlistCRUD.form');
+        //return view('WishlistCRUD.form');
     }
 
     /**
@@ -55,7 +55,7 @@ class WishlistController extends Controller
             "u_id" => "required"
         ]);
         Wishlist::create($request->all());
-        return redirect()->route('index') ->with('success','Product added successfully');
+        return redirect()->route('index') ->with('success',$request->mv_name,' added successfully');
     }
 
     /**

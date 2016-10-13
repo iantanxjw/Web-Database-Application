@@ -50,6 +50,9 @@
                     <th>Email</th>
                     <th>Password</th>
                     <th>Admin</th>
+                    <th>Address</th>
+                    <th>Suburb</th>
+                    <th>Post Code</th>
                     <th>Action</th>
                 </tr>
                 @foreach($users as $user)
@@ -59,6 +62,9 @@
                         {{-- HOW TO BREAK USER SECURITY LOLOLOLOL --}}
                         <td>{{ $user->password }}</td>
                         <td>{{ $user->admin }}</td>
+                        <td>{{ $user->address }}</td>
+                        <td>{{ $user->suburb }}</td>
+                        <td>{{ $user->postcode }}</td>
                         <td><a class="btn btn-primary show-edit" data-id="{{ $user->id }}">Edit</a>
                             {!! Form::open(['method' => 'DELETE','route' => ['admin_users.destroy', $user->id],'style'=>'display:inline']) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}

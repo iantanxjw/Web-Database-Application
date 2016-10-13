@@ -5,9 +5,9 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Personal Details BOOKINGS</div>
+                    <div class="panel-heading">Personal Details</div>
                     <div class="panel-body">
-                        {!! Form::open(array('route' => ['test'/*,'{{ Auth::user()->name }}'*/],'class'=>'form-horizontal','method'=>'POST')) !!}
+                        {!! Form::open( ['class'=>'form-horizontal','method' => 'PATCH','route' => ['admin_users.update',Auth::user()->id]]) !!}
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="Name" class="col-md-4 control-label">Name:</label>
@@ -71,13 +71,14 @@
                                 </div>
                                 <span id="eExp"></span>
                             </div>
-
+                                    <input type="hidden" name="source" value="0">
                             <div class="col-md-5 col-md-offset-4">
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your details with anyone else.</small>
                             </div>
                             </br></br>
                             <div class="form-group">
                                 <div class="col-md-5 col-md-offset-5">
+
                                     <input id="btn1" type="submit"> <!-- <button id="btn1" >Submit</button> -->
                                 </div>
                             </div>

@@ -95,7 +95,7 @@ $("#btn2").click(function(event){
     total = total + parseInt($("#Child").val(),10)
     total = total + parseInt($("#Student").val(),10)
     total = total + parseInt($("#Senior").val(),10)
-    
+
      //   alert(total);
     if (total == 0){
         event.preventDefault();
