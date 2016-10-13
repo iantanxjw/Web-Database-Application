@@ -15,8 +15,10 @@ class BookingsController extends Controller
     {
         $this->validate($request, [
             "sess_id" => 'required',
-            "user_id" => 'required'
+            "user_id" => 'required',
+            "status" => 'required'
         ]);
+
         $booking = Booking::create($request->all());
         $session = Session::find($request->sess_id);
         $movie = Movies::find($session->mv_id);

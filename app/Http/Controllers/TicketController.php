@@ -15,7 +15,7 @@ class TicketController extends Controller
 {
     public function index(Request $request)
     {
-        $bookings = Booking::where('user_id', \Auth::user()->id )->sortBy('id');
+        $bookings = Booking::where('user_id', \Auth::user()->id )->orderBy('id');
 
         $tickets= [];
 
@@ -37,8 +37,10 @@ class TicketController extends Controller
             }
         }
 
-        return view('forms', compact('tickets'));
+        return view('form', compact('tickets'));
     }
+
+
 
     public function store(Request $request)
     {
@@ -67,10 +69,6 @@ class TicketController extends Controller
             Tickets::create(["type" => "Senior", "qty" => $request->adult, "booking_id" => $request->booking_id]);
         }
 
-        $booking = Booking::find($request->booking_id);
-        $session =  Session::find($booking->sess_id);
-        $movie = Movies::find($session->mv_id);
-
-        return redirect()->route('form') ->with('success', 'Ticket created successfully');
+        return redirect()->route('admin_tickets.index') ->with('success', 'Ticket created successfully');
     }
 }

@@ -23,7 +23,6 @@
 
                 <button data-remodal-action="close" class="remodal-close"style="width:100px"></button>
                 {!! Form::open(array('route' => 'WishlistCRUD.store','method'=>'POST')) !!}
-
                 <div id="populate_modal"></div>
                 @if (Auth::guest())
 
@@ -31,6 +30,7 @@
                     {!! Form::hidden('u_id', Auth::user()->id) !!}
                 @endif
                 {!! Form::close() !!}
+
                 <div class="modal_list_NA"><p>Unfortunately there are no cinemas showing this movie</p></div>
                 <div class="select_modal_list">
                     <strong>Select Your Cinema Location:  </strong>
@@ -47,6 +47,7 @@
                         <strong>Select sessions and book now! </strong>
                         {!! Form::open(array('route' => 'admin_bookings.store','method'=>'POST')) !!}
                         <input type='hidden' value='{{ Auth::user()->id}}' name='user_id'>
+                        <input type='hidden' value='Pending' name='status'>
                         <ul><div class="modal_list_sessions"></div></ul>
                         {!! Form::close() !!}
                     </div>

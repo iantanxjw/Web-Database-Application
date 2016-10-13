@@ -14,7 +14,9 @@ class Ticket extends Model
     private $qty;
     private $booking_id;
 
-    public function __construct($id = null, $weekday = null, $start_time = null,$title = null, $type = null, $qty = null, $booking_id = null)
+
+    public function __construct($id = null, $weekday = null, $start_time = null, $title = null,
+                                $type = null, $qty = null, $booking_id = null)
     {
         $this->setID($id);
         $this->setTitle($title);

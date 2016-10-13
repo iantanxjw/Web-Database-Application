@@ -8,13 +8,9 @@
                     <div class="panel-body">
                         <div class="booking_summary">
                             <table align="center">
-                                <?php $new_ticket = ''; ?>
                                 @foreach ($tickets as $ticket)
-                                    @if ($ticket->title != $new_ticket)
                                         <tr><th colspan="2"> $ticket->getTitle() <br> $ticket->getWeekday() <br> $ticket->getStartTime()</th></tr>
-                                        <?php $new_ticket = $ticket->getTitle(); ?>
-                                    @endif
-                                    <tr>
+                                        <tr>
                                         <td>{{ $ticket->getType() }}</td>
                                         <td>{{ $ticket->getQty() }}</td>
                                     </tr>
@@ -22,7 +18,7 @@
                             </table>
                         </div>
 
-                        <div class = "checkout" style= "display: none">
+                        <div class = "checkout">
                                 <form class="form-horizontal" action="{!! route('test') !!}" method = "POST">
                                     {{ csrf_field() }}
                                     <div class="form-group">
