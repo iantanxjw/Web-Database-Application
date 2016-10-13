@@ -663,3 +663,10 @@ http://bootsnipp.com/snippets/featured/custom-search-input*/
 .modal_list_sessions button:hover span {display:none}
 .modal_list_sessions button:hover:before {content:"Book now!"}
 
+
+/*************CART PAGE **************/
+div.checkout {
+    display: none;
+}
+
+

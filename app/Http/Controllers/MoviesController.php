@@ -32,7 +32,7 @@ class MoviesController extends Controller
             );
         }
 
-        // null api request fpurely for genres;
+        // null api request purely for genres;
         $apir = new ApiRequest();
         $genres = $apir->getGenres();
         $gnrs = [];
