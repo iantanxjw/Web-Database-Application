@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\User;
+use App\Booking;
 
 class UsersController extends Controller
 {
@@ -58,6 +59,17 @@ class UsersController extends Controller
             $user->postcode = $request->pcode;
 
             $user->save();
+
+            $bookings = Booking::all();
+
+            foreach ($bookings as $booking)
+            {
+                if ($booking->status =="Pending"){
+                    $booking->status = "Success";
+                    $booking->save();
+                }
+            }
+
 
             return view("test",compact('user'));//->with(["testing"=>"this is from user page"]);
         }

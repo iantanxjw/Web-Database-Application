@@ -8,6 +8,7 @@ use App\Booking;
 use App\Movies;
 use App\Session;
 use App\Tickets;
+use App\Ticket;
 
 class BookingsController extends Controller
 {
@@ -15,7 +16,7 @@ class BookingsController extends Controller
     {
         $bookings = Booking::where([
             ['user_id','=',\Auth::user()->id ],
-            ['status', '=', 'success']
+            ['status', '=', 'Success']
         ])->get();
 
         $tickets= [];
