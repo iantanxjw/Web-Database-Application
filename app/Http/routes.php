@@ -20,6 +20,7 @@ Route::get("contact", ["as" => "contact", "uses" => "PageController@contact"]);
 Route::get("icons", ["as" => "icons", "uses" => "PageController@icons"]);
 Route::get("form", ["as" => "form", "uses" => "PageController@form"]);
 Route::post("test", ["as" => "test", "uses" => "PageController@test"]);
+Route::get("bookings" , ["as" => "bookings", "uses" => "TicketController@bookings"]);
 
 // Wishlist
 Route::resource('WishlistCRUD','WishlistController');
@@ -46,3 +47,4 @@ Route::get("theatres_available", "ClientRequestsController@getTheatres");
 Route::get("locations", "ClientRequestsController@getLocationsForMovie");
 Route::get("theatremovies", "ClientRequestsController@getTheatreMovies");
 Route::get("sessions", "ClientRequestsController@getSessionsForMovie");
+

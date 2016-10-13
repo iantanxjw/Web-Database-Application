@@ -10,10 +10,16 @@
                         <div class="booking_summary">
                             <table align="center">
                                 @foreach ($tickets as $ticket)
-                                    <tr><th colspan="2"> {{$ticket->getTitle()}} <br> {{$ticket->getWeekday()}} <br> {{$ticket->getStartTime()}}</th></tr>
+                                    <tr><th colspan="2"> {{$ticket->getTitle()}} <br> {{$ticket->getWeekday()}} <br> {{$ticket->getStartTime()}}</th>
+                                        <th>{!! Form::open(['method' => 'DELETE','route' => ['bookings.destroy', $ticket->getBookingID()],'style'=>'display:inline']) !!}
+                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                            {!! Form::close() !!}</th></tr>
                                     <tr>
                                         <td>{{ $ticket->getType() }}</td>
                                         <td>{{ $ticket->getQty() }}</td>
+                                        <td> <th>{!! Form::open(['method' => 'DELETE','route' => ['bookings.destroy', $ticket->getId()],'style'=>'display:inline']) !!}
+                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                            {!! Form::close() !!}</th></td>
                                     </tr>
                                 @endforeach
                             </table>

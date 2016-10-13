@@ -52,50 +52,6 @@ class TicketController extends Controller
         return view('Bookings.form', compact('tickets'));
     }
 
-    public function bookings(Request $request)
-    {
-        $bookings = Booking::where([
-            ['user_id','=',\Auth::user()->id ],
-            ['status', '=', 'success']
-            ])->get();
-
-        $tickets= [];
-
-        //For each booking with the user id
-        foreach ($bookings as $booking)
-        {
-            $session =  Session::find($booking->sess_id);
-            $movie = Movies::find($session->mv_id);
-            $ticket = Tickets::where('booking_id', $booking->id)->get();
-
-            //Checking if booking has an tickets
-            if (count($ticket) == 0)
-            {
-                Booking::destroy($booking->id);
-
-            }
-            else{
-                //check if there are tickets available else delete booking
-                //iterate over all the tickets and store it into a ticket Object
-
-                foreach ($ticket as $ticket_types) {
-                    $tickets[] = new Ticket(
-                        $ticket_types->id,
-                        $movie->title,
-                        $session->weekday,
-                        $session->start_time,
-                        $ticket_types->type,
-                        $ticket_types->qty,
-                        $ticket_types->booking_id
-                    );
-                }
-            }
-        }
-        return view('Bookings.index', compact('tickets'));
-    }
-
-
-
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -125,4 +81,12 @@ class TicketController extends Controller
 
         return redirect()->route('booking_tickets.index') ->with('success', 'Ticket/s added to cart successfully');
     }
+
+    public function destroy($id)
+    {
+        Ticket::find($id)->delete();
+
+        return redirect()->route('Bookings.form') ->with('success','Session deleted successfully');
+    }
+
 }
