@@ -17,14 +17,15 @@
                                     <tr>
                                         <td>{{ $ticket->getType() }}</td>
                                         <td>{{ $ticket->getQty() }}</td>
-                                        <td> <th>{!! Form::open(['method' => 'DELETE','route' => ['bookings.destroy', $ticket->getId()],'style'=>'display:inline']) !!}
+                                        <td><a class="btn btn-primary show-edit" data-id="{{ $ticket->getId() }}">Edit</a>
+                                            {!! Form::open(['method' => 'DELETE','route' => ['bookings.destroy', $ticket->getId()],'style'=>'display:inline']) !!}
                                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                            {!! Form::close() !!}</th></td>
+                                            {!! Form::close() !!}</td>
                                     </tr>
                                 @endforeach
                             </table>
                         </div>
-
+                        <a class ="btn btn-success pay_button">Pay</a>
                         <div class = "checkout">
                         {!! Form::open( ['class'=>'form-horizontal','method' => 'PATCH','route' => ['admin_users.update',Auth::user()->id]]) !!}
                             {{ csrf_field() }}
@@ -90,6 +91,7 @@
                                 </div>
                                 <span id="eExp"></span>
                             </div>
+                            <a class ="btn btn-success pay_button">Confirm</a>
                                     <input type="hidden" name="source" value="0">
                             <div class="col-md-5 col-md-offset-4">
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your details with anyone else.</small>

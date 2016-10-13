@@ -15,3 +15,4 @@
 <script src="assets/js/dynamic_carousel.js"></script>
 <script src="assets/js/admin.js"></script>
 <script src="assets/js/search.js"></script>
+<script src="assets/js/cart.js"></script>
