@@ -30,8 +30,8 @@ class SessionSeeder extends Seeder
             '396535', '399106', '5174', '5876', '8363', '9461', '95610',
             '96721', '99861');
         $weekdays = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
-        $theatres = array(1, 2, 3, 4, 5);
-        $startTimes = array("22:00", "01:00", "05:00", "10:00", "12:00");
+        $theatres = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+        $startTimes = array("01:00", "05:00", "10:00", "12:00", "15:30", "18:30", "20:00", "22:00", "23:30");
 
         for ($i = 0; $i < 100; $i++)
         {
