@@ -7,6 +7,20 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Summary</div>
                     <div class="panel-body">
+                        <table align="center">
+                        @foreach ($tickets as $ticket)
+                            <tr>
+                                <th> {{$ticket->getWeekday()}} </th>
+                                <th> {{$ticket->getStartTime()}}</th>
+                                <th> {{$ticket->getTitle()}}</th>
+                            </tr>
+                            <tr>
+                                <td>{{ $ticket->getType() }}</td>
+                                <td>{{ $ticket->getQty() }}</td>
+                                <td></td>
+                            </tr>
+                        @endforeach
+                        </table>
                         <div class="receipt">
                             <div class="receipt-heading">
                                 Ticket Details
