@@ -9,15 +9,23 @@
                     <div class="panel-body">
                         <div class="booking_summary">
                             <table align="center">
+                                <?php
+                                    $currMovie = "";
+                                ?>
                                 @foreach ($tickets as $ticket)
-                                    <tr><th colspan="2"> {{$ticket->getTitle()}} <br> {{$ticket->getWeekday()}} <br> {{$ticket->getStartTime()}}</th>
-                                        <th>{!! Form::open(['method' => 'DELETE','route' => ['bookings.destroy', $ticket->getBookingID()],'style'=>'display:inline']) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                            {!! Form::close() !!}</th></tr>
+                                    @if ($currMovie != $ticket->getBookingID()))
+                                        <tr><th colspan="2"> {{$ticket->getTitle()}} <br> {{$ticket->getWeekday()}} <br> {{$ticket->getStartTime()}}</th>
+                                            <th>{!! Form::open(['method' => 'DELETE','route' => ['bookings.destroy', $ticket->getId()],'style'=>'display:inline']) !!}
+                                                {!! Form::submit('Delete Booking', ['class' => 'btn btn-danger']) !!}
+                                                {!! Form::close() !!}</th></tr>
+                                            <?php
+                                                $currMovie = $ticket->getBookingID();
+                                            ?>
+                                    @endif
                                     <tr>
                                         <td>{{ $ticket->getType() }}</td>
                                         <td>{{ $ticket->getQty() }}</td>
-                                        <td><a class="btn btn-primary show-edit" data-id="{{ $ticket->getId() }}">Edit</a>
+                                        <td><a class="btn btn-primary" href="{{ route('booking_tickets.edit', $ticket->getId()) }}">Edit</a>
                                             {!! Form::open(['method' => 'DELETE','route' => ['booking_tickets.destroy', $ticket->getId()],'style'=>'display:inline']) !!}
                                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                             {!! Form::close() !!}</td>

@@ -18,7 +18,7 @@ class TicketController extends Controller
         $bookings = Booking::where([
             ['user_id','=',\Auth::user()->id ],
             ['status', '=', 'Pending']
-        ])->get();
+        ])->orderBy('id')->get();
 
         $tickets= [];
 
@@ -42,9 +42,9 @@ class TicketController extends Controller
                 foreach ($ticket as $ticket_types) {
                     $tickets[] = new Ticket(
                         $ticket_types->id,
-                        $movie->title,
                         $session->weekday,
                         $session->start_time,
+                        $movie->title,
                         $ticket_types->type,
                         $ticket_types->qty,
                         $ticket_types->booking_id
@@ -85,9 +85,47 @@ class TicketController extends Controller
         return redirect()->route('booking_tickets.index') ->with('success', 'Ticket/s added to cart successfully');
     }
 
+    public function edit($id)
+    {
+        $ticket= Tickets::find($id);
+        return view('Bookings.edit',compact('ticket'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            "adult",
+            "child",
+            "concession",
+            "senior",
+            "booking_id" => 'required'
+        ]);
+
+        // Delete previous ticket id and jus create a new one
+        Tickets::find($id)->delete();
+        if ($request->adult != null || $request->adult != 0)
+        {
+            Tickets::create(["type" => "Adult", "qty" => $request->adult, "booking_id" => $request->booking_id]);
+        }
+        if ($request->child != null || $request->child != 0)
+        {
+            Tickets::create(["type" => "Child", "qty" => $request->child, "booking_id" => $request->booking_id]);
+        }
+        if ($request->concession != null || $request->concession != 0)
+        {
+            Tickets::create(["type" => "Concession", "qty" => $request->concession, "booking_id" => $request->booking_id]);
+        }
+        if ($request->senior != null || $request->senior != 0)
+        {
+            Tickets::create(["type" => "Senior", "qty" => $request->senior, "booking_id" => $request->booking_id]);
+        }
+
+        return redirect()->route('booking_tickets.index') ->with('success', 'Ticket/s added to cart successfully');
+    }
+
     public function destroy($id)
     {
-        Ticket::find($id)->delete();
+        Tickets::find($id)->delete();
 
         return redirect()->route('booking_tickets.index') ->with('success','Session deleted successfully');
     }

@@ -5,7 +5,7 @@
     <div class="booking_summary">
         <table align="center">
             @foreach ($tickets as $ticket)
-                <tr><th> {{$ticket->getTitle()}} <br> {{$ticket->getWeekday()}} <br> {{$ticket->getStartTime()}}</th>
+                <tr><th> {{$ticket->getStartTime()}} <br> {{$ticket->getWeekday()}} <br> {{$ticket->getTitle()}}</th>
                 <th>{!! Form::open(['method' => 'DELETE','route' => ['bookings.destroy', $ticket->getBookingID()],'style'=>'display:inline']) !!}
                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                     {!! Form::close() !!}</th></tr>

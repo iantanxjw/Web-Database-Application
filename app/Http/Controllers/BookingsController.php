@@ -57,12 +57,10 @@ class BookingsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "sess_id" => 'required',
-            "user_id" => 'required',
-            "status" => 'required'
+            "sess_id" => 'required'
         ]);
 
-        $booking = Booking::create($request->all());
+        $booking = Booking::create(["sess_id" => $request->sess_id, "user_id" => \Auth::user()->id, "status" => "Pending"]);
         $session = Session::find($request->sess_id);
         $movie = Movies::find($session->mv_id);
 
