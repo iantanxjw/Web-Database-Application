@@ -45,7 +45,8 @@
                 </div>
             </div>
 
-            <table class="admin_tables" align="center">
+            <table class="admin_tables" id="admin_sessions_tables">
+                <thead>
                 <tr>
                     <th>ID</th>
                     <th>Weekday</th>
@@ -56,6 +57,7 @@
                     <th>Theatre ID</th>
                     <th>Action</th>
                 </tr>
+                </thead>
                 @foreach ($sessions as $session)
                     <tr>
                         <td>{{ $session->id }}</td>
