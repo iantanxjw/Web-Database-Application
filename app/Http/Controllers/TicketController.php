@@ -17,11 +17,9 @@ class TicketController extends Controller
     {
         $bookings = Booking::where([
             ['user_id','=',\Auth::user()->id ],
-            ['status', '=', 'Pending']
-        ])->orderBy('id')->get();
+            ['status', '=', 'Pending']])->orderBy('id')->get();
 
         $tickets= [];
-
         //For each booking with the user id
         foreach ($bookings as $booking)
         {

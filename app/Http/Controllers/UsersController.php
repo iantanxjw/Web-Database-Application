@@ -8,6 +8,10 @@ use App\Http\Requests;
 
 use App\User;
 use App\Booking;
+use App\Tickets;
+use App\Ticket;
+use App\Session;
+use App\Movies;
 
 class UsersController extends Controller
 {
@@ -64,18 +68,45 @@ class UsersController extends Controller
 
             $user->save();
 
-            $bookings = Booking::all();
+            $bookings = Booking::where([
+                ['user_id','=',\Auth::user()->id ],
+                ['status', '=', 'Pending']
+            ])->get();
 
-            foreach ($bookings as $booking)
-            {
-                if ($booking->status =="Pending"){
-                    $booking->status = "Success";
-                    $booking->save();
+            $tickets= [];
+            //For each booking with the user id
+            foreach ($bookings as $booking) {
+                $session = Session::find($booking->sess_id);
+                $movie = Movies::find($session->mv_id);
+                $ticket = Tickets::where('booking_id', $booking->id)->get();
+
+                //Checking if booking has an tickets
+                if (count($ticket) == 0) {
+                    Booking::destroy($booking->id);
+
+                } else {
+                    //check if there are tickets available else delete booking
+                    //iterate over all the tickets and store it into a ticket Object
+
+                    foreach ($ticket as $ticket_types) {
+                        $tickets[] = new Ticket(
+                            $ticket_types->id,
+                            $movie->title,
+                            $session->weekday,
+                            $session->start_time,
+                            $ticket_types->type,
+                            $ticket_types->qty,
+                            $ticket_types->booking_id
+                        );
+                    }
+                    if ($booking->status == "Pending") {
+                        $booking->status = "Success";
+                        $booking->save();
+                    }
                 }
             }
 
-
-            return view("test",compact('user'));//->with(["testing"=>"this is from user page"]);
+            return view("test",compact('user','tickets'));//->with(["testing"=>"this is from user page"]);
         }
         else
         {
@@ -85,8 +116,8 @@ class UsersController extends Controller
 
             $user->save();
 
-            return view("test",compact('user'));//->with(["testing"=>"from admin page"]);
-            //return view("test_request")->with(["header" => $request->path()]);
+            //return view("test",compact('user'));//->with(["testing"=>"from admin page"]);
+            return view("test_request")->with(["header" => $request->path()]);
         }
         //return redirect()->route('admin_users.index')->with('success', 'User updated successfully');
     }
