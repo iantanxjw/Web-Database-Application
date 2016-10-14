@@ -47,20 +47,23 @@
             </div>
         </div>
 
-        <table class="admin_tables" align="center">
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Overview</th>
-                <th>Release date</th>
-                <th>Vote average</th>
-                <th>Status</th>
-                <th>Genre</th>
-                <th>Poster</th>
-                <th>Background</th>
-                <th>Action</th>
-            </tr>
+        <table class="admin_tables" id="admin_movies_tables">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Overview</th>
+                    <th>Release date</th>
+                    <th>Vote average</th>
+                    <th>Status</th>
+                    <th>Genre</th>
+                    <th>Poster</th>
+                    <th>Background</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
             @foreach ($movieObjects as $movie)
+                <tbody>
                 <tr>
                     <td>{{ $movie->getID() }}</td>
                     <td>{{ $movie->getTitle() }}</td>
@@ -77,9 +80,9 @@
                             {{ $movie->getGenre() }}
                         @endif
                     </td>
-                    <td style="width:150px; word-wrap:break-word;word-break: break-all;table-layout: fixed;">
+                    <td>
                         {{ $movie->getPoster() }}</td>
-                    <td style="width:150px; word-wrap:break-word;word-break: break-all;table-layout: fixed;">
+                    <td>
                         {{ $movie->getBackground() }}</td>
                     {{-- give each edit btn the id so js can request the details --}}
                     <td><a class="btn btn-primary show-edit" data-id="{{ $movie->getID() }}">Edit</a>
@@ -87,6 +90,7 @@
                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                         {!! Form::close() !!}</td>
                 </tr>
+                </tbody>
             @endforeach
         </table>
     </div>

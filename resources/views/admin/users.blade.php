@@ -44,7 +44,8 @@
             </div>
 
             <!--Table showing content -->
-            <table class="admin_tables" align="center">
+            <table class="admin_tables" id="admin_users_tables">
+                <thead>
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
@@ -55,16 +56,17 @@
                     <th>Post Code</th>
                     <th>Action</th>
                 </tr>
+                </thead>
                 @foreach($users as $user)
                     <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         {{-- HOW TO BREAK USER SECURITY LOLOLOLOL --}}
                         <td>{{ $user->password }}</td>
-                        <td>{{ $user->admin }}</td>
-                        <td>{{ $user->address }}</td>
-                        <td>{{ $user->suburb }}</td>
-                        <td>{{ $user->postcode }}</td>
+                        <td style="display:none;">{{ $user->admin }}</td>
+                        <td style="display:none;">{{ $user->address }}</td>
+                        <td style="display:none;">{{ $user->suburb }}</td>
+                        <td style="display:none;">{{ $user->postcode }}</td>
                         <td><a class="btn btn-primary show-edit" data-id="{{ $user->id }}">Edit</a>
                             {!! Form::open(['method' => 'DELETE','route' => ['admin_users.destroy', $user->id],'style'=>'display:inline']) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}

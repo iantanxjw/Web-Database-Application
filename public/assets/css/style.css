@@ -462,22 +462,141 @@ ul.tab li a:focus, .active {
 }
 
 /* Tables */
-#topten {
-    border-collapse: collapse;
+/*
+Generic Styling, for Desktops/Laptops
+*/
+table {
     width: 100%;
+    border-collapse: collapse;
 }
-
-th, td {
-    text-align: left;
-    padding: 8px;
+/* Zebra striping */
+tr:nth-of-type(odd) {
+    background: #eee;
 }
-
-tr:nth-child(even){background-color: #f2f2f2}
-
 th {
-    background-color: #4CAF50;
+    background: #333;
     color: white;
+    font-weight: bold;
 }
+td, th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+/*
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media
+only screen and (min-width: 0px) {
+
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr { border: 1px solid #ccc; }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 30%;
+    }
+
+    table#admin_movies_tables td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    table#admin_users_tables td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    table#admin_theatres_tables td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    table#admin_sessions_tables td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    /*
+    Label the data
+    */
+    table#admin_movies_tables td:nth-of-type(1):before { content: "ID"; }
+    table#admin_movies_tables td:nth-of-type(2):before { content: "Title"; }
+    table#admin_movies_tables td:nth-of-type(3):before { content: "Overview"; }
+    table#admin_movies_tables td:nth-of-type(4):before { content: "Release Date"; }
+    table#admin_movies_tables td:nth-of-type(5):before { content: "Vote Average"; }
+    table#admin_movies_tables td:nth-of-type(6):before { content: "Status"; }
+    table#admin_movies_tables td:nth-of-type(7):before { content: "Genre"; }
+    table#admin_movies_tables td:nth-of-type(8):before { content: "Poster"; }
+    table#admin_movies_tables td:nth-of-type(9):before { content: "Background"; }
+    table#admin_movies_tables td:nth-of-type(10):before { content: "Action"; }
+
+    table#admin_users_tables td:nth-of-type(1):before { content: "Name"; }
+    table#admin_users_tables td:nth-of-type(2):before { content: "Email"; }
+    table#admin_users_tables td:nth-of-type(3):before { content: "Password"; }
+    table#admin_users_tables td:nth-of-type(4):before { content: "Admin"; }
+    table#admin_users_tables td:nth-of-type(5):before { content: "Address"; }
+    table#admin_users_tables td:nth-of-type(6):before { content: "Suburb"; }
+    table#admin_users_tables td:nth-of-type(7):before { content: "Postcode"; }
+
+    table#admin_theatres_tables td:nth-of-type(1):before { content: "Location ID"; }
+    table#admin_theatres_tables td:nth-of-type(2):before { content: "Theatre No."; }
+    table#admin_theatres_tables td:nth-of-type(3):before { content: "Location"; }
+    table#admin_theatres_tables td:nth-of-type(4):before { content: "No. Seats"; }
+    table#admin_theatres_tables td:nth-of-type(5):before { content: "Action"; }
+
+    table#admin_sessions_tables td:nth-of-type(1):before { content: "Session ID"; }
+    table#admin_sessions_tables td:nth-of-type(2):before { content: "Weekday"; }
+    table#admin_sessions_tables td:nth-of-type(3):before { content: "Start Time"; }
+    table#admin_sessions_tables td:nth-of-type(4):before { content: "Duration"; }
+    table#admin_sessions_tables td:nth-of-type(5):before { content: "Booking No."; }
+    table#admin_sessions_tables td:nth-of-type(6):before { content: "Movie ID"; }
+    table#admin_sessions_tables td:nth-of-type(7):before { content: "Theatre ID"; }
+    table#admin_sessions_tables td:nth-of-type(7):before { content: "Action"; }
+}
+
+
 
 /* Style the tab content */
 .tabcontent {
@@ -673,4 +792,13 @@ div.checkout {
     display: none;
 }
 
+.modalPopSessions
+{
+    margin-right: 15px;
+    text-transform: capitalize;
+}
+
+.modalPop {
+    text-transform: capitalize;
+}
 
