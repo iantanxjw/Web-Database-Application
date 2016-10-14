@@ -28,11 +28,15 @@ class ExampleTest extends TestCase
         $this->visit('/')
              ->see('Mavericks Inc');
 
-        // Go to page and check nav
+        // Go to page and check content
         $this->see('Register');
+        $this->see('Now Showing');
+        $this->see('Coming Soon');
 
         // Press a link called click me
         $this->click('Register');
+        $this->dontSee('Now Showing');
+        $this->dontSee('Coming Soon');
 
         // Go to page and check content
         $this->see('Register');
@@ -54,11 +58,15 @@ class ExampleTest extends TestCase
         $this->visit('/')
             ->see('Mavericks Inc');
 
-        // Go to page and check nav
+        // Go to page and check content
         $this->see('Login');
+        $this->see('Now Showing');
+        $this->see('Coming Soon');
 
         // Press a link called click me
         $this->click('Login');
+        $this->dontSee('Now Showing');
+        $this->dontSee('Coming Soon');
 
         // Go to page and check content
         $this->see('Login');
