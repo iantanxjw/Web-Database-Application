@@ -531,12 +531,21 @@ and also iPads specifically.
 */
 @media
 only screen and (min-width: 0px) {
+<<<<<<< HEAD
 
     /* Force table to not be like tables anymore */
     table, thead, tbody, th, td, tr {
         display: block;
     }
 
+=======
+
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+>>>>>>> 7e1f7cc6dddd04ac42d086037e63681f423a78c0
     /* Hide table headers (but not display: none;, for accessibility) */
     thead tr {
         position: absolute;
@@ -834,6 +843,7 @@ div.checkout {
 
 .modalPopSessions
 {
+<<<<<<< HEAD
     text-transform: capitalize;
     border: none;
     cursor: pointer;
@@ -841,10 +851,15 @@ div.checkout {
     background: #d61023;
     width: 100%;
     box-sizing: border-box;
+=======
+    margin-right: 15px;
+    text-transform: capitalize;
+>>>>>>> 7e1f7cc6dddd04ac42d086037e63681f423a78c0
 }
 
 .modalPop {
     text-transform: capitalize;
+<<<<<<< HEAD
     border: none;
     cursor: pointer;
     position: relative;
@@ -860,4 +875,7 @@ div.checkout {
 }
 */
 
+=======
+}
+>>>>>>> 7e1f7cc6dddd04ac42d086037e63681f423a78c0
 
