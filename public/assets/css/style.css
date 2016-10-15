@@ -17,10 +17,14 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
         margin: 0 auto;
         width: 55%;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 0a2b886e9a2bf1c89c7067150d63110af1f09b58
+    #admin_movies_tables > tbody > tr > td {
+        font-size: 7px;
+    }
+
+    #admin_users_tables > tbody > tr > td {
+        font-size: 7px;
+    }
 }
 
 @media (min-width: 410px) and (max-width: 650px) {
@@ -32,6 +36,14 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
         margin: 0 auto;
         width: 40%;
     }
+
+    #admin_movies_tables > tbody > tr > td {
+        font-size: 8px;
+    }
+
+    #admin_users_tables > tbody > tr > td {
+        font-size: 8px;
+    }
 }
 
 @media (min-width: 650px) and (max-width: 768px) {
@@ -42,6 +54,14 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
     .tabcontent {
         margin: 0 auto;
         width: 35%;
+    }
+
+    #admin_movies_tables > tbody > tr > td {
+        font-size: 10px;
+    }
+
+    #admin_users_tables > tbody > tr > td {
+        font-size: 10px;
     }
 }
 
@@ -537,30 +557,12 @@ and also iPads specifically.
 */
 @media
 only screen and (min-width: 0px) {
-<<<<<<< HEAD
 
     /* Force table to not be like tables anymore */
     table#admin_movies_tables, table#admin_users_tables, table#admin_theatres_tables, table#admin_sessions_tables, table#admin_movies_tables thead, table#admin_movies_tables tbody, table#admin_movies_tables th, table#admin_movies_tables td, table#admin_movies_tables tr, table#admin_users_tables thead, table#admin_users_tables tbody, table#admin_users_tables th, table#admin_users_tables td, table#admin_users_tables tr, table#admin_theatres_tables thead, table#admin_theatres_tables tbody, table#admin_theatres_tables th, table#admin_theatres_tables td, table#admin_theatres_tables tr, table#admin_sessions_tables thead, table#admin_sessions_tables tbody, table#admin_sessions_tables th, table#admin_sessions_tables td, table#admin_sessions_tables tr {
         display: block;
     }
 
-=======
-<<<<<<< HEAD
-
-    /* Force table to not be like tables anymore */
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-
-=======
-
-    /* Force table to not be like tables anymore */
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-
->>>>>>> 7e1f7cc6dddd04ac42d086037e63681f423a78c0
->>>>>>> 0a2b886e9a2bf1c89c7067150d63110af1f09b58
     /* Hide table headers (but not display: none;, for accessibility) */
     thead tr {
         position: absolute;
@@ -570,11 +572,7 @@ only screen and (min-width: 0px) {
 
     tr { border: 1px solid #ccc; }
 
-<<<<<<< HEAD
     table#admin_movies_tables td, table#admin_users_tables td, table#admin_theatres_tables td, table#admin_sessions_tables td  {
-=======
-    td {
->>>>>>> 0a2b886e9a2bf1c89c7067150d63110af1f09b58
         /* Behave  like a "row" */
         border: none;
         border-bottom: 1px solid #eee;
@@ -861,10 +859,6 @@ div.checkout {
 
 .modalPopSessions
 {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 0a2b886e9a2bf1c89c7067150d63110af1f09b58
     text-transform: capitalize;
     border: none;
     cursor: pointer;
@@ -872,28 +866,15 @@ div.checkout {
     background: #d61023;
     width: 100%;
     box-sizing: border-box;
-<<<<<<< HEAD
     border-radius: 0px;
-=======
-=======
-    margin-right: 15px;
-    text-transform: capitalize;
->>>>>>> 7e1f7cc6dddd04ac42d086037e63681f423a78c0
->>>>>>> 0a2b886e9a2bf1c89c7067150d63110af1f09b58
 }
 
 .modalPop {
     text-transform: capitalize;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    border: none;
->>>>>>> 0a2b886e9a2bf1c89c7067150d63110af1f09b58
     cursor: pointer;
     position: relative;
     width: 100%;
     box-sizing: border-box;
-<<<<<<< HEAD
     border-radius: 0px;
 }
 
@@ -943,28 +924,6 @@ body > div.container.marketing > div.remodal-bg.remodal-is-closed > div.topMovie
 #populate_modal > h1 {
     font-family: 'Enriqueta', arial, serif; line-height: 1.25; margin: 0 0 10px; font-size: 40px; font-weight: bold;
 }
-=======
-}
-
->>>>>>> 0a2b886e9a2bf1c89c7067150d63110af1f09b58
 
 
-/*
-.row:after {
-    content: none;
-}
-*/
-<<<<<<< HEAD
-/*body {
-    box-sizing: content-box;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-}*/
-
-=======
-
-=======
-}
->>>>>>> 7e1f7cc6dddd04ac42d086037e63681f423a78c0
->>>>>>> 0a2b886e9a2bf1c89c7067150d63110af1f09b58
 
