@@ -59,7 +59,7 @@
 
             <div id="NS" class="tabcontent">
                 <div class="row">
-                    <div id="movies"></div>
+                    <div id="movies" class="movies"></div>
                 </div><!-- /.row -->
             </div>
 
@@ -73,16 +73,16 @@
 
             <!-- START THE FEATURETTES -->
 
-            <hr class="featurette-divider">
+           <hr class="featurette-divider">
 
-    <div class = "topMovies">
+    <div class = "topMovies" >
         <h2 class="featurette-heading"><span class="text-muted">Top 10</span> Movies</h2>
-        <table id="topten">
-            <tr><td>1</td><td>6</td></tr>
+        <table id="topten_tables" style="display: inline-grid;">
+            {{--<tr><td>1</td><td>6</td></tr>
             <tr><td>2</td><td>7</td></tr>
             <tr><td>3</td><td>8</td></tr>
             <tr><td>4</td><td>9</td></tr>
-            <tr><td>5</td><td>10</td></tr>
+            <tr><td>5</td><td>10</td></tr>--}}
         </table>
     </div>
 

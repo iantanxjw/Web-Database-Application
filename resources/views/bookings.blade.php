@@ -5,7 +5,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">Bookings</div>
             <h2>Movie: {{$movie->title}}</h2>
-            <h2>Session time: {{$session->weekday}} {{$session->start_time}}</h2>
+            <h4>Session time: {{$session->weekday}} {{$session->start_time}}</h4>
             <div class="panel-body">
                     <!-- Text field for theatre number -->
                 <div class="row">
