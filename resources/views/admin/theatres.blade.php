@@ -49,7 +49,8 @@
             <!-- End of edit theatre div -->
 
             <!--Table showing content -->
-            <table class="admin_tables" align="center">
+            <table class="admin_tables" id="admin_theatres_tables">
+                <thead>
                 <tr>
                     <th>ID</th>
                     <th>Theatre no.</th>
@@ -57,6 +58,7 @@
                     <th>No. seats</th>
                     <th>Action</th>
                 </tr>
+                </thead>
                 @foreach ($locations as $location)
                     <tr>
                         <td>{{ $location->id }}</td>

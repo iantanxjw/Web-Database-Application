@@ -8,6 +8,47 @@ input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
 input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
 input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
 
+@media (min-width: 320px) and (max-width: 410px) {
+    .col-sm-3 {
+        width: 185px;
+    }
+
+    .tabcontent {
+        margin: 0 auto;
+        width: 55%;
+    }
+
+}
+
+@media (min-width: 410px) and (max-width: 650px) {
+    .col-sm-3 {
+        width: 185px;
+    }
+
+    .tabcontent {
+        margin: 0 auto;
+        width: 40%;
+    }
+}
+
+@media (min-width: 650px) and (max-width: 768px) {
+    .col-sm-3 {
+        width: 185px;
+    }
+
+    .tabcontent {
+        margin: 0 auto;
+        width: 35%;
+    }
+}
+
+@media (min-width: 1000px) {
+    .tabcontent {
+        margin: 0 auto;
+        width: 85%;
+    }
+}
+
 h1.carousel-caption {
     font-size: 55px;
 }
@@ -95,9 +136,9 @@ body {
     outline: 0;
 }
 .img-responsive{
-    height: 265px;
-    /*width: 170px;*/
-    width: 100%;
+    width: 180px;
+    height: 255px;
+    display: block;
 }
 
 .carbon-img {
@@ -209,11 +250,11 @@ img {
     text-decoration: none;
     transition: color 1s;
     color: whitesmoke;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: medium;
+    font-family: 'Titillium Web',sans-serif;
+    font-size: small;
     /* text-transform: uppercase; */
-    letter-spacing: 2px;
-    margin-bottom: 15px;
+    /*letter-spacing: 2px;*/
+   /* margin-bottom: 15px;*/
     margin-top:60px;
 }
 
@@ -226,14 +267,14 @@ a:hover.col-sm-3.text-center {
 div.p_container {
     background: #212121;
     height:130px;
-    padding:10px;
+    padding:10px 0px;
     transition: background 1s;
 }
 
 .modal_button{
     padding:10px;
     width:100%;
-    margin:10px;
+    margin:5px;
 
 }
 
@@ -248,11 +289,13 @@ div.polaroid:hover div.p_container{
 }
 
 div.polaroid {
-    box-shadow: 8px 8px 20px 0 rgba(0, 0, 0, 0.9), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+    /*box-shadow: 8px 8px 20px 0 rgba(0, 0, 0, 0.9), 0 8px 20px 0 rgba(0, 0, 0, 0.19);*/
     text-align: center;
     background:#060d10;
-    width:220px;
+    width:180px;
     transition:box-shadow 0.5s;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 div.polaroid:hover{
@@ -335,10 +378,10 @@ div.fixed_container{
 
 /* Give some space on the sides of the floated elements so text doesn't run right into it. */
 .featurette-image.pull-left {
-    margin-right: 40px;
+    margin-left: 5px;
 }
 .featurette-image.pull-right {
-    margin-left: 40px;
+
 }
 
 /* Thin out the marketing headings */
@@ -462,27 +505,145 @@ ul.tab li a:focus, .active {
 }
 
 /* Tables */
-#topten {
-    border-collapse: collapse;
+/*
+Generic Styling, for Desktops/Laptops
+*/
+table {
     width: 100%;
+    border-collapse: collapse;
 }
-
-th, td {
-    text-align: left;
-    padding: 8px;
+/* Zebra striping */
+tr:nth-of-type(odd) {
+    background: #eee;
 }
-
-tr:nth-child(even){background-color: #f2f2f2}
-
 th {
-    background-color: #4CAF50;
+    background: #333;
     color: white;
+    font-weight: bold;
 }
+td, th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+/*
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media
+only screen and (min-width: 0px) {
+
+    /* Force table to not be like tables anymore */
+    table#admin_movies_tables, table#admin_users_tables, table#admin_theatres_tables, table#admin_sessions_tables, table#admin_movies_tables thead, table#admin_movies_tables tbody, table#admin_movies_tables th, table#admin_movies_tables td, table#admin_movies_tables tr, table#admin_users_tables thead, table#admin_users_tables tbody, table#admin_users_tables th, table#admin_users_tables td, table#admin_users_tables tr, table#admin_theatres_tables thead, table#admin_theatres_tables tbody, table#admin_theatres_tables th, table#admin_theatres_tables td, table#admin_theatres_tables tr, table#admin_sessions_tables thead, table#admin_sessions_tables tbody, table#admin_sessions_tables th, table#admin_sessions_tables td, table#admin_sessions_tables tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr { border: 1px solid #ccc; }
+
+    table#admin_movies_tables td, table#admin_users_tables td, table#admin_theatres_tables td, table#admin_sessions_tables td  {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 30%;
+    }
+
+    table#admin_movies_tables td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    table#admin_users_tables td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    table#admin_theatres_tables td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    table#admin_sessions_tables td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    /*
+    Label the data
+    */
+    table#admin_movies_tables td:nth-of-type(1):before { content: "ID"; }
+    table#admin_movies_tables td:nth-of-type(2):before { content: "Title"; }
+    table#admin_movies_tables td:nth-of-type(3):before { content: "Overview"; }
+    table#admin_movies_tables td:nth-of-type(4):before { content: "Release Date"; }
+    table#admin_movies_tables td:nth-of-type(5):before { content: "Vote Average"; }
+    table#admin_movies_tables td:nth-of-type(6):before { content: "Status"; }
+    table#admin_movies_tables td:nth-of-type(7):before { content: "Genre"; }
+    table#admin_movies_tables td:nth-of-type(8):before { content: "Poster"; }
+    table#admin_movies_tables td:nth-of-type(9):before { content: "Background"; }
+    table#admin_movies_tables td:nth-of-type(10):before { content: "Action"; }
+
+    table#admin_users_tables td:nth-of-type(1):before { content: "Name"; }
+    table#admin_users_tables td:nth-of-type(2):before { content: "Email"; }
+    table#admin_users_tables td:nth-of-type(3):before { content: "Password"; }
+    table#admin_users_tables td:nth-of-type(4):before { content: "Admin"; }
+    table#admin_users_tables td:nth-of-type(5):before { content: "Address"; }
+    table#admin_users_tables td:nth-of-type(6):before { content: "Suburb"; }
+    table#admin_users_tables td:nth-of-type(7):before { content: "Postcode"; }
+
+    table#admin_theatres_tables td:nth-of-type(1):before { content: "Location ID"; }
+    table#admin_theatres_tables td:nth-of-type(2):before { content: "Theatre No."; }
+    table#admin_theatres_tables td:nth-of-type(3):before { content: "Location"; }
+    table#admin_theatres_tables td:nth-of-type(4):before { content: "No. Seats"; }
+    table#admin_theatres_tables td:nth-of-type(5):before { content: "Action"; }
+
+    table#admin_sessions_tables td:nth-of-type(1):before { content: "Session ID"; }
+    table#admin_sessions_tables td:nth-of-type(2):before { content: "Weekday"; }
+    table#admin_sessions_tables td:nth-of-type(3):before { content: "Start Time"; }
+    table#admin_sessions_tables td:nth-of-type(4):before { content: "Duration"; }
+    table#admin_sessions_tables td:nth-of-type(5):before { content: "Booking No."; }
+    table#admin_sessions_tables td:nth-of-type(6):before { content: "Movie ID"; }
+    table#admin_sessions_tables td:nth-of-type(7):before { content: "Theatre ID"; }
+    table#admin_sessions_tables td:nth-of-type(7):before { content: "Action"; }
+}
+
+
 
 /* Style the tab content */
 .tabcontent {
     display: none;
-    padding: 6px 12px;
     -webkit-animation: fadeEffect 1s;
     animation: fadeEffect 1s;
 }
@@ -672,5 +833,85 @@ http://bootsnipp.com/snippets/featured/custom-search-input*/
 div.checkout {
     display: none;
 }
+
+.modalPopSessions
+{
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    background: #d61023;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0px;
+}
+
+.modalPop {
+    text-transform: capitalize;
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0px;
+}
+
+.modalPopCS {
+    text-transform: capitalize;
+    border-radius: 0px;
+}
+
+.btn-warning {
+    border-radius: 0px;
+}
+
+
+p {
+    margin: 10px;
+}
+
+.row {
+    margin: 0px;
+}
+
+.col-sm-3 {
+    padding: 0;
+}
+
+#movies div > p {
+    height: 37px;
+}
+
+#upcoming div > p {
+    height: 37px;
+}
+
+body > div.container.marketing > div.remodal-bg.remodal-is-closed > div.topMovies > h2 {
+    padding: 0 0 10px;
+}
+
+#search-form > div > div > div.panel-body > div > div:nth-child(3) > div > input {
+    width: 100%
+}
+
+#populate_modal > p {
+    color: #b6b6b3;
+    font-size: 16px;
+}
+
+#populate_modal > h1 {
+    font-family: 'Enriqueta', arial, serif; line-height: 1.25; margin: 0 0 10px; font-size: 40px; font-weight: bold;
+}
+
+
+/*
+.row:after {
+    content: none;
+}
+*/
+/*body {
+    box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+}*/
 
 
