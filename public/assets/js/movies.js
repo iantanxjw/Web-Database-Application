@@ -1,4 +1,6 @@
 $(function() {
+
+
     var i = 0;
 
     // coming soon tab

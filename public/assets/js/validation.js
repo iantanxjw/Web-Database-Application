@@ -1,3 +1,8 @@
+
+$(function(){
+$("#hidden").hide();
+});
+
 $("#btn1").click(function(event){
 
     /*

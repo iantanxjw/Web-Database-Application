@@ -106,7 +106,7 @@ class TicketController extends Controller
 
         // Delete previous ticket id and jus create a new one
         Tickets::find($id)->delete();
-        
+
         $adult = (int) $request->adult;
         $child = (int) $request->child;
         $concession = (int) $request->concession;
