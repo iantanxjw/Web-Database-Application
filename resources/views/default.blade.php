@@ -70,20 +70,4 @@
                     <div id="upcoming"></div>
                 </div>
             </div>
-
-
-
-            <!-- START THE FEATURETTES -->
-
-           <hr class="featurette-divider">
-
-    <div class = "topMovies" >
-        <h2 class="featurette-heading"><span class="text-muted">Top 10</span> Movies</h2>
-        <table id="topten_tables" style="display: inline-grid;">
-
-        </table>
-    </div>
-
-
-            <!-- /END THE FEATURETTES -->
 @endsection
