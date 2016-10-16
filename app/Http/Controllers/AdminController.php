@@ -17,8 +17,6 @@ class AdminController extends Controller
         $json = file_get_contents(config("tmdb.api.config_url") . "?api_key=" . config("tmdb.api.key"));
         $data = json_decode($json);
 
-        //return var_dump($data);
-
         return view("admin.api_refresh", [
             "backdrop_sizes" => $data->images->backdrop_sizes,
             "poster_sizes" => $data->images->poster_sizes

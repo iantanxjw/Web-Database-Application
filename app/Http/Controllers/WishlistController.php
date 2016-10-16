@@ -18,12 +18,6 @@ class WishlistController extends Controller
      */
     public function index(Request $request)
     {
-        /*$wishlists = Wishlist::orderBy('id','DESC')
-            ->paginate(20);
-
-        $wishlists = Wishlist::where('email', User::user()->email)
-            ->orderBy('id','DESC')
-            ->paginate(20);*/
 
         $wishlists = Wishlist::where('u_id', \Auth::user()->id )
             ->orderBy('id','DESC')
@@ -31,17 +25,7 @@ class WishlistController extends Controller
 
         return view('WishlistCRUD.index',compact('wishlists')) ->with('i', ($request->input('page', 1) - 1) * 5);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //return view('WishlistCRUD.form');
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -55,7 +39,6 @@ class WishlistController extends Controller
             "u_id" => "required"
         ]);
 
-        //$movie = Wishlist::where('mv_name', $request->mv_name );
 
         $check = Wishlist::where('u_id', \Auth::user()->id)
             -> where('mv_name', $request->mv_name );
@@ -67,42 +50,6 @@ class WishlistController extends Controller
             Wishlist::create($request->all());
             return redirect()->route('index') ->with('success',$request->mv_name.' added successfully');
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        /*$wishlist= Wishlist::find($id);
-        return view('WishlistCRUD.edit',compact('wishlist'));*/
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        /*Wishlist::find($id)->update($request->all());
-        return redirect()->route('WishlistCRUD.index');*/
     }
 
     /**

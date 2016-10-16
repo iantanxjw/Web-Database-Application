@@ -17,7 +17,6 @@ class UsersController extends Controller
 {
     public function index(Request $request)
     {
-        /*generating id  ? */
         /*validation duplicate keys */
         $users = User::orderBy('id','DESC')->paginate(5);
         return view('admin.users',compact('users'))->with('i', ($request->input('page', 1) - 1) * 5);
@@ -44,15 +43,6 @@ class UsersController extends Controller
 
     public function update(Request $request, $id)
     {
-
-        //Change status of all bookings to success
-
-
-        // $this->validate($request, [
-        //     'name' => "required",
-        //     'email' => "required",
-        //     'password' => "required",
-        // ]);
 
         $user = User::find($id);
 

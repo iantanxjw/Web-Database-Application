@@ -92,7 +92,7 @@ class ApiRequest extends Model
         {
             foreach ($options as $key => $val)
             {
-                $this->options[$key] = $value;
+                $this->options[$key] = $val;
             }
         }
 

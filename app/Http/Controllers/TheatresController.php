@@ -13,7 +13,6 @@ class TheatresController extends Controller
 {
     public function index(Request $request)
     {
-        /*generating id  ? */
         /*validation duplicate keys */
         $locations = Theatre::all()->sortBy("id");
         return view('admin.theatres',compact('locations'));

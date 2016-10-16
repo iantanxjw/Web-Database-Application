@@ -18,7 +18,6 @@ class SessionsController extends Controller
 
     public function index(Request $request)
     {
-        /*generating id  ? */
         $sessions = Session::all()->sortBy('id');
 
         return view('admin.sessions', compact('sessions'));

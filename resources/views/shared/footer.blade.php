@@ -1,4 +1,3 @@
-</body>
 <!-- FOOTER -->
 <hr>
 <footer>
