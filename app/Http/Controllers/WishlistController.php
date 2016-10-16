@@ -55,28 +55,17 @@ class WishlistController extends Controller
             "u_id" => "required"
         ]);
 
-        $movie = Wishlist::where('mv_name', $request->mv_name );
-        //IF NO MOVIE CREATE
+        //$movie = Wishlist::where('mv_name', $request->mv_name );
 
-        if ($movie->count() == 0)
-        {
+        $check = Wishlist::where('u_id', \Auth::user()->id)
+            -> where('mv_name', $request->mv_name );
+        // check if 
+        if ($check->count() == 1){
+            return redirect()->route('index') ->with('errors',$request->mv_name.' already exists in your wishlist!');
+        }
+        else {
             Wishlist::create($request->all());
             return redirect()->route('index') ->with('success',$request->mv_name.' added successfully');
-            //return redirect()->route('index') ->with('success',$movie->count().' added successfully');
-        }
-        else
-        {
-           // return redirect()->route('index') ->with('errors',$request->mv_name.' already exists');
-
-            $user = Wishlist::where('u_id', \Auth::user()->id );
-            //IF NO USER CREATE
-            if ($user->count() == 0){
-                Wishlist::create($request->all());
-                return redirect()->route('index') ->with('success',$request->mv_name.' added successfully');
-            }
-            else {
-                return redirect()->route('index') ->with('errors',$request->mv_name.' already exists in your wishlist!');
-            }
         }
     }
 
