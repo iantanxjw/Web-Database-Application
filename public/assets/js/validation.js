@@ -98,6 +98,7 @@ $("#btn2").click(function(event){
 
      //   alert(total);
     if (total == 0){
+        $( "#eTicket" ).text("Invalid number of tickets!").show().fadeOut( 4000 );
         event.preventDefault();
     }
 

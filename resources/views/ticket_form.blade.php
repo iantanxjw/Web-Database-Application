@@ -1,9 +1,11 @@
 <!-- Text field for location name  -->
+
+
 <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="form-group">
         <!-- duration could get from movie time? --->
         <strong>Adult</strong>
-        {!! Form::number('adult', null, array('class' => 'form-control', 'max' => '10')) !!}
+        {!! Form::number('adult', 0, array('class' => 'form-control','min'=>'0', 'max' => '10','id'=>'Adult')) !!}
     </div>
 </div>
 
@@ -12,7 +14,7 @@
     <div class="form-group">
         <!-- duration could get from movie time? --->
         <strong>Child</strong>
-        {!! Form::number('child', null, array('class' => 'form-control', 'max' => '10')) !!}
+        {!! Form::number('child', 0, array('class' => 'form-control','min'=>'0', 'max' => '10','id'=>'Child')) !!}
     </div>
 </div>
 
@@ -21,7 +23,7 @@
     <div class="form-group">
         <!-- duration could get from movie time? --->
         <strong>Concession/Student</strong>
-        {!! Form::number('concession', null, array('class' => 'form-control', 'max' => '10')) !!}
+        {!! Form::number('concession', 0, array('class' => 'form-control','min'=>'0', 'max' => '10','id'=>'Student')) !!}
     </div>
 </div>
 
@@ -30,11 +32,13 @@
     <div class="form-group">
         <!-- duration could get from movie time? --->
         <strong>Seniors</strong>
-        {!! Form::number('senior', null, array('placeholder' => 'Enter number of seats available','class' => 'form-control')) !!}
+        {!! Form::number('senior', '0', array('min'=>'0','class' => 'form-control','id'=>'Senior', 'max' => '10')) !!}
     </div>
 </div>
-
+<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+    <span id="eTicket"></span>
+</div>
 <!-- Submit button for form -->
 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" id="btn2">Submit</button>
 </div>

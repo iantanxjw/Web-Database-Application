@@ -62,22 +62,27 @@ class TicketController extends Controller
             "senior",
             "booking_id" => 'required'
         ]);
+        //TEST -- Parsing to int
+        $adult = (int) $request->adult;
+        $child = (int) $request->child;
+        $concession = (int) $request->concession;
+        $senior = (int) $request->senior;
 
-        if ($request->adult != null || $request->adult != 0)
+        if ($adult != null ||$adult != 0)
         {
-            Tickets::create(["type" => "Adult", "qty" => $request->adult, "booking_id" => $request->booking_id]);
+            Tickets::create(["type" => "Adult", "qty" => $adult, "booking_id" => $request->booking_id]);
         }
-        if ($request->child != null || $request->child != 0)
+        if ($child  != null || $child  != 0)
         {
-            Tickets::create(["type" => "Child", "qty" => $request->child, "booking_id" => $request->booking_id]);
+            Tickets::create(["type" => "Child", "qty" => $child, "booking_id" => $request->booking_id]);
         }
-        if ($request->concession != null || $request->concession != 0)
+        if ($concession != null || $concession != 0)
         {
-            Tickets::create(["type" => "Concession", "qty" => $request->concession, "booking_id" => $request->booking_id]);
+            Tickets::create(["type" => "Concession", "qty" => $concession, "booking_id" => $request->booking_id]);
         }
-        if ($request->senior != null || $request->senior != 0)
+        if ($senior != null || $senior != 0 )
         {
-            Tickets::create(["type" => "Senior", "qty" => $request->senior, "booking_id" => $request->booking_id]);
+            Tickets::create(["type" => "Senior", "qty" => $senior, "booking_id" => $request->booking_id]);
         }
 
         return redirect()->route('booking_tickets.index') ->with('success', 'Ticket/s added to cart successfully');
@@ -101,21 +106,27 @@ class TicketController extends Controller
 
         // Delete previous ticket id and jus create a new one
         Tickets::find($id)->delete();
-        if ($request->adult != null || $request->adult != 0)
+        
+        $adult = (int) $request->adult;
+        $child = (int) $request->child;
+        $concession = (int) $request->concession;
+        $senior = (int) $request->senior;
+
+        if ($adult != null ||$adult != 0)
         {
-            Tickets::create(["type" => "Adult", "qty" => $request->adult, "booking_id" => $request->booking_id]);
+            Tickets::create(["type" => "Adult", "qty" => $adult, "booking_id" => $request->booking_id]);
         }
-        if ($request->child != null || $request->child != 0)
+        if ($child  != null || $child  != 0)
         {
-            Tickets::create(["type" => "Child", "qty" => $request->child, "booking_id" => $request->booking_id]);
+            Tickets::create(["type" => "Child", "qty" => $child, "booking_id" => $request->booking_id]);
         }
-        if ($request->concession != null || $request->concession != 0)
+        if ($concession != null || $concession != 0)
         {
-            Tickets::create(["type" => "Concession", "qty" => $request->concession, "booking_id" => $request->booking_id]);
+            Tickets::create(["type" => "Concession", "qty" => $concession, "booking_id" => $request->booking_id]);
         }
-        if ($request->senior != null || $request->senior != 0)
+        if ($senior != null || $senior != 0 )
         {
-            Tickets::create(["type" => "Senior", "qty" => $request->senior, "booking_id" => $request->booking_id]);
+            Tickets::create(["type" => "Senior", "qty" => $senior, "booking_id" => $request->booking_id]);
         }
 
         return redirect()->route('booking_tickets.index') ->with('success', 'Ticket/s added to cart successfully');

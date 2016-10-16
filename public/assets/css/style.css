@@ -691,25 +691,7 @@ div.navbar-collapse.collapse
     color:red;
 }
 
-.receipt
-{
-    border: 1px solid black;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 3vh;
-}
-
-.receipt-heading
-{
-    margin-top:10%;
-    text-align: center;
-}
-
-.receipt-body
-{
-    margin: 5% 15%;
-}
-
-.form-group span
+#eTicket
 {
     color:red;
 }
@@ -731,6 +713,7 @@ div.navbar-collapse.collapse
 {
     margin: 5% 15%;
 }
+
 
 /**********Admin css ****************/
 
