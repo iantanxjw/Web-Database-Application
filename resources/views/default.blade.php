@@ -78,15 +78,7 @@
     <div class = "topMovies" >
         <h2 class="featurette-heading"><span class="text-muted">Top 10</span> Movies</h2>
         <table id="topten_tables" style="display: inline-grid;">
-<<<<<<< HEAD
-            {{--<tr><td>1</td><td>6</td></tr>
-=======
-            <tr><td>1</td><td>6</td></tr>
->>>>>>> 6a41f36666db2e42d605750ab01dbcde50c1646c
-            <tr><td>2</td><td>7</td></tr>
-            <tr><td>3</td><td>8</td></tr>
-            <tr><td>4</td><td>9</td></tr>
-            <tr><td>5</td><td>10</td></tr>--}}
+           
         </table>
     </div>
 
