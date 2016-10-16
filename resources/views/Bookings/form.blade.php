@@ -11,7 +11,7 @@
                             <table align="center">
                                 {{ $currMovie = ""}}
                                 @foreach ($tickets as $ticket)
-                                    @if ($currMovie != $ticket->getBookingID()) 
+                                    @if ($currMovie != $ticket->getBookingID())
                                         <tr><th colspan="2"> {{$ticket->getTitle()}} <br> {{$ticket->getWeekday()}} <br> {{$ticket->getStartTime()}}</th>
                                             <th>{!! Form::open(['method' => 'DELETE','route' => ['bookings.destroy', $ticket->getId()],'style'=>'display:inline']) !!}
                                                 {!! Form::submit('Delete Booking', ['class' => 'btn btn-danger']) !!}
