@@ -36,9 +36,9 @@
                     {{-- need to define form manually --}}
                     <form method="POST">
                         <input type="hidden" name="_method" value="PATCH">
-                        <input type="hidden" name="_token">
+                        <input type="hidden" name="_token" value={{ csrf_token() }}>
                         <input type="hidden" name="source" value="2">
-                        value={{ csrf_token() }}>
+
                         @include('admin.forms.user_form')
                     </form>
                 </div>

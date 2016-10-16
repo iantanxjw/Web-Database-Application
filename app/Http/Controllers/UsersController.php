@@ -122,8 +122,16 @@ class UsersController extends Controller
             return redirect()->route('index')->with('success', 'You have found the very hidden secret button!');
         }
         // Source = from user management page
-        else
-        {
+        else {
+
+            // fields cannot be empty!
+            $this->validate($request, [
+                'name' => "required",
+                'email' => "required",
+               'password' => "required",
+            ]);
+
+            // update the fields
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
@@ -131,7 +139,12 @@ class UsersController extends Controller
 
             $user->save();
 
-            return redirect()->route('admin_users.index')->with('success', $request->admin);
+            if ($user->admin == 1 ) {
+                return redirect()->route('admin_users.index')->with('success', "User successfully updated!!");
+            }
+            else{
+                return redirect()->route('index')->with('success', "You have de-admined yourself. Great!");
+            }
 
         }
 
