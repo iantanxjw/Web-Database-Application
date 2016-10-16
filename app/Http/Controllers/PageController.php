@@ -36,7 +36,7 @@ class PageController extends Controller
 
     public function summary()
     {
-        return view('summary');
+        return view('Bookings.summary');
 
     }
 

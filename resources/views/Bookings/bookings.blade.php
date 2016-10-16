@@ -13,7 +13,7 @@
                     <form method="POST" action="{{route('booking_tickets.store')}}" >
                         {{ csrf_field() }}
                         <input type='hidden' value='{{$booking->id}}' name='booking_id'>
-                        @include('ticket_form')
+                        @include('Bookings.ticket_form')
                     </form>
                 </div>
             </div>

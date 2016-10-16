@@ -28,7 +28,7 @@
 {!! Form::model($ticket, ['method' => 'PATCH','route' => ['booking_tickets.update', $ticket->id]]) !!}
     {{ csrf_field() }}
     <input type='hidden' value='{{$ticket->booking_id}}' name='booking_id'>
-    @include('ticket_form')
+    @include('Bookings.ticket_form')
 {!! Form::close() !!}
     </div>
     </div>

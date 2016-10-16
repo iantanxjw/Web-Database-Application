@@ -64,7 +64,7 @@ class BookingsController extends Controller
         $session = Session::find($request->sess_id);
         $movie = Movies::find($session->mv_id);
 
-        return view('bookings', compact('session', 'movie', 'booking'));
+        return view('Bookings.bookings', compact('session', 'movie', 'booking'));
     }
 
     public function destroy($id)
