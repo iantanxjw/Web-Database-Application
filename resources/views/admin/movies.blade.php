@@ -80,25 +80,8 @@
                             {{ $movie->getGenre() }}
                         @endif
                     </td>
-<<<<<<< HEAD
                     <td>{{ $movie->getPoster() }}</td>
                     <td>{{ $movie->getBackground() }}</td>
-=======
-<<<<<<< HEAD
-                    <td>{{ $movie->getPoster() }}</td>
-                    <td>{{ $movie->getBackground() }}</td>
-=======
-<<<<<<< HEAD
-                    <td>{{ $movie->getPoster() }}</td>
-                    <td>{{ $movie->getBackground() }}</td>
-=======
-                    <td>
-                        {{ $movie->getPoster() }}</td>
-                    <td>
-                        {{ $movie->getBackground() }}</td>
->>>>>>> 7e1f7cc6dddd04ac42d086037e63681f423a78c0
->>>>>>> 0a2b886e9a2bf1c89c7067150d63110af1f09b58
->>>>>>> 6a41f36666db2e42d605750ab01dbcde50c1646c
                     {{-- give each edit btn the id so js can request the details --}}
                     <td><a class="btn btn-primary show-edit" data-id="{{ $movie->getID() }}">Edit</a>
                         {!! Form::open(['method' => 'DELETE','route' => ['admin_movies.destroy', $movie->getID()],'style'=>'display:inline']) !!}
