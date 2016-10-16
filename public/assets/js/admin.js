@@ -44,23 +44,28 @@ $(function() {
             
             $.each(data, function(k, v) {
 
-                if (k === "genre")
-                {
+                if (k === "genre") {
                     // select all options matching the movie genre string
                     $.each(v.split(", "), function(index, substr) {
                         $(".edit-form select option[value=" + substr).prop("selected", true);
                     });
                 }
-                else
-                {
+                else if (k === "admin") {
+                    // only set to checked if admin
+                    // nested if prevents value from being defaulted to 0
+                    if (v === 1) {
+                        $(".edit-form input[name=" + k).prop("checked", true);
+                    }
+                }
+                else {
                     $(".edit-form input[name=" + k).val(v);
                 }
             });
         }, "json");
 
-        fade([".admin_tables", ".links"], [".edit-form"]);
+        fade([".admin_tables", ".links", ".show-form"], [".edit-form"]);
 
-        $(".show-form").fadeOut("slow");
+        //$(".show-form").fadeOut("slow");
     });
 
     //Create drop down options for creating sessions for now showing movies
