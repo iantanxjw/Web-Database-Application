@@ -78,7 +78,11 @@
     <div class = "topMovies" >
         <h2 class="featurette-heading"><span class="text-muted">Top 10</span> Movies</h2>
         <table id="topten_tables" style="display: inline-grid;">
+<<<<<<< HEAD
 
+=======
+           
+>>>>>>> 92a5fe5fcae92e5d9991cff0c7aba1690461defb
         </table>
     </div>
 
