@@ -11,10 +11,12 @@
 
         <!-- Three columns of text below the carousel -->
         <div id="centeredmenu">
-        <ul class="tab">
-            <li><a href="#" class="tablinks" onclick="opentabs(event, 'NS')">Now Showing</a></li>
-            <li><a href="#" class="tablinks" onclick="opentabs(event, 'CS')">Coming Soon</a></li>
-        </ul>
+            <div id="wrapper">
+                <ul class="tab">
+                    <li><a href="#" class="tablinks" onclick="opentabs(event, 'NS')">Now Showing</a></li>
+                    <li><a href="#" class="tablinks" onclick="opentabs(event, 'CS')">Coming Soon</a></li>
+                </ul>
+            </div>
         </div>
 
 
