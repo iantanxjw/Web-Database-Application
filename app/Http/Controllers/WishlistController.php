@@ -51,11 +51,33 @@ class WishlistController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "mv_name" => "required|unique:wishlists",
+            "mv_name" => "required",
             "u_id" => "required"
         ]);
-        Wishlist::create($request->all());
-        return redirect()->route('index') ->with('success',$request->mv_name,' added successfully');
+
+        $movie = Wishlist::where('mv_name', $request->mv_name );
+        //IF NO MOVIE CREATE
+
+        if ($movie->count() == 0)
+        {
+            Wishlist::create($request->all());
+            return redirect()->route('index') ->with('success',$request->mv_name.' added successfully');
+            //return redirect()->route('index') ->with('success',$movie->count().' added successfully');
+        }
+        else
+        {
+           // return redirect()->route('index') ->with('errors',$request->mv_name.' already exists');
+
+            $user = Wishlist::where('u_id', \Auth::user()->id );
+            //IF NO USER CREATE
+            if ($user->count() == 0){
+                Wishlist::create($request->all());
+                return redirect()->route('index') ->with('success',$request->mv_name.' added successfully');
+            }
+            else {
+                return redirect()->route('index') ->with('errors',$request->mv_name.' already exists in your wishlist!');
+            }
+        }
     }
 
     /**
@@ -103,6 +125,6 @@ class WishlistController extends Controller
     public function destroy($id)
     {
         Wishlist::find($id)->delete();
-        return redirect()->route('WishlistCRUD.index') ->with('success','Product deleted successfully');
+        return redirect()->route('WishlistCRUD.index') ->with('success','Item deleted successfully');
     }
 }

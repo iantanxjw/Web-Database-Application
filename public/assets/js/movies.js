@@ -181,7 +181,7 @@ $(function() {
             $("#populate_modal").append("<div class='col-sm-3 text-center'><img class='featurette-image pull-left' src='" + movie.poster + "'>" +
                 "<a class='btn btn-default modal_button modalPop' href='#modal' data-id='" + movie.id + "' name='"+movie.title+
                 "' style='width:100%'>info</a>" +
-                "<button type='submit' class='btn btn-warning modal_button' name='mv_id' value='"+movie.id+"'>Add to watchlist</button></div>");
+                "<button type='submit' class='btn btn-warning modal_button' name='mv_name' value='"+movie.title+"'>Add to watchlist</button></div>");
 
             $("#populate_modal").append("<h1 class='featurette-heading'>"+movie.title+"</h1>");
         }, "json");
