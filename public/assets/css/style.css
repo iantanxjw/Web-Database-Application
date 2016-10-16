@@ -752,28 +752,6 @@ div.navbar-collapse.collapse
     margin: 5% 15%;
 }
 
-.form-group span
-{
-    color:red;
-}
-
-.receipt
-{
-    border: 1px solid black;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 3vh;
-}
-
-.receipt-heading
-{
-    margin-top:10%;
-    text-align: center;
-}
-
-.receipt-body
-{
-    margin: 5% 15%;
-}
 
 /**********Admin css ****************/
 
@@ -906,7 +884,7 @@ div.checkout {
     border: none;
     cursor: pointer;
     position: relative;
-    background: #d61023;
+    background: royalblue;
     width: 100%;
     box-sizing: border-box;
     border-radius: 0px;

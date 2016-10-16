@@ -34,9 +34,9 @@ class PageController extends Controller
         return view("Bookings.form");
     }
 
-    public function test()
+    public function summary()
     {
-        return view('test');
+        return view('summary');
 
     }
 

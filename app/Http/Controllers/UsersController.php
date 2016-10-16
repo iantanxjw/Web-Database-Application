@@ -113,7 +113,7 @@ class UsersController extends Controller
                 }
             }
 
-            return view("test",compact('user','tickets'));//->with(["testing"=>"this is from user page"]);
+            return view("summary",compact('user','tickets'));//->with(["testing"=>"this is from user page"]);
         }
         // Source = press the secret button
         elseif ($request->source == 1) {

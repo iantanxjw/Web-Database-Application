@@ -17,7 +17,7 @@ Route::get("register", ["as" => "register", "uses" => "PageController@register"]
 Route::get("search", ["as" => "search", "uses" => "PageController@search"]);
 Route::get("icons", ["as" => "icons", "uses" => "PageController@icons"]);
 Route::get("form", ["as" => "form", "uses" => "PageController@form"]);
-Route::post("test", ["as" => "test", "uses" => "PageController@test"]);
+Route::post("summary", ["as" => "summary", "uses" => "PageController@summary"]);
 Route::get("bookings" , ["as" => "bookings", "uses" => "TicketController@bookings"]);
 
 // Wishlist
