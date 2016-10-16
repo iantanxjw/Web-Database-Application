@@ -38,7 +38,7 @@
                         <input type="hidden" name="_method" value="PATCH">
                         <input type="hidden" name="_token"
                         value={{ csrf_token() }}>
-                        @include('admin.forms.user_form');
+                        @include('admin.forms.user_form')
                     </form>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                         <td>{{ $user->email }}</td>
                         {{-- HOW TO BREAK USER SECURITY LOLOLOLOL --}}
                         <td>{{ $user->password }}</td>
-                        <td style="display:none;">{{ $user->admin }}</td>
+                        <td>{{ $user->admin }}</td>
                         <td style="display:none;">{{ $user->address }}</td>
                         <td style="display:none;">{{ $user->suburb }}</td>
                         <td style="display:none;">{{ $user->postcode }}</td>
