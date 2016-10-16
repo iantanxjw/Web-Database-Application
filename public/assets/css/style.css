@@ -276,6 +276,9 @@ div.carousel-caption {
     padding: 10px;
     max-width: 500px;
     min-width: 260px;
+    display: block;
+    z-index: 5;
+    position: relative;
 }
 
 /* Declare heights because of positioning of img element */
