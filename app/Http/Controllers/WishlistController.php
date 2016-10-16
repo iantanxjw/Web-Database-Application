@@ -59,7 +59,7 @@ class WishlistController extends Controller
 
         $check = Wishlist::where('u_id', \Auth::user()->id)
             -> where('mv_name', $request->mv_name );
-        // check if 
+        // check if
         if ($check->count() == 1){
             return redirect()->route('index') ->with('errors',$request->mv_name.' already exists in your wishlist!');
         }

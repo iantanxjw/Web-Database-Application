@@ -61,6 +61,12 @@ class UsersController extends Controller
         //$user->save();
         if ($request->source == 0) {
 
+             $this->validate($request, [
+                 'address' => "required",
+                 'suburb' => "required",
+                 'pcode' => "required",
+             ]);
+
             $user->admin = $request->admin;
             $user->address = $request->address;
             $user->suburb = $request->suburb;
@@ -117,7 +123,8 @@ class UsersController extends Controller
             $user->save();
 
             //return view("test",compact('user'));//->with(["testing"=>"from admin page"]);
-            return view("test_request")->with(["header" => $request->path()]);
+            return redirect()->route('admin_users.index')->with('success', 'User updated successfully');
+            //return view("test_request")->with(["header" => $request->path()]);
         }
         //return redirect()->route('admin_users.index')->with('success', 'User updated successfully');
     }
