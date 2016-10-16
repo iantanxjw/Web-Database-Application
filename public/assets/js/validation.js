@@ -1,6 +1,12 @@
 
 $(function(){
-$("#hidden").hide();
+    $("#hidden").hide();
+    $admin = parseInt($('#hidden').text());
+    //$('#showHidden').text($admin);
+    $("#adminHide").hide();
+    if ($admin == 1){
+        $("#adminHide").show();
+    }
 });
 
 $("#btn1").click(function(event){
@@ -108,3 +114,5 @@ $("#btn2").click(function(event){
     }
 
 });
+
+
