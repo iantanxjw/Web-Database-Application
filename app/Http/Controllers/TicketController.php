@@ -15,6 +15,7 @@ class TicketController extends Controller
 {
     public function index(Request $request)
     {
+        /* Showing tickets with status "pending" (have not been bought) in cart page*/
         $bookings = Booking::where([
             ['user_id','=',\Auth::user()->id ],
             ['status', '=', 'Pending']])->orderBy('id')->get();
@@ -62,6 +63,7 @@ class TicketController extends Controller
             "senior",
             "booking_id" => 'required'
         ]);
+
         //TEST -- Parsing to int
         $adult = (int) $request->adult;
         $child = (int) $request->child;

@@ -14,6 +14,7 @@ class BookingsController extends Controller
 {
     public function index(Request $request)
     {
+        //Get successful bookings where users have paid for tickets to display on my tickets
         $bookings = Booking::where([
             ['user_id','=',\Auth::user()->id ],
             ['status', '=', 'Success']
@@ -37,7 +38,6 @@ class BookingsController extends Controller
             else{
                 //check if there are tickets available else delete booking
                 //iterate over all the tickets and store it into a ticket Object
-
                 foreach ($ticket as $ticket_types) {
                     $tickets[] = new Ticket(
                         $ticket_types->id,
