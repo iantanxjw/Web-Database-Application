@@ -59,6 +59,7 @@ class UsersController extends Controller
 
         // save only runs if things have changed
         //$user->save();
+        // Source = from cart page
         if ($request->source == 0) {
 
              $this->validate($request, [
@@ -67,7 +68,7 @@ class UsersController extends Controller
                  'pcode' => "required",
              ]);
 
-            $user->admin = $request->admin;
+
             $user->address = $request->address;
             $user->suburb = $request->suburb;
             $user->postcode = $request->pcode;
@@ -114,19 +115,20 @@ class UsersController extends Controller
 
             return view("test",compact('user','tickets'));//->with(["testing"=>"this is from user page"]);
         }
+        // Source = from user management page
         else
         {
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
+            $user->admin = $request->admin;
 
             $user->save();
 
-            //return view("test",compact('user'));//->with(["testing"=>"from admin page"]);
             return redirect()->route('admin_users.index')->with('success', 'User updated successfully');
-            //return view("test_request")->with(["header" => $request->path()]);
+
         }
-        //return redirect()->route('admin_users.index')->with('success', 'User updated successfully');
+
     }
 
     public function destroy($id)
